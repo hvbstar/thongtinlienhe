@@ -21,7 +21,7 @@
     <meta property="og:image" content="https://github.com/hvbstar/thongtinlienhe/blob/main/favicon_io/hvbdz-1200x630.png?raw=true">
     <meta property="og:url" content="https://hvbstar.github.io/thongtinlienhe/">
     <meta property="og:type" content="website">
-    
+
     <!-- Twitter Card metadata -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hoàng Văn Bảo">
@@ -30,19 +30,25 @@
 </head>
 
 <body>
-        <!-- Video Nền -->
+    <div id="zalo-warning" style="display: none;">
+        <p>Vui lòng mở trang này bằng Safari hoặc Chrome để xem đầy đủ nội dung!!!</p>
+    </div>    
+    <!-- Video Nền -->
 <div class="video-wrapper">
     <video autoplay muted loop playsinline class="video-background">
         <source src="audio/111.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+        <!-- Hình ảnh nền fallback -->
+        <div class="fallback-image"></div>
+    </div>
 </div>
 <div id="overlay" class="overlay"></div>
 
       <!-- Bảng lời chào -->
       <div class="welcome-container" id="welcome-message">
-          <h2>Welcome To Website Of <br> HOÀNG VĂN BẢO </h2>
-          <p>Nhấn OK Để Tiếp Tục</p>
+        <h2 style="font-size: 1.7rem;">Welcome To Website Of <br> HOÀNG VĂN BẢO </h2>
+          <p style="font-size: 1.2rem;">Nhấn OK Để Tiếp Tục</p>
           <button id="continue-button">OK</button>
       </div>
             <audio id="welcome-audio" src="audio/123.mp3" loop></audio>
@@ -61,7 +67,7 @@
                     </div>
                 </div>
                 <div class="card__title--description">
-                    <p>Hello World, I am a Developer</p>
+                    <p style="font-size: 1.8rem;">Hello World, I am a Developer</p>
                 </div>
             </div>
             <div class="card__body mt-10">
@@ -194,5 +200,3 @@
     <script src="./script.js"></script>
 </body>
 </html>
-
-
