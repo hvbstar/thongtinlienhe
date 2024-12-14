@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="android-chrome" sizes="512x512" href="./favicon_io/hvbdz-512x512.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/hvbdz-180x180.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/hvbdz-32x32.jpg">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Hoàng Văn Bảo</title>
+</head>
+
+<body>
+        <!-- Video Nền -->
+    <div class="video-wrapper">
+        <video autoplay muted loop class="video-background">
+          <source src="audio/111.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div id="overlay" class="overlay"></div>
+
+      <!-- Bảng lời chào -->
+      <div class="welcome-container" id="welcome-message">
+          <h2>Welcome To Website Of <br> HOÀNG VĂN BẢO </h2>
+          <p>Nhấn OK Để Tiếp Tục</p>
+          <button id="continue-button">OK</button>
+      </div>
+            <audio id="welcome-audio" src="audio/123.mp3"></audio>
+        </div>
+     <!-- App chính -->
+    <div class="app">
+        <div class="card mg-10">
+            <div class="card__title">
+                <div class="card__title--img">
+                    <img src="./img/anhkhoi.jpg" alt="TripleT511">
+                </div>
+                <div class="card__title--name">
+                    <h1><span id="animated-text">Hoàng Văn Bảo</span></h1>
+                    <div class="veri__check">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <div class="card__title--description">
+                    <p>Hello World, I am a Developer</p>
+                </div>
+            </div>
+            <div class="card__body mt-10">
+                <div class="row">
+                    <!-- Facebook -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://www.facebook.com/HVB.Profile" class="card__link" target="_blank">
+                                <div class="link__icon">
+                                    <i class="fab fa-facebook"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Instagram -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://www.instagram.com/oba.vh_" class="card__link" target="_blank">
+                                <div class="link__icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- TikTok -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://www.tiktok.com/@_.hvb" class="card__link" target="_blank">
+                                <div class="link__icon" style="color: black;">
+                                    <i class="fab fa-tiktok"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- YouTube -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://www.youtube.com/@hvb2017" class="card__link" target="_blank">
+                                <div class="link__icon" style="color: red;">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Twitter -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://x.com/hvbfaq" class="card__link" target="_blank">
+                                <div class="link__icon" style="color: #87CEEB; font-size: 1.5em;">
+                                    <i class="fab fa-twitter"></i>
+                                 </div>
+                            </a>
+                         </div>
+                    </div>
+                    <!-- GitHub -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://github.com/hvbstar" class="card__link" target="_blank">
+                                <div class="link__icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Telegram -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://t.me/hvb_ip" class="card__link" target="_blank">
+                                <div class="link__icon">
+                                    <i class="fab fa-telegram"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Zalo -->
+                    <div class="col col-lg-3 mt-10">
+                        <div class="card__item">
+                            <a href="https://zalo.me/0395152981" class="card__link" target="_blank">
+                                <div class="link__icon" style="font-size: 2.2em;">
+                                    <i class="fas fa-comment-dots"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <!-- Nhắn Tin , Theo Dõi -->
+            <div class="toggle toggle__back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="toggle toggle__theme">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="button__list mt-10">
+                <div class="row">
+                    <div class="col col-lg-6 mt-10">
+                        <div class="button button__message" onclick="window.open('https://m.me/HVB.Profile', '_blank')">
+                            <span>Nhắn Tin</span>
+                        </div>
+                    </div>
+                    <div class="col col-lg-6 mt-10">
+                        <div class="button button__subscribe" onclick="window.open('https://www.facebook.com/profile.php?id=61569044525781', '_blank')">
+                            <span>Theo Dõi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div class="card__footer mt-10">
+                <div class="footer__item">
+                    <span>
+                        <i class="fas fa-heart"></i>
+                        12.3M
+                    </span>
+                </div>
+                <div class="footer__item">
+                    <span>
+                        <i class="fa fa-comment"></i>
+                        45.6M
+                    </span>
+                </div>
+                <div class="footer__item">
+                    <span>
+                        <i class="fa fa-share"></i>
+                        78.9M
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
+
+
