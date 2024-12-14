@@ -559,7 +559,7 @@ html {
 .veri__check i {
   animation: rainbowText 0.7s linear infinite; /* Áp dụng hiệu ứng đổi màu cho tích xanh */
   position: relative; /* Đảm bảo có thể thay đổi vị trí */
-  top: -2px; /* Di chuyển tích xanh lên trên 2px, bạn có thể thay đổi giá trị này để điều chỉnh thêm */
+  top: -3px; /* Di chuyển tích xanh lên trên 2px, bạn có thể thay đổi giá trị này để điều chỉnh thêm */
 }
 
 
