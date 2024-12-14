@@ -557,8 +557,11 @@ html {
 }
 
 .veri__check i {
-  animation: rainbowText 0.7s linear infinite; /* Áp dụng cùng hiệu ứng cho tích xanh */
+  animation: rainbowText 0.7s linear infinite; /* Áp dụng hiệu ứng đổi màu cho tích xanh */
+  position: relative; /* Đảm bảo có thể thay đổi vị trí */
+  top: -2px; /* Di chuyển tích xanh lên trên 2px, bạn có thể thay đổi giá trị này để điều chỉnh thêm */
 }
+
 
 /* Đảm bảo video chiếm toàn bộ màn hình */
 html, body {
@@ -574,6 +577,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: black; /* Màu nền dự phòng */
 }
 
 .video-background {
@@ -584,6 +588,17 @@ html, body {
   height: 100%;
   object-fit: cover; /* Phủ kín màn hình mà không méo hình */
   z-index: -1; /* Video nền nằm dưới nội dung */
+}
+
+.fallback-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('fallback.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: -2; /* Nằm dưới nội dung chính */
 }
 
 .content {
@@ -652,6 +667,7 @@ html, body {
   background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet); /* Viền 7 màu */
   background-clip: padding-box;
   -webkit-background-clip: padding-box; /* Để viền màu có hiệu ứng */
+  color: white; /* Đặt màu chữ là trắng */
 }
 
 #continue-button:hover {
@@ -678,3 +694,46 @@ html, body {
   animation: rainbow-border 3s infinite; /* Viền thay đổi màu liên tục */
 }
 
+/* Chỉnh sửa viền cho chữ "Welcome To Website Of HOÀNG VĂN BẢO" */
+#welcome-message h2 {
+  font-size: 1.7rem;
+  color: white; /* Màu chữ trắng */
+  text-align: center; /* Canh giữa chữ */
+  position: relative; /* Cần thiết để tạo viền xung quanh */
+  padding: 10px; /* Thêm khoảng cách xung quanh chữ */
+  display: inline-block; /* Để nội dung chữ có viền */
+  background: none; /* Không có nền */
+  border: none; /* Loại bỏ bất kỳ viền nào */
+  box-shadow: none; /* Loại bỏ mọi shadow (bóng đổ) ngoài viền sáng */
+  text-shadow: 
+    0 0 10px #00bfff,   /* Viền sáng xanh dương */
+    0 0 20px #00bfff,   /* Viền sáng xanh dương */
+    0 0 30px #00bfff;   /* Viền sáng xanh dương */
+}
+
+#welcome-message h2 {
+  animation: neonGlow 1.5s ease-in-out infinite alternate; /* Hiệu ứng neon phát sáng */
+}
+
+/* Hiệu ứng phát sáng cho chữ */
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 15px #00bfff;
+  }
+  100% {
+    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+  }
+}
+
+#zalo-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffcc00;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  z-index: 9999;
+}
