@@ -110,18 +110,20 @@ window.onload = function() {
     protectCode();
 })();
 
-// Ngăn ngừa sao chép (copy)
+// Ngăn sao chép
 document.addEventListener('copy', function(e) {
   e.preventDefault();
   alert("Sao chép không được phép trên trang web này!");
 });
 
-// Ngừng chọn văn bản (select)
+// Ngăn chọn văn bản
 document.addEventListener('selectstart', function(e) {
   e.preventDefault();
 });
 
-// Ngừng các thao tác chạm (touch) trên thiết bị di động
-document.body.addEventListener('touchstart', function(e) {
-  e.preventDefault();
+// Chỉ chặn "touchstart" ở các phần cụ thể, không phải toàn bộ trang
+document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, div').forEach(function(el) {
+  el.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+  });
 });
