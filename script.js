@@ -34,7 +34,7 @@ const overlay = document.getElementById('overlay');
 const welcomeMessage = document.getElementById('welcome-message');
 
 // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
-continueButton.addEventListener('touchend', function() {
+continueButton.addEventListener('click', function() {
   // Phát nhạc khi nhấn vào nút (nếu cần)
   var audio = document.getElementById('welcome-audio');
   audio.play();
