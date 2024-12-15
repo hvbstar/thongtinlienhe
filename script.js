@@ -49,8 +49,18 @@ console.log('Nút OK đã được nhấn!'); // Kiểm tra xem sự kiện clic
 
 // Khi trang load, hiển thị lớp phủ và bảng lời chào
 window.onload = function() {
+    // Hiển thị lớp phủ và bảng lời chào
     overlay.style.display = 'block';
     welcomeMessage.style.display = 'flex';
+
+    // Tìm video nền và thêm lớp 'loaded' sau khi video sẵn sàng
+    const videoBackground = document.querySelector('.video-background');
+    
+    videoBackground.oncanplaythrough = function() {
+        // Đảm bảo video sẽ xuất hiện sau khi sẵn sàng
+        videoBackground.classList.add('loaded');
+    };
+};
 
     // Tạo sự kiện khi video nền sẵn sàng
     const videoBackground = document.querySelector('.video-background');
