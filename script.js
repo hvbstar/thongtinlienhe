@@ -28,47 +28,28 @@ if (isZaloWebView()) {
     document.querySelector('.fallback-image').style.display = 'block';
 }
 
-// Lấy phần tử
+// Lấy các phần tử
 const continueButton = document.getElementById('continue-button');
+const overlay = document.getElementById('overlay');
+const welcomeMessage = document.getElementById('welcome-message');
+
+// Khi nhấn vào nút "Nhấn Ok Để Tiếp Tục"
 continueButton.addEventListener('click', function() {
-  var audio = document.getElementById('welcome-audio');
-  if (audio) {
+    // Phát nhạc khi nhấn vào nút (nếu cần)
+    var audio = document.getElementById('welcome-audio');
     audio.play();
-  }
 
-  // Ẩn bảng lời chào
-  welcomeMessage.style.display = 'none';
+    // Ẩn bảng lời chào
+    welcomeMessage.style.display = 'none';
 
-  // Ẩn lớp phủ
-  overlay.style.display = 'none';
+    // Ẩn lớp phủ
+    overlay.style.display = 'none';
 });
 
 // Khi trang load, hiển thị lớp phủ và bảng lời chào
 window.onload = function() {
-  // Hiển thị lớp phủ và bảng lời chào
-  overlay.style.display = 'block';
-  welcomeMessage.style.display = 'flex';
-
-  // Đảm bảo video sẵn sàng trước khi hiển thị
-  const videoBackground = document.querySelector('.video-background');
-  videoBackground.oncanplaythrough = function() {
-    videoBackground.style.display = 'block';
-  };
-};
-    // Tìm video nền và thêm lớp 'loaded' sau khi video sẵn sàng
-    const videoBackground = document.querySelector('.video-background');
-    
-    videoBackground.oncanplaythrough = function() {
-        // Đảm bảo video sẽ xuất hiện sau khi sẵn sàng
-        videoBackground.classList.add('loaded');
-    };
-};
-
-    // Tạo sự kiện khi video nền sẵn sàng
-    const videoBackground = document.querySelector('.video-background');
-    videoBackground.oncanplaythrough = function() {
-        videoBackground.style.display = 'block';
-    };
+    overlay.style.display = 'block';
+    welcomeMessage.style.display = 'flex';
 };
 
 // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
@@ -129,16 +110,18 @@ window.onload = function() {
     protectCode();
 })();
 
-// Chặn menu chuột phải và sự kiện sao chép
-document.addEventListener('contextmenu', function(event) {
-  event.preventDefault();  // Ngừng hành động mặc định của menu chuột phải
-});
-
-document.addEventListener('copy', function(event) {
-  event.preventDefault();  // Ngừng hành động sao chép
-});
-
-const videoBackground = document.querySelector('.video-background');
-videoBackground.oncanplaythrough = function() {
-  videoBackground.style.display = 'block'; // Hiển thị video khi sẵn sàng
-};
+// Ngăn ngừa sao chép (copy)
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert("Sao chép không được phép trên trang web này!");
+  });
+  
+  // Ngừng chọn văn bản (select)
+  document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+  });
+  
+  // Ngừng các thao tác chạm (touch) trên thiết bị di động
+  document.body.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+  });  
