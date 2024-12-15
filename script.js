@@ -35,6 +35,7 @@ const welcomeMessage = document.getElementById('welcome-message');
 
 // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
 continueButton.addEventListener('click', function() {
+console.log('Nút OK đã được nhấn!'); // Kiểm tra xem sự kiện click có được kích hoạt
   // Phát nhạc khi nhấn vào nút (nếu cần)
   var audio = document.getElementById('welcome-audio');
   audio.play();
