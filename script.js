@@ -131,3 +131,8 @@ document.addEventListener('contextmenu', function(event) {
 document.addEventListener('copy', function(event) {
   event.preventDefault();  // Ngừng hành động sao chép
 });
+
+const videoBackground = document.querySelector('.video-background');
+videoBackground.oncanplaythrough = function() {
+  videoBackground.style.display = 'block'; // Hiển thị video khi sẵn sàng
+};
