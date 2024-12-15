@@ -30,15 +30,11 @@ if (isZaloWebView()) {
 
 // Lấy phần tử
 const continueButton = document.getElementById('continue-button');
-const overlay = document.getElementById('overlay');
-const welcomeMessage = document.getElementById('welcome-message');
-
-// Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
 continueButton.addEventListener('click', function() {
-console.log('Nút OK đã được nhấn!'); // Kiểm tra xem sự kiện click có được kích hoạt
-  // Phát nhạc khi nhấn vào nút (nếu cần)
   var audio = document.getElementById('welcome-audio');
-  audio.play();
+  if (audio) {
+    audio.play();
+  }
 
   // Ẩn bảng lời chào
   welcomeMessage.style.display = 'none';
