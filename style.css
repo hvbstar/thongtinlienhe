@@ -752,17 +752,14 @@ html, body {
 }
 
 /* Tắt chọn văn bản */
-/* Chặn chọn văn bản cho tất cả phần tử */
+/* Tắt chọn văn bản cho mọi phần tử */
 * {
   user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
+  pointer-events: none; /* Có thể vô tình chặn luôn sự kiện click */
 }
 
-/* Loại trừ các thành phần tương tác */
-button, input, textarea, a, video, #welcome-message {
-  user-select: auto !important; /* Khôi phục hành vi chọn và bấm bình thường */
-  -webkit-user-select: auto !important;
-  pointer-events: auto; /* Đảm bảo sự kiện chuột vẫn hoạt động */
+/* Giữ khả năng tương tác cho các phần tử cụ thể */
+button, #welcome-message, #overlay {
+  pointer-events: auto !important; /* Cho phép tương tác chuột */
+  user-select: auto !important; /* Cho phép chọn văn bản nếu cần */
 }
