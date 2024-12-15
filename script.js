@@ -45,10 +45,16 @@ continueButton.addEventListener('click', function() {
 
 // Khi trang load, hiển thị lớp phủ và bảng lời chào
 window.onload = function() {
-    // Hiển thị lớp phủ và bảng lời chào
-    overlay.style.display = 'block';
-    welcomeMessage.style.display = 'flex';
+  // Hiển thị lớp phủ và bảng lời chào
+  overlay.style.display = 'block';
+  welcomeMessage.style.display = 'flex';
 
+  // Đảm bảo video sẵn sàng trước khi hiển thị
+  const videoBackground = document.querySelector('.video-background');
+  videoBackground.oncanplaythrough = function() {
+    videoBackground.style.display = 'block';
+  };
+};
     // Tìm video nền và thêm lớp 'loaded' sau khi video sẵn sàng
     const videoBackground = document.querySelector('.video-background');
     
