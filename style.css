@@ -752,9 +752,10 @@ html, body {
 }
 
 /* Tắt chọn văn bản */
+/* Ngăn người dùng chọn văn bản trên tất cả các phần tử */
 * {
-  user-select: none !important;
-  -webkit-user-select: none !important; /* Safari */
-  -moz-user-select: none !important; /* Firefox */
-  -ms-user-select: none !important; /* IE/Edge */
+  user-select: none !important; /* Thuộc tính chuẩn CSS3, áp dụng cho các trình duyệt hiện đại */
+  -webkit-user-select: none !important; /* Chú ý: Dành cho các trình duyệt WebKit như Safari và các phiên bản cũ của Chrome */
+  -moz-user-select: none !important; /* Chú ý: Dành cho Firefox để đảm bảo tương thích */
+  -ms-user-select: none !important; /* Chú ý: Dành cho trình duyệt Internet Explorer và các phiên bản cũ của Microsoft Edge */
 }
