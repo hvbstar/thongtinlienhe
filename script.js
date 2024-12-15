@@ -48,8 +48,14 @@ continueButton.addEventListener('touchend', function() {
 
 // Khi trang load, hiển thị lớp phủ và bảng lời chào
 window.onload = function() {
-  overlay.style.display = 'block';
-  welcomeMessage.style.display = 'flex';
+    overlay.style.display = 'block';
+    welcomeMessage.style.display = 'flex';
+
+    // Tạo sự kiện khi video nền sẵn sàng
+    const videoBackground = document.querySelector('.video-background');
+    videoBackground.oncanplaythrough = function() {
+        videoBackground.style.display = 'block';
+    };
 };
 
 // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
