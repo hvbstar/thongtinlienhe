@@ -753,9 +753,16 @@ html, body {
 
 /* Tắt chọn văn bản */
 /* Ngăn người dùng chọn văn bản trên tất cả các phần tử */
+/* Tắt chọn văn bản cho tất cả phần tử */
 * {
-  user-select: none !important; /* Thuộc tính chuẩn CSS3, áp dụng cho các trình duyệt hiện đại */
-  -webkit-user-select: none !important; /* Chú ý: Dành cho các trình duyệt WebKit như Safari và các phiên bản cũ của Chrome */
-  -moz-user-select: none !important; /* Chú ý: Dành cho Firefox để đảm bảo tương thích */
-  -ms-user-select: none !important; /* Chú ý: Dành cho trình duyệt Internet Explorer và các phiên bản cũ của Microsoft Edge */
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* Loại trừ bảng lời chào và nút bấm */
+#welcome-message, #welcome-message button {
+  user-select: auto !important; /* Cho phép tương tác và chọn văn bản */
+  -webkit-user-select: auto !important;
 }
