@@ -109,3 +109,19 @@ window.onload = function() {
     }
     protectCode();
 })();
+
+// Ngăn ngừa sao chép (copy)
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  alert("Sao chép không được phép trên trang web này!");
+});
+
+// Ngừng chọn văn bản (select)
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+});
+
+// Ngừng các thao tác chạm (touch) trên thiết bị di động
+document.body.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+});
