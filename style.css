@@ -751,15 +751,10 @@ html, body {
   z-index: 9999;
 }
 
-/* Tắt chọn văn bản */
-/* Tắt chọn văn bản cho mọi phần tử */
+/* Chặn sao chép văn bản trên tất cả các trình duyệt và thiết bị */
 * {
-  user-select: none !important;
-  pointer-events: none; /* Có thể vô tình chặn luôn sự kiện click */
-}
-
-/* Giữ khả năng tương tác cho các phần tử cụ thể */
-button, #welcome-message, #overlay {
-  pointer-events: auto !important; /* Cho phép tương tác chuột */
-  user-select: auto !important; /* Cho phép chọn văn bản nếu cần */
+  user-select: none !important;  /* Chặn chọn văn bản */
+  -webkit-user-select: none !important; /* Safari */
+  -moz-user-select: none !important; /* Firefox */
+  -ms-user-select: none !important; /* IE/Edge */
 }
