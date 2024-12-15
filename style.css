@@ -601,6 +601,13 @@ html, body {
   height: 100%;
   object-fit: cover; /* Phủ kín màn hình mà không méo hình */
   z-index: -1; /* Video nền nằm dưới nội dung */
+  will-change: transform, opacity; /* Tối ưu hiệu suất khi thay đổi các thuộc tính */
+  transition: opacity 0.5s ease-in-out; /* Tạo hiệu ứng mờ dần khi video xuất hiện */
+  opacity: 0; /* Mặc định video ẩn */
+}
+
+.video-background.loaded {
+  opacity: 1; /* Hiển thị video khi nó đã sẵn sàng */
 }
 
 .fallback-image {
