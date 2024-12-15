@@ -564,11 +564,17 @@ html {
 
 .veri__check i {
   animation: rainbowText 0.7s linear infinite;
-  position: relative; /* Đảm bảo có thể thay đổi vị trí */
-  transform: translateY(-2px); /* Di chuyển tích xanh lên trên một cách linh hoạt */
-  font-size: 1.5em; /* Điều chỉnh kích thước của biểu tượng */
+  position: relative;
+  transform: translateY(-2px); /* Di chuyển lên một chút trên máy tính */
+  font-size: 1.5em;
 }
 
+/* Media query cho điện thoại */
+@media (max-width: 768px) {
+  .veri__check i {
+    transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
+  }
+}
 
 /* Đảm bảo video chiếm toàn bộ màn hình */
 html, body {
