@@ -753,5 +753,8 @@ html, body {
 
 /* Tắt chọn văn bản */
 * {
-  user-select: none !important;
+  user-select: none !important; /* Tắt chọn văn bản trên tất cả các trình duyệt */
+  -webkit-user-select: none !important; /* Dành cho Safari */
+  -moz-user-select: none !important; /* Dành cho Firefox */
+  -ms-user-select: none !important; /* Dành cho Internet Explorer */
 }
