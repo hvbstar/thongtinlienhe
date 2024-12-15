@@ -556,10 +556,17 @@ html {
   display: inline-block;
 }
 
+.veri__check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .veri__check i {
-  animation: rainbowText 0.7s linear infinite; /* Áp dụng hiệu ứng đổi màu cho tích xanh */
+  animation: rainbowText 0.7s linear infinite;
   position: relative; /* Đảm bảo có thể thay đổi vị trí */
-  top: -4px; /* Di chuyển tích xanh lên trên 2px, bạn có thể thay đổi giá trị này để điều chỉnh thêm */
+  transform: translateY(-2px); /* Di chuyển tích xanh lên trên một cách linh hoạt */
+  font-size: 1.5em; /* Điều chỉnh kích thước của biểu tượng */
 }
 
 
