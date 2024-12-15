@@ -681,6 +681,8 @@ html, body {
   background-clip: padding-box;
   -webkit-background-clip: padding-box; /* Để viền màu có hiệu ứng */
   color: white; /* Đặt màu chữ là trắng */
+  pointer-events: auto; /* Đảm bảo nút có thể tương tác */
+  z-index: 10001; /* Đảm bảo nút nằm trên lớp phủ */
 }
 
 #continue-button:hover {
