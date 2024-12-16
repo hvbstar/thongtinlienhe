@@ -624,17 +624,15 @@ html, body {
 
 /* Lớp phủ che toàn bộ trang khi bảng lời chào xuất hiện */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000; /* Nền đen đặc */
-    opacity: 0; /* Ban đầu trong suốt */
-    visibility: hidden; /* Không hiển thị */
-    z-index: 9998;
-    transition: opacity 0.3s ease-in-out; /* Hiệu ứng mượt */
-    /* pointer-events: none; /* cho phép tương tác khi ẩn lớp phủ */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Nền mờ tối */
+  z-index: 9998; /* Đặt lớp phủ dưới bảng lời chào */
+  display: none; /* Ẩn lớp phủ khi không cần thiết */
+  /* pointer-events: none; /* cho phép tương tác khi ẩn lớp phủ */
 }
 
 .overlay.active {
