@@ -632,12 +632,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.7); /* Nền mờ tối */
   z-index: 9998; /* Đặt lớp phủ dưới bảng lời chào */
   display: none; /* Ẩn lớp phủ khi không cần thiết */
-  /* pointer-events: none; /* cho phép tương tác khi ẩn lớp phủ */
-}
-
-.overlay.active {
-    opacity: 0.7; /* Hiện lớp phủ */
-    visibility: visible; /* Hiển thị */
+  /* pointer-events: none; /* Không cho phép tương tác khi ẩn lớp phủ */
 }
 
 /* Bảng lời chào */
