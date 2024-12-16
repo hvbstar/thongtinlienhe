@@ -34,20 +34,23 @@ const overlay = document.getElementById('overlay');
 const welcomeMessage = document.getElementById('welcome-message');
 const audio = document.getElementById('welcome-audio');
 
-// Khi trang load, hiển thị lớp phủ và bảng lời chào
+// Khi trang load, thêm độ trễ để hiển thị lớp phủ và bảng lời chào
 window.addEventListener('load', function() {
-    overlay.style.display = 'block';
-    welcomeMessage.style.display = 'flex';
+    setTimeout(function() {
+        // Hiển thị lớp phủ và bảng lời chào sau một khoảng thời gian nhỏ (ví dụ 200ms)
+        overlay.classList.add('active');
+        welcomeMessage.style.display = 'flex';
 
-    // Xử lý video nền (nếu có)
-    const videoBackground = document.querySelector('.video-background');
-    if (videoBackground) {
-        videoBackground.style.display = 'none';
+        // Xử lý video nền (nếu có)
+        const videoBackground = document.querySelector('.video-background');
+        if (videoBackground) {
+            videoBackground.style.display = 'none';
 
-        videoBackground.oncanplaythrough = function() {
-            videoBackground.style.display = 'block';
-        };
-    }
+            videoBackground.oncanplaythrough = function() {
+                videoBackground.style.display = 'block';
+            };
+        }
+    }, 200); // Độ trễ 200ms
 });
 
 // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
