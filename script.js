@@ -32,37 +32,40 @@ if (isZaloWebView()) {
 const continueButton = document.getElementById('continue-button');
 const overlay = document.getElementById('overlay');
 const welcomeMessage = document.getElementById('welcome-message');
-
-// Khi nhấn vào nút "Nhấn Ok Để Tiếp Tục"
-continueButton.addEventListener('click', function() {
-    // Phát nhạc khi nhấn vào nút (nếu cần)
-    var audio = document.getElementById('welcome-audio');
-    audio.play();
-
-    // Ẩn bảng lời chào
-    welcomeMessage.style.display = 'none';
-
-    // Ẩn lớp phủ
-    overlay.style.display = 'none';
-});
+const audio = document.getElementById('welcome-audio');
 
 // Khi trang load, hiển thị lớp phủ và bảng lời chào
-window.onload = function() {
+window.addEventListener('load', function() {
     overlay.style.display = 'block';
     welcomeMessage.style.display = 'flex';
 
-    // Lấy phần tử video nền
+    // Xử lý video nền (nếu có)
     const videoBackground = document.querySelector('.video-background');
+    if (videoBackground) {
+        videoBackground.style.display = 'none';
 
-    // Ẩn video nền ngay khi tải trang
-    videoBackground.style.display = 'none';
+        videoBackground.oncanplaythrough = function() {
+            videoBackground.style.display = 'block';
+        };
+    }
+});
 
-    // Đảm bảo video sẽ được hiển thị khi nó có thể phát
-    videoBackground.oncanplaythrough = function() {
-        // Hiển thị video khi sẵn sàng
-        videoBackground.style.display = 'block';
-    };
-};
+// Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
+continueButton.addEventListener('click', function() {
+    // Phát nhạc nếu tồn tại
+    if (audio) {
+        audio.play().then(() => {
+            console.log("Âm thanh đã phát thành công.");
+        }).catch((error) => {
+            console.error("Không thể phát âm thanh:", error);
+            alert("Vui lòng nhấn OK một lần nữa để phát âm thanh.");
+        });
+    }
+
+    // Ẩn bảng lời chào và lớp phủ
+    welcomeMessage.style.display = 'none';
+    overlay.style.display = 'none';
+});
 
 // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
 (function() {
