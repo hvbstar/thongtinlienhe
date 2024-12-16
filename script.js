@@ -50,6 +50,18 @@ continueButton.addEventListener('click', function() {
 window.onload = function() {
     overlay.style.display = 'block';
     welcomeMessage.style.display = 'flex';
+
+    // Lấy phần tử video nền
+    const videoBackground = document.querySelector('.video-background');
+
+    // Ẩn video nền ngay khi tải trang
+    videoBackground.style.display = 'none';
+
+    // Đảm bảo video sẽ được hiển thị khi nó có thể phát
+    videoBackground.oncanplaythrough = function() {
+        // Hiển thị video khi sẵn sàng
+        videoBackground.style.display = 'block';
+    };
 };
 
 // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
