@@ -141,3 +141,28 @@ document.addEventListener('copy', function(e) {
   document.body.addEventListener('touchstart', function(e) {
     e.preventDefault();
   });  
+
+<script>
+  // Chặn chuột phải
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+    alert("Chức năng chuột phải đã bị vô hiệu hóa!");
+  });
+
+  // Chặn các phím tắt liên quan đến DevTools
+  document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) { // Ctrl + U
+      e.preventDefault();
+      alert("Chức năng xem mã nguồn đã bị vô hiệu hóa!");
+    }
+    if (e.key === "F12") { // F12
+      e.preventDefault();
+      alert("Chức năng DevTools đã bị vô hiệu hóa!");
+    }
+    if (e.ctrlKey && e.shiftKey && e.key === "I") { // Ctrl + Shift + I
+      e.preventDefault();
+      alert("Chức năng DevTools đã bị vô hiệu hóa!");
+    }
+  });
+</script>
+
