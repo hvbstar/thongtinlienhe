@@ -128,11 +128,12 @@ continueButton.addEventListener('click', function() {
 
 // Ngừng chuột phải và các phím tắt (Ctrl + U, F12)
 document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
+    e.preventDefault();  // Ngừng chuột phải
 });
 
 document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'f12')) {
+    // Ngừng Ctrl + U, F12 và một số phím tắt khác
+    if ((e.ctrlKey && (e.key === 'u' || e.key === 'U')) || e.keyCode === 123) { 
         e.preventDefault();
     }
 });
