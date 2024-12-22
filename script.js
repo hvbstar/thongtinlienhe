@@ -126,6 +126,17 @@ continueButton.addEventListener('click', function() {
     protectCode();
 })();
 
+// Ngừng chuột phải và các phím tắt (Ctrl + U, F12)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'f12')) {
+        e.preventDefault();
+    }
+});
+
 // Ngăn ngừa sao chép (copy)
 document.addEventListener('copy', function(e) {
     e.preventDefault();
@@ -141,14 +152,3 @@ document.addEventListener('copy', function(e) {
   document.body.addEventListener('touchstart', function(e) {
     e.preventDefault();
   });  
-
-// Ngừng chuột phải và các phím tắt (Ctrl + U, F12)
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
-
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'f12')) {
-        e.preventDefault();
-    }
-});
