@@ -126,17 +126,55 @@ continueButton.addEventListener('click', function() {
     protectCode();
 })();
 
-// Ngừng chuột phải và các phím tắt (Ctrl + U, F12)
+// Ngừng chuột phải
 document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();  // Ngừng chuột phải
+    e.preventDefault(); // Ngừng chuột phải
 });
 
+// Ngừng các phím tắt: Ctrl + U, F12, Ctrl + Shift + I (mở DevTools)
 document.addEventListener('keydown', function(e) {
-    // Ngừng Ctrl + U, F12 và một số phím tắt khác
-    if ((e.ctrlKey && (e.key === 'u' || e.key === 'U')) || e.keyCode === 123) { 
+    // Ngừng Ctrl + U (Xem mã nguồn)
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+        e.preventDefault();
+    }
+    // Ngừng F12 (Mở Developer Tools)
+    if (e.keyCode === 123) { 
+        e.preventDefault();
+    }
+    // Ngừng Ctrl + Shift + I (Mở Developer Tools)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+    }
+    // Ngừng Ctrl + Shift + J (Mở Console DevTools)
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+    }
+    // Ngừng F11 (Chế độ toàn màn hình)
+    if (e.keyCode === 122) {
         e.preventDefault();
     }
 });
+
+// Kiểm tra khi DevTools bị mở và ngừng các hành động
+(function() {
+    let devtoolsOpen = false;
+    const threshold = 160;
+    window.addEventListener('resize', function() {
+        if (window.innerWidth - window.outerWidth > threshold || window.innerHeight - window.outerHeight > threshold) {
+            devtoolsOpen = true;
+            alert('Developer tools đã được mở!');
+            // Bạn có thể thực hiện hành động ngừng hoạt động của trang nếu cần
+        }
+    });
+
+    setInterval(function() {
+        if (devtoolsOpen) {
+            // Chặn trang nếu DevTools bị mở
+            document.body.innerHTML = '';
+            alert('Trang đã bị chặn vì Developer tools đã được mở!');
+        }
+    }, 1000);
+})();
 
 // Ngăn ngừa sao chép (copy)
 document.addEventListener('copy', function(e) {
