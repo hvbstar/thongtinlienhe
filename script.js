@@ -68,92 +68,115 @@ continueButton.addEventListener('click', function() {
 });
 
 // Hàm Copy Số Tài Khoản
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Gán sự kiện click cho các phần tử
-    document.getElementById('mbbank').addEventListener('click', function() {
-        copyAccountNumber('MB Bank');
+    document.getElementById("mbbank").addEventListener("click", function () {
+        copyAccountNumber("MB Bank");
     });
-    document.getElementById('vietinbank').addEventListener('click', function() {
-        copyAccountNumber('VietinBank');
+    document.getElementById("vietinbank").addEventListener("click", function () {
+        copyAccountNumber("VietinBank");
     });
-    document.getElementById('vietcombank').addEventListener('click', function() {
-        copyAccountNumber('Vietcombank');
+    document.getElementById("vietcombank").addEventListener("click", function () {
+        copyAccountNumber("Vietcombank");
     });
-    document.getElementById('momo').addEventListener('click', function() {
-        copyAccountNumber('Momo');
+    document.getElementById("momo").addEventListener("click", function () {
+        copyAccountNumber("Momo");
     });
+
+    // Kiểm tra xem có phải đang chạy trong Zalo WebView không
+    function isZaloWebView() {
+        const userAgent = navigator.userAgent || navigator.vendor;
+        return /zalo/i.test(userAgent);
+    }
+
+    // Kiểm tra xem có phải đang chạy trong Messenger WebView không
+    function isMessengerWebView() {
+        const userAgent = navigator.userAgent || navigator.vendor;
+        return /FBAN|FBAV/i.test(userAgent);
+    }
+
+    // Xử lý Zalo WebView
+    if (isZaloWebView()) {
+        // Hiển thị cảnh báo và fallback hình nền
+        document.getElementById("zalo-warning").style.display = "block";
+        document.querySelector(".video-background").style.display = "none";
+        document.querySelector(".fallback-image").style.display = "block";
+        return; // Không chạy tiếp mã JS cho video nền
+    }
 
     // Hàm sao chép số tài khoản
     function copyAccountNumber(bank) {
-        var accountNumbers = {
+        const accountNumbers = {
             "MB Bank": "333005678",
             "VietinBank": "106877439674",
             "Vietcombank": "1041231200",
-            "Momo": "0943290373"
+            "Momo": "0943290373",
         };
 
-        var accountNumber = accountNumbers[bank];
+        const accountNumber = accountNumbers[bank];
 
-        // Sử dụng phương pháp dự phòng cho sao chép
-        let isClipboardSupported = !!navigator.clipboard;
-        if (isClipboardSupported) {
-            navigator.clipboard.writeText(accountNumber).then(function() {
-                alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            }).catch(function(error) {
-                console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
-                fallbackCopy(accountNumber);
-            });
+        // Messenger không hỗ trợ clipboard API hoàn chỉnh, dùng textarea fallback
+        if (isMessengerWebView()) {
+            const textarea = document.createElement("textarea");
+            textarea.value = accountNumber;
+            textarea.style.position = "absolute";
+            textarea.style.left = "-9999px";
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                const successful = document.execCommand("copy");
+                if (successful) {
+                    alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+                } else {
+                    alert("Không thể sao chép số tài khoản. Vui lòng thử lại!");
+                }
+            } catch (err) {
+                console.error("Fallback copy failed", err);
+                alert("Không thể sao chép số tài khoản. Vui lòng thử lại!");
+            }
+            document.body.removeChild(textarea);
         } else {
-            fallbackCopy(accountNumber);
+            // Dùng clipboard API nếu không phải Messenger
+            navigator.clipboard.writeText(accountNumber).then(function () {
+                alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            }).catch(function (error) {
+                console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
+                alert("Không thể sao chép số tài khoản. Vui lòng thử lại!");
+            });
         }
 
-        // Phát lại video nền nếu bị dừng
-        const videoBackground = document.querySelector('.video-background');
+        // Khôi phục video nền nếu bị gián đoạn
+        const videoBackground = document.querySelector(".video-background");
         if (videoBackground && videoBackground.paused) {
-            videoBackground.play().then(() => {
-                console.log("Video nền đã được phát lại.");
-            }).catch((error) => {
-                console.error("Không thể phát video nền: ", error);
+            requestAnimationFrame(() => {
+                videoBackground.play().catch((error) => {
+                    console.error("Không thể phát video nền: ", error);
+                });
             });
         }
     }
 
-    // Phương pháp dự phòng để sao chép
-    function fallbackCopy(text) {
-        const textarea = document.createElement("textarea");
-        textarea.value = text;
-        textarea.style.position = "absolute";
-        textarea.style.left = "-9999px"; // Ẩn textarea
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-            document.execCommand("copy");
-            alert("Số tài khoản đã được sao chép: " + text);
-        } catch (err) {
-            console.error("Fallback copy failed", err);
-            alert("Không thể sao chép số tài khoản. Vui lòng thử lại!");
-        }
-        document.body.removeChild(textarea);
-    }
-
-    // Đảm bảo video nền không hiện điều khiển và phát mượt mà
-    const videoBackground = document.querySelector('.video-background');
+    // Đảm bảo video nền không hiển thị thanh điều khiển và phát liên tục
+    const videoBackground = document.querySelector(".video-background");
     if (videoBackground) {
         videoBackground.controls = false; // Tắt thanh điều khiển
-        videoBackground.addEventListener('loadeddata', function() {
+
+        // Đảm bảo video phát khi trang được tải
+        videoBackground.addEventListener("loadeddata", function () {
             videoBackground.play().catch((error) => {
                 console.error("Không thể phát video nền: ", error);
             });
         });
     }
 
-    // Xử lý phát lại video nền khi quay lại trang
-    window.addEventListener('focus', function() {
+    // Phát lại video khi người dùng quay lại trang
+    window.addEventListener("focus", function () {
         if (videoBackground && videoBackground.paused) {
-            videoBackground.play().then(() => {
-                console.log("Video nền đã được phát khi quay lại trang.");
-            }).catch((error) => {
-                console.error("Không thể phát video nền khi quay lại: ", error);
+            requestAnimationFrame(() => {
+                videoBackground.play().catch((error) => {
+                    console.error("Không thể phát video nền khi quay lại: ", error);
+                });
             });
         }
     });
