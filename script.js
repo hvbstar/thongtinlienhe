@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
             
             // Khôi phục video nền nếu video bị dừng lại
-            const videoBackground = document.getElementById('video-background');
+            const videoBackground = document.querySelector('.video-background');
             if (videoBackground && videoBackground.paused) {
                 videoBackground.play().then(() => {
                     console.log("Video nền đã được phát lại.");
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Đảm bảo video nền phát khi người dùng quay lại
     window.addEventListener('focus', function() {
-        const videoBackground = document.getElementById('video-background');
+        const videoBackground = document.querySelector('.video-background');
         if (videoBackground && videoBackground.paused) {
             videoBackground.play().then(() => {
                 console.log("Video nền đã được phát khi quay lại trang.");
