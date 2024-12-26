@@ -606,6 +606,7 @@ html, body {
   height: 100%;
   object-fit: cover; /* Phủ kín màn hình mà không méo hình */
   z-index: -1; /* Video nền nằm dưới nội dung */
+  pointer-events: none;  /* Ngăn người dùng tương tác với video */
 }
 
 .fallback-image {
