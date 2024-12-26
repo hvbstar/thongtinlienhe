@@ -69,13 +69,6 @@ continueButton.addEventListener('click', function() {
 
 // Hàm Copy Số Tài Khoản
 document.addEventListener("DOMContentLoaded", function() {
-    // Kiểm tra nếu đang mở trên Zalo WebView
-    if (isZaloWebView()) {
-        // Ẩn video nền và hiển thị hình ảnh fallback chỉ khi mở Zalo
-        document.querySelector('.video-background').style.display = 'none';
-        document.querySelector('.fallback-image').style.display = 'block';
-    }
-
     // Gán sự kiện click cho các phần tử
     document.getElementById('mbbank').addEventListener('click', function() {
         copyAccountNumber('MB Bank');
@@ -101,11 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var accountNumber = accountNumbers[bank];
         navigator.clipboard.writeText(accountNumber).then(function() {
-            // Hiển thị thông báo sao chép số tài khoản trên Messenger
-            if (isMessenger()) {
-                showCustomNotification("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            }
-
+            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            
             // Khôi phục video nền nếu video bị dừng lại
             const videoBackground = document.querySelector('.video-background');
             if (videoBackground && videoBackground.paused) {
@@ -121,42 +111,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }).catch(function(error) {
             console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
-    }
-
-    // Kiểm tra nếu đang mở trong Messenger
-    function isMessenger() {
-        return navigator.userAgent.includes('FBAN/'); // Xác định nếu đang trên Messenger
-    }
-
-    // Kiểm tra nếu đang mở trong Zalo WebView
-    function isZaloWebView() {
-        return navigator.userAgent.includes('Zalo'); // Xác định nếu đang trên Zalo WebView
-    }
-
-    // Hiển thị thông báo tùy chỉnh trong Messenger
-    function showCustomNotification(message) {
-        var notification = document.createElement('div');
-        notification.className = 'copy-notification';
-        notification.innerText = message;
-
-        // Đặt vị trí của thông báo
-        notification.style.position = 'fixed';
-        notification.style.bottom = '20px';
-        notification.style.left = '50%';
-        notification.style.transform = 'translateX(-50%)';
-        notification.style.backgroundColor = '#4CAF50';
-        notification.style.color = 'white';
-        notification.style.padding = '10px';
-        notification.style.borderRadius = '5px';
-        notification.style.zIndex = '9999';
-
-        // Thêm thông báo vào trang
-        document.body.appendChild(notification);
-
-        // Ẩn thông báo sau vài giây
-        setTimeout(function() {
-            notification.style.display = 'none';
-        }, 3000);
     }
 
     // Đảm bảo video nền phát khi người dùng quay lại
