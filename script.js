@@ -99,10 +99,13 @@ document.addEventListener("DOMContentLoaded", function() {
             // Khôi phục video nền nếu video bị dừng lại
             const videoBackground = document.querySelector('.video-background');
             if (videoBackground && videoBackground.paused) {
-                videoBackground.play().then(() => {
-                    console.log("Video nền đã được phát lại.");
-                }).catch((error) => {
-                    console.error("Không thể phát video nền: ", error);
+                // Đảm bảo video được phát mượt mà
+                requestAnimationFrame(() => {
+                    videoBackground.play().then(() => {
+                        console.log("Video nền đã được phát lại.");
+                    }).catch((error) => {
+                        console.error("Không thể phát video nền: ", error);
+                    });
                 });
             }
         }).catch(function(error) {
@@ -114,10 +117,13 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('focus', function() {
         const videoBackground = document.querySelector('.video-background');
         if (videoBackground && videoBackground.paused) {
-            videoBackground.play().then(() => {
-                console.log("Video nền đã được phát khi quay lại trang.");
-            }).catch((error) => {
-                console.error("Không thể phát video nền khi quay lại: ", error);
+            // Đảm bảo video phát lại mượt mà khi người dùng quay lại
+            requestAnimationFrame(() => {
+                videoBackground.play().then(() => {
+                    console.log("Video nền đã được phát khi quay lại trang.");
+                }).catch((error) => {
+                    console.error("Không thể phát video nền khi quay lại: ", error);
+                });
             });
         }
     });
