@@ -67,7 +67,7 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
-    // Hàm Copy Số Tài Khoản
+// Hàm Copy Số Tài Khoản
 document.addEventListener("DOMContentLoaded", function() {
     // Gán sự kiện click cho các phần tử
     document.getElementById('mbbank').addEventListener('click', function() {
@@ -109,6 +109,18 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
     }
+
+    // Đảm bảo video nền phát khi người dùng quay lại
+    window.addEventListener('focus', function() {
+        const videoBackground = document.getElementById('video-background');
+        if (videoBackground && videoBackground.paused) {
+            videoBackground.play().then(() => {
+                console.log("Video nền đã được phát khi quay lại trang.");
+            }).catch((error) => {
+                console.error("Không thể phát video nền khi quay lại: ", error);
+            });
+        }
+    });
 });
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
