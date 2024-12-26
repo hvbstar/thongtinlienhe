@@ -69,7 +69,17 @@ continueButton.addEventListener('click', function() {
 
 // Hàm Copy Số Tài Khoản
 document.addEventListener("DOMContentLoaded", function() {
-    // Gán sự kiện click cho các phần tử
+    // Kiểm tra nếu đang mở trên Zalo WebView
+    if (isZaloWebView()) {
+        // Ẩn video nền và hiển thị hình ảnh fallback
+        document.querySelector('.video-background').style.display = 'none';
+        document.querySelector('.fallback-image').style.display = 'block';
+    } else {
+        // Video nền sẽ hiển thị bình thường
+        document.querySelector('.video-background').style.display = 'block';
+    }
+
+    // Gán sự kiện click cho các phần tử ngân hàng
     document.getElementById('mbbank').addEventListener('click', function() {
         copyAccountNumber('MB Bank');
     });
@@ -94,8 +104,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var accountNumber = accountNumbers[bank];
         navigator.clipboard.writeText(accountNumber).then(function() {
+            // Thông báo sao chép
             alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            
+
             // Khôi phục video nền nếu video bị dừng lại
             const videoBackground = document.querySelector('.video-background');
             if (videoBackground && videoBackground.paused) {
