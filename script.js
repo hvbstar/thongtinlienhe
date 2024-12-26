@@ -68,7 +68,21 @@ continueButton.addEventListener('click', function() {
 });
 
 // Hàm Copy Số Tài Khoản
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+    // Gán sự kiện click cho các phần tử
+    document.getElementById('mbbank').addEventListener('click', function() {
+        copyAccountNumber('MB Bank');
+    });
+    document.getElementById('vietinbank').addEventListener('click', function() {
+        copyAccountNumber('VietinBank');
+    });
+    document.getElementById('vietcombank').addEventListener('click', function() {
+        copyAccountNumber('Vietcombank');
+    });
+    document.getElementById('momo').addEventListener('click', function() {
+        copyAccountNumber('Momo');
+    });
+
     // Hàm sao chép số tài khoản
     function copyAccountNumber(bank) {
         var accountNumbers = {
@@ -79,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         var accountNumber = accountNumbers[bank];
-        navigator.clipboard.writeText(accountNumber).then(function () {
+        navigator.clipboard.writeText(accountNumber).then(function() {
             alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
             
             // Khôi phục video nền nếu video bị dừng lại
@@ -94,42 +108,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 });
             }
-        }).catch(function (error) {
+        }).catch(function(error) {
             console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
     }
 
-    // Gán sự kiện click cho các phần tử ngân hàng
-    document.getElementById('mbbank').addEventListener('click', function () {
-        copyAccountNumber('MB Bank');
-    });
-    document.getElementById('vietinbank').addEventListener('click', function () {
-        copyAccountNumber('VietinBank');
-    });
-    document.getElementById('vietcombank').addEventListener('click', function () {
-        copyAccountNumber('Vietcombank');
-    });
-    document.getElementById('momo').addEventListener('click', function () {
-        copyAccountNumber('Momo');
-    });
-
-    // Kiểm tra xem người dùng có mở trên Zalo WebView không
-    function isZaloWebView() {
-        return navigator.userAgent.includes("Zalo");
-    }
-
-    // Nếu mở trên Zalo WebView, thực hiện các hành động sau
-    if (isZaloWebView()) {
-        // Hiển thị thông báo yêu cầu mở trong trình duyệt khác
-        document.getElementById('zalo-warning').style.display = 'block';
-
-        // Ẩn video nền và hiển thị hình ảnh nền fallback
-        document.querySelector('.video-background').style.display = 'none';
-        document.querySelector('.fallback-image').style.display = 'block';
-    }
-
     // Đảm bảo video nền phát khi người dùng quay lại
-    window.addEventListener('focus', function () {
+    window.addEventListener('focus', function() {
         const videoBackground = document.querySelector('.video-background');
         if (videoBackground && videoBackground.paused) {
             // Đảm bảo video phát lại mượt mà khi người dùng quay lại
