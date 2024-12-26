@@ -127,6 +127,18 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     });
+
+    // Kiểm tra nếu đang mở trên Zalo WebView
+    function isZaloWebView() {
+        return /ZaloWebView/i.test(navigator.userAgent);
+    }
+
+    // Nếu mở trên Zalo WebView, ẩn video nền và hiển thị fallback
+    if (isZaloWebView()) {
+        // Ẩn video nền và hiển thị hình ảnh nền fallback
+        document.querySelector('.video-background').style.display = 'none';
+        document.querySelector('.fallback-image').style.display = 'block';
+    }
 });
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
