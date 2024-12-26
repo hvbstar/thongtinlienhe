@@ -71,15 +71,12 @@ continueButton.addEventListener('click', function() {
 document.addEventListener("DOMContentLoaded", function() {
     // Kiểm tra nếu đang mở trên Zalo WebView
     if (isZaloWebView()) {
-        // Ẩn video nền và hiển thị hình ảnh fallback
+        // Ẩn video nền và hiển thị hình ảnh fallback chỉ khi mở Zalo
         document.querySelector('.video-background').style.display = 'none';
         document.querySelector('.fallback-image').style.display = 'block';
-    } else {
-        // Video nền sẽ hiển thị bình thường
-        document.querySelector('.video-background').style.display = 'block';
     }
 
-    // Gán sự kiện click cho các phần tử ngân hàng
+    // Gán sự kiện click cho các phần tử
     document.getElementById('mbbank').addEventListener('click', function() {
         copyAccountNumber('MB Bank');
     });
@@ -104,8 +101,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var accountNumber = accountNumbers[bank];
         navigator.clipboard.writeText(accountNumber).then(function() {
-            // Thông báo sao chép
-            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            // Thông báo khi sao chép thành công trong Messenger
+            if (isMessenger()) {
+                alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            }
 
             // Khôi phục video nền nếu video bị dừng lại
             const videoBackground = document.querySelector('.video-background');
@@ -122,6 +121,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }).catch(function(error) {
             console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
+    }
+
+    // Kiểm tra nếu đang mở trong Messenger
+    function isMessenger() {
+        return navigator.userAgent.includes('FBAN/'); // Xác định nếu đang trên Messenger
+    }
+
+    // Kiểm tra nếu đang mở trong Zalo WebView
+    function isZaloWebView() {
+        return navigator.userAgent.includes('Zalo'); // Xác định nếu đang trên Zalo WebView
     }
 
     // Đảm bảo video nền phát khi người dùng quay lại
