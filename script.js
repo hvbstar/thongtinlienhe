@@ -69,76 +69,80 @@ continueButton.addEventListener('click', function() {
 
 // Hàm Copy Số Tài Khoản
 document.addEventListener("DOMContentLoaded", function () {
-    // Messenger: Fix video nền và thông báo copy
-    const accountButtons = document.querySelectorAll("#mbbank, #vietinbank, #vietcombank, #momo");
-    const videoBackground = document.querySelector(".video-background");
+    // Hàm sao chép số tài khoản
+    function copyAccountNumber(bank) {
+        var accountNumbers = {
+            "MB Bank": "333005678",
+            "VietinBank": "106877439674",
+            "Vietcombank": "1041231200",
+            "Momo": "0943290373"
+        };
 
-    accountButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const bank = button.id; // Lấy id ngân hàng
-            const accountNumbers = {
-                mbbank: "333005678",
-                vietinbank: "106877439674",
-                vietcombank: "1041231200",
-                momo: "0943290373"
-            };
-
-            const accountNumber = accountNumbers[bank];
-            if (accountNumber) {
-                navigator.clipboard.writeText(accountNumber).then(() => {
-                    // Hiển thị thông báo copy
-                    const copyMessage = document.createElement("div");
-                    copyMessage.textContent = `Đã sao chép số tài khoản: ${accountNumber}`;
-                    copyMessage.style.position = "fixed";
-                    copyMessage.style.bottom = "20px";
-                    copyMessage.style.left = "50%";
-                    copyMessage.style.transform = "translateX(-50%)";
-                    copyMessage.style.background = "rgba(0, 0, 0, 0.8)";
-                    copyMessage.style.color = "#fff";
-                    copyMessage.style.padding = "10px 20px";
-                    copyMessage.style.borderRadius = "5px";
-                    copyMessage.style.zIndex = "9999";
-                    copyMessage.style.fontSize = "14px";
-                    document.body.appendChild(copyMessage);
-
-                    // Tự động ẩn thông báo sau 2 giây
-                    setTimeout(() => {
-                        document.body.removeChild(copyMessage);
-                    }, 2000);
-
-                    // Đảm bảo video nền tiếp tục chạy
-                    if (videoBackground && videoBackground.paused) {
-                        requestAnimationFrame(() => {
-                            videoBackground.play();
-                        });
-                    }
-                }).catch(error => {
-                    console.error("Không thể sao chép số tài khoản:", error);
+        var accountNumber = accountNumbers[bank];
+        navigator.clipboard.writeText(accountNumber).then(function () {
+            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            
+            // Khôi phục video nền nếu video bị dừng lại
+            const videoBackground = document.querySelector('.video-background');
+            if (videoBackground && videoBackground.paused) {
+                // Đảm bảo video được phát mượt mà
+                requestAnimationFrame(() => {
+                    videoBackground.play().then(() => {
+                        console.log("Video nền đã được phát lại.");
+                    }).catch((error) => {
+                        console.error("Không thể phát video nền: ", error);
+                    });
                 });
             }
+        }).catch(function (error) {
+            console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
+    }
+
+    // Gán sự kiện click cho các phần tử ngân hàng
+    document.getElementById('mbbank').addEventListener('click', function () {
+        copyAccountNumber('MB Bank');
+    });
+    document.getElementById('vietinbank').addEventListener('click', function () {
+        copyAccountNumber('VietinBank');
+    });
+    document.getElementById('vietcombank').addEventListener('click', function () {
+        copyAccountNumber('Vietcombank');
+    });
+    document.getElementById('momo').addEventListener('click', function () {
+        copyAccountNumber('Momo');
     });
 
-    // Zalo: Đảm bảo fallback hình nền và ẩn video
+    // Kiểm tra xem người dùng có mở trên Zalo WebView không
     function isZaloWebView() {
         return navigator.userAgent.includes("Zalo");
     }
 
+    // Nếu mở trên Zalo WebView, thực hiện các hành động sau
     if (isZaloWebView()) {
-        const zaloWarning = document.getElementById("zalo-warning");
-        const fallbackImage = document.querySelector(".fallback-image");
+        // Hiển thị thông báo yêu cầu mở trong trình duyệt khác
+        document.getElementById('zalo-warning').style.display = 'block';
 
-        if (zaloWarning) zaloWarning.style.display = "block";
-        if (videoBackground) videoBackground.style.display = "none";
-        if (fallbackImage) fallbackImage.style.display = "block";
-
-        // Đảm bảo video không hiện controls
-        if (videoBackground) {
-            videoBackground.controls = false;
-        }
+        // Ẩn video nền và hiển thị hình ảnh nền fallback
+        document.querySelector('.video-background').style.display = 'none';
+        document.querySelector('.fallback-image').style.display = 'block';
     }
-});
 
+    // Đảm bảo video nền phát khi người dùng quay lại
+    window.addEventListener('focus', function () {
+        const videoBackground = document.querySelector('.video-background');
+        if (videoBackground && videoBackground.paused) {
+            // Đảm bảo video phát lại mượt mà khi người dùng quay lại
+            requestAnimationFrame(() => {
+                videoBackground.play().then(() => {
+                    console.log("Video nền đã được phát khi quay lại trang.");
+                }).catch((error) => {
+                    console.error("Không thể phát video nền khi quay lại: ", error);
+                });
+            });
+        }
+    });
+});
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
 (function() {
