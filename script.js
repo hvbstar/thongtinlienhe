@@ -69,6 +69,36 @@ continueButton.addEventListener('click', function() {
 
 // Hàm Copy Số Tài Khoản
 document.addEventListener("DOMContentLoaded", function () {
+    // Hàm sao chép số tài khoản
+    function copyAccountNumber(bank) {
+        const accountNumbers = {
+            "MB Bank": "333005678",
+            "VietinBank": "106877439674",
+            "Vietcombank": "1041231200",
+            "Momo": "0943290373"
+        };
+
+        const accountNumber = accountNumbers[bank];
+        navigator.clipboard.writeText(accountNumber).then(function () {
+            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            restoreVideoBackground(); // Khôi phục video nền
+        }).catch(function (error) {
+            console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
+        });
+    }
+
+    // Hàm khôi phục video nền
+    function restoreVideoBackground() {
+        const videoBackground = document.querySelector('.video-background');
+        if (videoBackground) {
+            videoBackground.play().then(() => {
+                console.log("Video nền phát thành công.");
+            }).catch((error) => {
+                console.warn("Video nền không thể phát tự động. Chờ tương tác của người dùng.", error);
+            });
+        }
+    }
+
     // Gán sự kiện click cho các phần tử
     document.getElementById('mbbank').addEventListener('click', function () {
         copyAccountNumber('MB Bank');
@@ -83,44 +113,18 @@ document.addEventListener("DOMContentLoaded", function () {
         copyAccountNumber('Momo');
     });
 
-    // Hàm sao chép số tài khoản
-    function copyAccountNumber(bank) {
-        var accountNumbers = {
-            "MB Bank": "333005678",
-            "VietinBank": "106877439674",
-            "Vietcombank": "1041231200",
-            "Momo": "0943290373"
-        };
+    // Phát video ngay khi tải trang
+    restoreVideoBackground();
 
-        var accountNumber = accountNumbers[bank];
-        navigator.clipboard.writeText(accountNumber).then(function () {
-            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            restoreVideoBackground(); // Khôi phục video nền
-        }).catch(function (error) {
-            console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
-        });
-    }
-
-    // Hàm khôi phục video nền
-    function restoreVideoBackground() {
-        const videoBackground = document.querySelector('.video-background');
-        if (videoBackground && videoBackground.paused) {
-            try {
-                videoBackground.play();
-                console.log("Video nền đã được phát lại.");
-            } catch (error) {
-                console.error("Không thể phát video nền:", error);
-            }
-        }
-    }
-
-    // Xử lý khi người dùng quay lại tab (nếu cần)
+    // Phát video khi người dùng quay lại tab
     window.addEventListener('focus', function () {
         restoreVideoBackground();
     });
 
-    // Phát video ngay khi tải trang (fallback)
-    restoreVideoBackground();
+    // Đảm bảo phát video khi có bất kỳ tương tác nào
+    document.body.addEventListener('click', function () {
+        restoreVideoBackground();
+    });
 });
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
