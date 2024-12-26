@@ -247,6 +247,11 @@ html {
   cursor: pointer;
 }
 
+/* Điều chỉnh lên cho 4 ngân hàng */
+#mbbank, #vietinbank, #vietcombank, #momo {
+  margin-top: -9px;  /* Thử với giá trị khác nếu cần */
+}
+
 .app.dark .card__item {
   background: var(--bg-dark);
   box-shadow: var(--outer-shadow-dark);
