@@ -93,37 +93,67 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         var accountNumber = accountNumbers[bank];
-        navigator.clipboard.writeText(accountNumber).then(function() {
-            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            
-            // Khôi phục video nền nếu video bị dừng lại
-            const videoBackground = document.querySelector('.video-background');
-            if (videoBackground && videoBackground.paused) {
-                // Đảm bảo video được phát mượt mà
-                requestAnimationFrame(() => {
-                    videoBackground.play().then(() => {
-                        console.log("Video nền đã được phát lại.");
-                    }).catch((error) => {
-                        console.error("Không thể phát video nền: ", error);
-                    });
-                });
-            }
-        }).catch(function(error) {
-            console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
+
+        // Sử dụng phương pháp dự phòng cho sao chép
+        let isClipboardSupported = !!navigator.clipboard;
+        if (isClipboardSupported) {
+            navigator.clipboard.writeText(accountNumber).then(function() {
+                alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            }).catch(function(error) {
+                console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
+                fallbackCopy(accountNumber);
+            });
+        } else {
+            fallbackCopy(accountNumber);
+        }
+
+        // Phát lại video nền nếu bị dừng
+        const videoBackground = document.querySelector('.video-background');
+        if (videoBackground && videoBackground.paused) {
+            videoBackground.play().then(() => {
+                console.log("Video nền đã được phát lại.");
+            }).catch((error) => {
+                console.error("Không thể phát video nền: ", error);
+            });
+        }
+    }
+
+    // Phương pháp dự phòng để sao chép
+    function fallbackCopy(text) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px"; // Ẩn textarea
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand("copy");
+            alert("Số tài khoản đã được sao chép: " + text);
+        } catch (err) {
+            console.error("Fallback copy failed", err);
+            alert("Không thể sao chép số tài khoản. Vui lòng thử lại!");
+        }
+        document.body.removeChild(textarea);
+    }
+
+    // Đảm bảo video nền không hiện điều khiển và phát mượt mà
+    const videoBackground = document.querySelector('.video-background');
+    if (videoBackground) {
+        videoBackground.controls = false; // Tắt thanh điều khiển
+        videoBackground.addEventListener('loadeddata', function() {
+            videoBackground.play().catch((error) => {
+                console.error("Không thể phát video nền: ", error);
+            });
         });
     }
 
-    // Đảm bảo video nền phát khi người dùng quay lại
+    // Xử lý phát lại video nền khi quay lại trang
     window.addEventListener('focus', function() {
-        const videoBackground = document.querySelector('.video-background');
         if (videoBackground && videoBackground.paused) {
-            // Đảm bảo video phát lại mượt mà khi người dùng quay lại
-            requestAnimationFrame(() => {
-                videoBackground.play().then(() => {
-                    console.log("Video nền đã được phát khi quay lại trang.");
-                }).catch((error) => {
-                    console.error("Không thể phát video nền khi quay lại: ", error);
-                });
+            videoBackground.play().then(() => {
+                console.log("Video nền đã được phát khi quay lại trang.");
+            }).catch((error) => {
+                console.error("Không thể phát video nền khi quay lại: ", error);
             });
         }
     });
