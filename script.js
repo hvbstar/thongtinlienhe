@@ -101,9 +101,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var accountNumber = accountNumbers[bank];
         navigator.clipboard.writeText(accountNumber).then(function() {
-            // Thông báo khi sao chép thành công trong Messenger
+            // Hiển thị thông báo sao chép số tài khoản trên Messenger
             if (isMessenger()) {
-                alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+                showCustomNotification("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
             }
 
             // Khôi phục video nền nếu video bị dừng lại
@@ -131,6 +131,32 @@ document.addEventListener("DOMContentLoaded", function() {
     // Kiểm tra nếu đang mở trong Zalo WebView
     function isZaloWebView() {
         return navigator.userAgent.includes('Zalo'); // Xác định nếu đang trên Zalo WebView
+    }
+
+    // Hiển thị thông báo tùy chỉnh trong Messenger
+    function showCustomNotification(message) {
+        var notification = document.createElement('div');
+        notification.className = 'copy-notification';
+        notification.innerText = message;
+
+        // Đặt vị trí của thông báo
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.left = '50%';
+        notification.style.transform = 'translateX(-50%)';
+        notification.style.backgroundColor = '#4CAF50';
+        notification.style.color = 'white';
+        notification.style.padding = '10px';
+        notification.style.borderRadius = '5px';
+        notification.style.zIndex = '9999';
+
+        // Thêm thông báo vào trang
+        document.body.appendChild(notification);
+
+        // Ẩn thông báo sau vài giây
+        setTimeout(function() {
+            notification.style.display = 'none';
+        }, 3000);
     }
 
     // Đảm bảo video nền phát khi người dùng quay lại
