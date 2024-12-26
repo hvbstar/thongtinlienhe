@@ -249,7 +249,7 @@ html {
 
 /* Điều chỉnh lên cho 4 ngân hàng */
 #mbbank, #vietinbank, #vietcombank, #momo {
-  margin-top: -9px;  /* Thử với giá trị khác nếu cần */
+  margin-top: -10px;  /* Thử với giá trị khác nếu cần */
 }
 
 .app.dark .card__item {
