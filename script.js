@@ -67,6 +67,7 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
+// Hàm Copy Số Tài Khoản
 document.addEventListener("DOMContentLoaded", function () {
     // Gán sự kiện click cho các phần tử
     document.getElementById('mbbank').addEventListener('click', function () {
