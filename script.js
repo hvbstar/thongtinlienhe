@@ -67,6 +67,39 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
+    // Hàm Copy Số Tài Khoản
+document.addEventListener("DOMContentLoaded", function() {
+    // Gán sự kiện click cho các phần tử
+    document.getElementById('mbbank').addEventListener('click', function() {
+        copyAccountNumber('MB Bank');
+    });
+    document.getElementById('vietinbank').addEventListener('click', function() {
+        copyAccountNumber('VietinBank');
+    });
+    document.getElementById('vietcombank').addEventListener('click', function() {
+        copyAccountNumber('Vietcombank');
+    });
+    document.getElementById('momo').addEventListener('click', function() {
+        copyAccountNumber('Momo');
+    });
+
+    // Hàm sao chép số tài khoản
+    function copyAccountNumber(bank) {
+        var accountNumbers = {
+            "MB Bank": "333005678",
+            "VietinBank": "106877439674",
+            "Vietcombank": "1041231200",
+            "Momo": "0943290373"
+        };
+
+        var accountNumber = accountNumbers[bank];
+        navigator.clipboard.writeText(accountNumber).then(function() {
+            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+        }).catch(function(error) {
+            console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
+        });
+    }
+});
 
 // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
 (function() {
