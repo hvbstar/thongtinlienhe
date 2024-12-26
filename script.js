@@ -95,13 +95,23 @@ document.addEventListener("DOMContentLoaded", function() {
         var accountNumber = accountNumbers[bank];
         navigator.clipboard.writeText(accountNumber).then(function() {
             alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
+            
+            // Khôi phục video nền nếu video bị dừng lại
+            const videoBackground = document.getElementById('video-background');
+            if (videoBackground && videoBackground.paused) {
+                videoBackground.play().then(() => {
+                    console.log("Video nền đã được phát lại.");
+                }).catch((error) => {
+                    console.error("Không thể phát video nền: ", error);
+                });
+            }
         }).catch(function(error) {
             console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
     }
 });
 
-// Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
+    // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
 (function() {
     const _0x4e76 = [
         '\u0044\u0065\u0073\u0069\u0067\u006e\u0020\u0062\u0079\u0020\u0048\u006f\u0061\u006e\u0067\u0020\u0056\u0061\u006e\u0020\u0042\u0061\u006f'
