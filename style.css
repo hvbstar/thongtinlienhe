@@ -606,7 +606,6 @@ html, body {
   height: 100%;
   object-fit: cover; /* Phủ kín màn hình mà không méo hình */
   z-index: -1; /* Video nền nằm dưới nội dung */
-  pointer-events: none; /* Ngăn người dùng tương tác với video */
 }
 
 .fallback-image {
@@ -618,19 +617,6 @@ html, body {
   background: url('fallback.jpg') no-repeat center center;
   background-size: cover;
   z-index: -2; /* Nằm dưới nội dung chính */
-  display: none; /* Ẩn fallback mặc định */
-}
-
-.copy-notification {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 9999;
 }
 
 .content {
