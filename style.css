@@ -621,8 +621,16 @@ html, body {
   display: none; /* Ẩn fallback mặc định */
 }
 
-.fallback-video {
-  display: none; /* Ẩn video khi mở bằng Zalo */
+.copy-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 9999;
 }
 
 .content {
