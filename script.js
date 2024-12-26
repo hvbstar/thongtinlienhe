@@ -67,19 +67,18 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
-// Hàm Copy Số Tài Khoản
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Gán sự kiện click cho các phần tử
-    document.getElementById('mbbank').addEventListener('click', function() {
+    document.getElementById('mbbank').addEventListener('click', function () {
         copyAccountNumber('MB Bank');
     });
-    document.getElementById('vietinbank').addEventListener('click', function() {
+    document.getElementById('vietinbank').addEventListener('click', function () {
         copyAccountNumber('VietinBank');
     });
-    document.getElementById('vietcombank').addEventListener('click', function() {
+    document.getElementById('vietcombank').addEventListener('click', function () {
         copyAccountNumber('Vietcombank');
     });
-    document.getElementById('momo').addEventListener('click', function() {
+    document.getElementById('momo').addEventListener('click', function () {
         copyAccountNumber('Momo');
     });
 
@@ -93,52 +92,34 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         var accountNumber = accountNumbers[bank];
-        navigator.clipboard.writeText(accountNumber).then(function() {
+        navigator.clipboard.writeText(accountNumber).then(function () {
             alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            
-            // Khôi phục video nền nếu video bị dừng lại
-            const videoBackground = document.querySelector('.video-background');
-            if (videoBackground && videoBackground.paused) {
-                // Đảm bảo video được phát mượt mà
-                requestAnimationFrame(() => {
-                    videoBackground.play().then(() => {
-                        console.log("Video nền đã được phát lại.");
-                    }).catch((error) => {
-                        console.error("Không thể phát video nền: ", error);
-                    });
-                });
-            }
-        }).catch(function(error) {
+            restoreVideoBackground(); // Khôi phục video nền
+        }).catch(function (error) {
             console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
     }
 
-    // Đảm bảo video nền phát khi người dùng quay lại
-    window.addEventListener('focus', function() {
+    // Hàm khôi phục video nền
+    function restoreVideoBackground() {
         const videoBackground = document.querySelector('.video-background');
         if (videoBackground && videoBackground.paused) {
-            // Đảm bảo video phát lại mượt mà khi người dùng quay lại
-            requestAnimationFrame(() => {
-                videoBackground.play().then(() => {
-                    console.log("Video nền đã được phát khi quay lại trang.");
-                }).catch((error) => {
-                    console.error("Không thể phát video nền khi quay lại: ", error);
-                });
-            });
+            try {
+                videoBackground.play();
+                console.log("Video nền đã được phát lại.");
+            } catch (error) {
+                console.error("Không thể phát video nền:", error);
+            }
         }
+    }
+
+    // Xử lý khi người dùng quay lại tab (nếu cần)
+    window.addEventListener('focus', function () {
+        restoreVideoBackground();
     });
 
-    // Kiểm tra nếu đang mở trên Zalo WebView
-    function isZaloWebView() {
-        return /ZaloWebView/i.test(navigator.userAgent);
-    }
-
-    // Nếu mở trên Zalo WebView, ẩn video nền và hiển thị fallback
-    if (isZaloWebView()) {
-        // Ẩn video nền và hiển thị hình ảnh nền fallback
-        document.querySelector('.video-background').style.display = 'none';
-        document.querySelector('.fallback-image').style.display = 'block';
-    }
+    // Phát video ngay khi tải trang (fallback)
+    restoreVideoBackground();
 });
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
