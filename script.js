@@ -68,62 +68,64 @@ continueButton.addEventListener('click', function() {
 });
 
 // Hàm Copy Số Tài Khoản
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+    // Gán sự kiện click cho các phần tử
+    document.getElementById('mbbank').addEventListener('click', function() {
+        copyAccountNumber('MB Bank');
+    });
+    document.getElementById('vietinbank').addEventListener('click', function() {
+        copyAccountNumber('VietinBank');
+    });
+    document.getElementById('vietcombank').addEventListener('click', function() {
+        copyAccountNumber('Vietcombank');
+    });
+    document.getElementById('momo').addEventListener('click', function() {
+        copyAccountNumber('Momo');
+    });
+
     // Hàm sao chép số tài khoản
     function copyAccountNumber(bank) {
-        const accountNumbers = {
+        var accountNumbers = {
             "MB Bank": "333005678",
             "VietinBank": "106877439674",
             "Vietcombank": "1041231200",
             "Momo": "0943290373"
         };
 
-        const accountNumber = accountNumbers[bank];
-        navigator.clipboard.writeText(accountNumber).then(function () {
+        var accountNumber = accountNumbers[bank];
+        navigator.clipboard.writeText(accountNumber).then(function() {
             alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            restoreVideoBackground(); // Khôi phục video nền
-        }).catch(function (error) {
+            
+            // Khôi phục video nền nếu video bị dừng lại
+            const videoBackground = document.querySelector('.video-background');
+            if (videoBackground && videoBackground.paused) {
+                // Đảm bảo video được phát mượt mà
+                requestAnimationFrame(() => {
+                    videoBackground.play().then(() => {
+                        console.log("Video nền đã được phát lại.");
+                    }).catch((error) => {
+                        console.error("Không thể phát video nền: ", error);
+                    });
+                });
+            }
+        }).catch(function(error) {
             console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
         });
     }
 
-    // Hàm khôi phục video nền
-    function restoreVideoBackground() {
+    // Đảm bảo video nền phát khi người dùng quay lại
+    window.addEventListener('focus', function() {
         const videoBackground = document.querySelector('.video-background');
-        if (videoBackground) {
-            videoBackground.play().then(() => {
-                console.log("Video nền phát thành công.");
-            }).catch((error) => {
-                console.warn("Video nền không thể phát tự động. Chờ tương tác của người dùng.", error);
+        if (videoBackground && videoBackground.paused) {
+            // Đảm bảo video phát lại mượt mà khi người dùng quay lại
+            requestAnimationFrame(() => {
+                videoBackground.play().then(() => {
+                    console.log("Video nền đã được phát khi quay lại trang.");
+                }).catch((error) => {
+                    console.error("Không thể phát video nền khi quay lại: ", error);
+                });
             });
         }
-    }
-
-    // Gán sự kiện click cho các phần tử
-    document.getElementById('mbbank').addEventListener('click', function () {
-        copyAccountNumber('MB Bank');
-    });
-    document.getElementById('vietinbank').addEventListener('click', function () {
-        copyAccountNumber('VietinBank');
-    });
-    document.getElementById('vietcombank').addEventListener('click', function () {
-        copyAccountNumber('Vietcombank');
-    });
-    document.getElementById('momo').addEventListener('click', function () {
-        copyAccountNumber('Momo');
-    });
-
-    // Phát video ngay khi tải trang
-    restoreVideoBackground();
-
-    // Phát video khi người dùng quay lại tab
-    window.addEventListener('focus', function () {
-        restoreVideoBackground();
-    });
-
-    // Đảm bảo phát video khi có bất kỳ tương tác nào
-    document.body.addEventListener('click', function () {
-        restoreVideoBackground();
     });
 });
 
