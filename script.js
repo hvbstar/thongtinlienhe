@@ -13,19 +13,37 @@ toggle.addEventListener("click", () => {
     }
 });
 
-// Kiểm tra xem người dùng có mở trên Zalo WebView không
-function isZaloWebView() {
-    return navigator.userAgent.includes("Zalo");
+// Hàm kiểm tra xem trang đang được mở trong trình duyệt tích hợp của các ứng dụng
+function isInAppBrowser() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const inAppBrowsers = [
+        "Zalo",        // Zalo
+        "FBAN",        // Facebook App on iOS
+        "FBAV",        // Facebook App on Android
+        "Instagram",   // Instagram
+        "Line",        // LINE App
+        "Snapchat",    // Snapchat
+        "Twitter",     // Twitter App
+        "TikTok",      // TikTok App
+        "WhatsApp",    // WhatsApp
+        "Messenger"    // Facebook Messenger
+    ];
+
+    // Kiểm tra nếu User-Agent chứa bất kỳ chuỗi nào trong danh sách
+    return inAppBrowsers.some(browser => userAgent.includes(browser));
 }
 
-// Nếu mở trên Zalo WebView, thực hiện các hành động sau
-if (isZaloWebView()) {
+// Nếu mở trên trình duyệt tích hợp, hiển thị cảnh báo
+if (isInAppBrowser()) {
     // Hiển thị thông báo yêu cầu mở trong trình duyệt khác
-    document.getElementById('zalo-warning').style.display = 'block';
+    document.getElementById('app-warning').style.display = 'block';
 
     // Ẩn video nền và hiển thị hình ảnh nền fallback
-    document.querySelector('.video-background').style.display = 'none';
-    document.querySelector('.fallback-image').style.display = 'block';
+    const videoBackground = document.querySelector('.video-background');
+    const fallbackImage = document.querySelector('.fallback-image');
+
+    if (videoBackground) videoBackground.style.display = 'none';
+    if (fallbackImage) fallbackImage.style.display = 'block';
 }
 
 // Lấy các phần tử
