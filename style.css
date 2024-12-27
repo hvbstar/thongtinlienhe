@@ -786,7 +786,7 @@ html, body {
   text-align: center;
   width: 300px;
   box-shadow: 0 8px 20px rgba(0, 128, 0, 0.6);
-  animation: popUp 0.2s ease-in-out;
+  animation: popUp 0.1s ease-in-out;
   position: relative;
   backdrop-filter: blur(10px); /* Blur trong khung */
 }
