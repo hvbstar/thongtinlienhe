@@ -85,45 +85,41 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
-// Hàm Copy Số Tài Khoản
-function copyAccount(bankName, accountNumber) {
-    // Kiểm tra hỗ trợ Clipboard API
-    if (navigator.clipboard) {
+    // Hàm Copy Số Tài Khoản
+    function showCustomAlert(message) {
+        const alertBox = document.getElementById('custom-alert');
+        const alertMessage = document.getElementById('alert-message');
+    
+        // Cập nhật nội dung
+        alertMessage.textContent = message;
+    
+        // Hiển thị bảng thông báo
+        alertBox.style.display = 'flex';
+        alertBox.style.animation = 'fadeIn 0.3s ease-in-out';
+    }
+    
+    function closeCustomAlert() {
+        const alertBox = document.getElementById('custom-alert');
+    
+        // Thêm hiệu ứng mờ dần khi đóng
+        alertBox.style.animation = 'fadeOut 0.3s ease-in-out';
+    
+        // Đợi hiệu ứng hoàn tất trước khi ẩn
+        setTimeout(() => {
+            alertBox.style.display = 'none';
+        }, 300);
+    }
+    
+    // Ví dụ cách sử dụng
+    function copyAccount(bankName, accountNumber) {
         navigator.clipboard.writeText(accountNumber)
             .then(() => {
-                // Hiển thị thông báo không làm gián đoạn video
-                setTimeout(() => {
-                    alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
-                }, 0);
+                showCustomAlert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
             })
-            .catch(err => {
-                console.error('Sao chép thất bại: ', err);
-                setTimeout(() => {
-                    alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
-                }, 0);
+            .catch(() => {
+                showCustomAlert('Sao chép thất bại, vui lòng thử lại!');
             });
-    } else {
-        // Fallback cho trình duyệt không hỗ trợ Clipboard API
-        const tempInput = document.createElement('input');
-        tempInput.value = accountNumber;
-        document.body.appendChild(tempInput);
-        tempInput.style.position = 'absolute'; // Đảm bảo không làm thay đổi bố cục
-        tempInput.style.opacity = 0; // Ẩn input tạm thời
-        tempInput.select();
-        try {
-            document.execCommand('copy');
-            setTimeout(() => {
-                alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
-            }, 0);
-        } catch (err) {
-            console.error('Sao chép thất bại: ', err);
-            setTimeout(() => {
-                alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
-            }, 0);
-        }
-        document.body.removeChild(tempInput);
-    }
-}
+    }    
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
 (function() {
