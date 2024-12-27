@@ -86,38 +86,40 @@ continueButton.addEventListener('click', function() {
 });
 
     // Hàm Copy Số Tài Khoản
-function showCustomAlert(message) {
-    const alertBox = document.getElementById('custom-alert');
-    const alertMessage = document.getElementById('alert-message');
-
-    // Cập nhật nội dung
-    alertMessage.textContent = message;
-
-    // Hiển thị bảng thông báo và tạo hiệu ứng fade-in
-    alertBox.style.visibility = 'visible';
-    alertBox.style.opacity = 1;
-    alertBox.style.transition = 'opacity 0.3s ease-in-out, visibility 0s 0s';
-}
-
-function closeCustomAlert() {
-    const alertBox = document.getElementById('custom-alert');
-
-    // Hiệu ứng fade-out và đảm bảo không bị nháy lại
-    alertBox.style.opacity = 0;
-    alertBox.style.visibility = 'hidden';
-    alertBox.style.transition = 'opacity 0.3s ease-in-out, visibility 0s 0.3s';
-}
-
-// Ví dụ cách sử dụng
-function copyAccount(bankName, accountNumber) {
-    navigator.clipboard.writeText(accountNumber)
-        .then(() => {
-            showCustomAlert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
-        })
-        .catch(() => {
-            showCustomAlert('Sao chép thất bại, vui lòng thử lại!');
-        });
-}
+    function showCustomAlert(message) {
+        const alertBox = document.getElementById('custom-alert');
+        const alertMessage = document.getElementById('alert-message');
+    
+        // Cập nhật nội dung
+        alertMessage.textContent = message;
+    
+        // Hiển thị bảng thông báo
+        alertBox.style.display = 'flex';
+        alertBox.style.animation = 'fadeIn 0.3s ease-in-out';
+    }
+    
+    function closeCustomAlert() {
+        const alertBox = document.getElementById('custom-alert');
+    
+        // Thêm hiệu ứng mờ dần khi đóng
+        alertBox.style.animation = 'fadeOut 0.3s ease-in-out';
+    
+        // Đợi hiệu ứng hoàn tất trước khi ẩn
+        setTimeout(() => {
+            alertBox.style.display = 'none';
+        }, 300);
+    }
+    
+    // Ví dụ cách sử dụng
+    function copyAccount(bankName, accountNumber) {
+        navigator.clipboard.writeText(accountNumber)
+            .then(() => {
+                showCustomAlert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
+            })
+            .catch(() => {
+                showCustomAlert('Sao chép thất bại, vui lòng thử lại!');
+            });
+    }    
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
 (function() {
