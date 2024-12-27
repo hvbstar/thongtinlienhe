@@ -764,6 +764,7 @@ html, body {
   -ms-user-select: none !important; /* Dành cho Internet Explorer */
 }
 
+/* Bảng thông báo đã Copy */
 #custom-alert {
   position: fixed;
   top: 0;
