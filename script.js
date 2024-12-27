@@ -85,7 +85,7 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
-    // Hàm Copy Số Tài Khoản
+    // Hàm copy số tài khoản
     function showCustomAlert(message) {
         const alertBox = document.getElementById('custom-alert');
         const alertMessage = document.getElementById('alert-message');
