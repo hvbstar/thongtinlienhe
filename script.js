@@ -85,17 +85,22 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
-    // Hàm Copy Số Tài Khoản
+// Hàm Copy Số Tài Khoản
 function copyAccount(bankName, accountNumber) {
     // Kiểm tra hỗ trợ Clipboard API
     if (navigator.clipboard) {
         navigator.clipboard.writeText(accountNumber)
             .then(() => {
-                alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
+                // Hiển thị thông báo không làm gián đoạn video
+                setTimeout(() => {
+                    alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
+                }, 0);
             })
             .catch(err => {
                 console.error('Sao chép thất bại: ', err);
-                alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
+                setTimeout(() => {
+                    alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
+                }, 0);
             });
     } else {
         // Fallback cho trình duyệt không hỗ trợ Clipboard API
@@ -107,10 +112,14 @@ function copyAccount(bankName, accountNumber) {
         tempInput.select();
         try {
             document.execCommand('copy');
-            alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
+            setTimeout(() => {
+                alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
+            }, 0);
         } catch (err) {
             console.error('Sao chép thất bại: ', err);
-            alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
+            setTimeout(() => {
+                alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
+            }, 0);
         }
         document.body.removeChild(tempInput);
     }
