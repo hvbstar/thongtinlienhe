@@ -67,67 +67,36 @@ continueButton.addEventListener('click', function() {
     overlay.style.display = 'none';
 });
 
-// Hàm Copy Số Tài Khoản
-document.addEventListener("DOMContentLoaded", function() {
-    // Gán sự kiện click cho các phần tử
-    document.getElementById('mbbank').addEventListener('click', function() {
-        copyAccountNumber('MB Bank');
-    });
-    document.getElementById('vietinbank').addEventListener('click', function() {
-        copyAccountNumber('VietinBank');
-    });
-    document.getElementById('vietcombank').addEventListener('click', function() {
-        copyAccountNumber('Vietcombank');
-    });
-    document.getElementById('momo').addEventListener('click', function() {
-        copyAccountNumber('Momo');
-    });
-
-    // Hàm sao chép số tài khoản
-    function copyAccountNumber(bank) {
-        var accountNumbers = {
-            "MB Bank": "333005678",
-            "VietinBank": "106877439674",
-            "Vietcombank": "1041231200",
-            "Momo": "0943290373"
-        };
-
-        var accountNumber = accountNumbers[bank];
-        navigator.clipboard.writeText(accountNumber).then(function() {
-            alert("Số tài khoản " + bank + " đã được sao chép: " + accountNumber);
-            
-            // Khôi phục video nền nếu video bị dừng lại
-            const videoBackground = document.querySelector('.video-background');
-            if (videoBackground && videoBackground.paused) {
-                // Đảm bảo video được phát mượt mà
-                requestAnimationFrame(() => {
-                    videoBackground.play().then(() => {
-                        console.log("Video nền đã được phát lại.");
-                    }).catch((error) => {
-                        console.error("Không thể phát video nền: ", error);
-                    });
-                });
-            }
-        }).catch(function(error) {
-            console.error("Có lỗi xảy ra khi sao chép số tài khoản: ", error);
-        });
-    }
-
-    // Đảm bảo video nền phát khi người dùng quay lại
-    window.addEventListener('focus', function() {
-        const videoBackground = document.querySelector('.video-background');
-        if (videoBackground && videoBackground.paused) {
-            // Đảm bảo video phát lại mượt mà khi người dùng quay lại
-            requestAnimationFrame(() => {
-                videoBackground.play().then(() => {
-                    console.log("Video nền đã được phát khi quay lại trang.");
-                }).catch((error) => {
-                    console.error("Không thể phát video nền khi quay lại: ", error);
-                });
+    // Hàm Copy Số Tài Khoản
+function copyAccount(bankName, accountNumber) {
+    // Kiểm tra hỗ trợ Clipboard API
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(accountNumber)
+            .then(() => {
+                alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
+            })
+            .catch(err => {
+                console.error('Sao chép thất bại: ', err);
+                alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
             });
+    } else {
+        // Fallback cho trình duyệt không hỗ trợ Clipboard API
+        const tempInput = document.createElement('input');
+        tempInput.value = accountNumber;
+        document.body.appendChild(tempInput);
+        tempInput.style.position = 'absolute'; // Đảm bảo không làm thay đổi bố cục
+        tempInput.style.opacity = 0; // Ẩn input tạm thời
+        tempInput.select();
+        try {
+            document.execCommand('copy');
+            alert(`Số tài khoản ${bankName} đã được sao chép: ${accountNumber}`);
+        } catch (err) {
+            console.error('Sao chép thất bại: ', err);
+            alert('Không thể sao chép số tài khoản, vui lòng thử lại!');
         }
-    });
-});
+        document.body.removeChild(tempInput);
+    }
+}
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
 (function() {
