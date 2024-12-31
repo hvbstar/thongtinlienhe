@@ -991,10 +991,27 @@ html, body {
 }
 
 /* Custom */
-html,
-body {
-    cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto;
+/* Áp dụng con trỏ tùy chỉnh cho toàn bộ trang */
+html, body, * {
+    cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto !important;
 }
-a:hover {
-    cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), auto;
+
+/* Con trỏ tùy chỉnh khi hover vào liên kết hoặc các phần tử tương tác (như nút, input, v.v.) */
+a:hover, button:hover, input:hover, select:hover, textarea:hover {
+    cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
+/* Đảm bảo con trỏ tùy chỉnh khi hover vào tất cả các phần tử khác */
+* {
+    cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto !important;
+}
+
+/* Cải thiện hiển thị khi các phần tử khác không được áp dụng con trỏ tùy chỉnh */
+div, span, section, nav, header, footer, article, aside, iframe, video {
+    cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto !important;
+}
+
+/* Đảm bảo con trỏ bàn tay (pointer) hiển thị khi hover vào các phần tử có thể click */
+a, button, input, select, textarea {
+    cursor: pointer !important;
 }
