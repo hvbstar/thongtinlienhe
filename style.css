@@ -913,6 +913,7 @@ html, body {
   animation-timing-function: linear, ease-in-out;
   animation-iteration-count: infinite, infinite;
   animation-play-state: running, running;
+  pointer-events: none; /* Đảm bảo bông tuyết không thể tương tác */
 }
 
 .snowflake:nth-of-type(0) {
@@ -988,6 +989,7 @@ html, body {
 }
 .snowflake img {
   height: 60px;
+  pointer-events: none; /* Tắt tương tác cho hình ảnh */
 }
 
 /* Custom */
