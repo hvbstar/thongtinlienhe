@@ -212,35 +212,48 @@ document.addEventListener('keydown', function(e) {
 (function() {
     let devtoolsOpen = false;
     const threshold = 160;
+
+    // Kiểm tra khi kích thước cửa sổ thay đổi
     window.addEventListener('resize', function() {
         if (window.innerWidth - window.outerWidth > threshold || window.innerHeight - window.outerHeight > threshold) {
             devtoolsOpen = true;
-            alert('Developer tools đã được mở!');
-            // Bạn có thể thực hiện hành động ngừng hoạt động của trang nếu cần
+            handleDevToolsOpen();
         }
     });
 
+    // Định kỳ kiểm tra Developer Tools
     setInterval(function() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+
+        if (widthDiff > threshold || heightDiff > threshold) {
+            devtoolsOpen = true;
+        }
+
         if (devtoolsOpen) {
-            // Chặn trang nếu DevTools bị mở
-            document.body.innerHTML = '';
-            alert('Trang đã bị chặn vì Developer tools đã được mở!');
+            handleDevToolsOpen();
         }
     }, 1000);
+
+    // Xử lý khi phát hiện Developer Tools mở
+    function handleDevToolsOpen() {
+        alert("Developer tools đã được mở. Truy cập bị ngăn chặn!");
+        document.body.innerHTML = '<h1 style="text-align: center; margin-top: 20%;">Trang web đã bị khóa do phát hiện hành vi không hợp lệ!</h1>';
+    }
 })();
 
 // Ngăn ngừa sao chép (copy)
 document.addEventListener('copy', function(e) {
     e.preventDefault();
     alert("Sao chép không được phép trên trang web này!");
-  });
-  
-  // Ngừng chọn văn bản (select)
-  document.addEventListener('selectstart', function(e) {
+});
+
+// Ngừng chọn văn bản (select)
+document.addEventListener('selectstart', function(e) {
     e.preventDefault();
-  });
-  
-  // Ngừng các thao tác chạm (touch) trên thiết bị di động
-  document.body.addEventListener('touchstart', function(e) {
+});
+
+// Ngừng các thao tác chạm (touch) trên thiết bị di động
+document.body.addEventListener('touchstart', function(e) {
     e.preventDefault();
-  });  
+});
