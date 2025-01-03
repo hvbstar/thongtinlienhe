@@ -252,6 +252,13 @@ html {
   margin-top: -10px;  /* Thử với giá trị khác nếu cần */
 }
 
+/* Chỉ chặn tương tác với hình ảnh trên điện thoại */
+@media (max-width: 768px) { /* Màn hình nhỏ hơn 768px, tức là thiết bị di động */
+  #mbbank img, #vietinbank img, #vietcombank img, #momo img {
+    pointer-events: none; /* Tắt tương tác chỉ trên điện thoại */
+  }
+}
+
 .app.dark .card__item {
   background: var(--bg-dark);
   box-shadow: var(--outer-shadow-dark);
