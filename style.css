@@ -580,7 +580,7 @@ html {
   -webkit-background-clip: text; /* Dành cho các trình duyệt Webkit */
   background-clip: text; /* Áp dụng cho các trình duyệt hỗ trợ */
   
-  line-height: 1.2; /* Tăng chiều cao dòng để chữ không bị cắt bớt */
+  line-height: 1.5; /* Tăng chiều cao dòng để chữ không bị cắt bớt, đặc biệt là chữ "g" */
   
   /* Tạo hiệu ứng di chuyển màu sắc trong chữ */
   animation: colorShift 2s linear infinite; /* Chạy nhanh hơn */
