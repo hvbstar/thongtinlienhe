@@ -36,7 +36,7 @@ html {
   --icon-insta: #fb3958;
   --icon-github: #333;
   --icon-youtube: #ff0000;
-  --icon-linkedIn: #0e76a8;
+  --icon-twitter: #1877f2;
 }
 
 .app {
@@ -310,7 +310,7 @@ html {
   -webkit-text-fill-color: transparent;
 }
 .link__icon .fa-twitter {
-  color: var(--icon-linkedIn);
+  color: var(--icon-twitter);
 }
 
 .toggle {
