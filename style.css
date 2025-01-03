@@ -332,6 +332,11 @@ html {
   -webkit-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
 }
+/* Áp dụng con trỏ khi hover vào toggle */
+.toggle:hover {
+  cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
 .toggle__theme {
   right: 20px;
 }
@@ -1006,13 +1011,34 @@ html, body {
 }
 
 /* Con trỏ tùy chỉnh khi hover vào các phần tử tương tác */
-a:hover, button:hover, input:hover, select:hover, textarea:hover, img:hover, .interactive:hover {
+a:hover, button:hover, input:hover, select:hover, textarea:hover, img:hover, .interactive:hover, 
+.button__message:hover, .button__subscribe:hover {
     cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
 }
 
 /* Con trỏ tùy chỉnh khi click vào các sự kiện */
 a:active, button:active, input:active, img:active, .interactive:active {
     cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
+/* Con trỏ tùy chỉnh khi hover vào các phần tử trong footer */
+.card__footer .footer__item:hover {
+  cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
+/* Con trỏ tùy chỉnh khi click vào các phần tử trong footer */
+.card__footer .footer__item:active {
+  cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
+/* Áp dụng con trỏ mouse-f1.png khi hover vào ảnh đại diện */
+.card__title--img img:hover {
+  cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto !important;
+}
+
+/* Áp dụng con trỏ khi click vào ảnh đại diện */
+.card__title--img img:active {
+  cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto !important;
 }
 
 /* Đảm bảo con trỏ cho các phần tử kế thừa */
