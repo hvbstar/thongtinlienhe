@@ -122,62 +122,79 @@ continueButton.addEventListener('click', function() {
     }    
 
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
-(function() {
-    const _0x4e76 = [
-        '\u0044\u0065\u0073\u0069\u0067\u006e\u0020\u0062\u0079\u0020\u0048\u006f\u0061\u006e\u0067\u0020\u0056\u0061\u006e\u0020\u0042\u0061\u006f'
-    ];
-
-    const _0x3f21 = function(_0x5c1d, _0x1c3f) {
-        return _0x4e76[_0x5c1d];
-    };
-
-    // Tạo phần tử hiển thị bản quyền
-    const copyrightElement = document.createElement('div');
-    copyrightElement.style.position = 'fixed';
-    copyrightElement.style.bottom = '5px';
-    copyrightElement.style.left = '50%';
-    copyrightElement.style.transform = 'translateX(-50%)';
-    copyrightElement.style.color = 'white';
-    copyrightElement.style.fontSize = '14px';
-    copyrightElement.style.fontFamily = 'Arial, sans-serif';
-    copyrightElement.style.zIndex = '9999';
-    copyrightElement.innerHTML = _0x3f21(0);
-
-    document.body.appendChild(copyrightElement);
-
-    // Kiểm tra chỉnh sửa hoặc xóa phần tử
-    const originalContent = copyrightElement.outerHTML;
-
-    // Kiểm tra nếu phần tử bị thay đổi hoặc xóa
-    setInterval(function() {
-        if (copyrightElement.outerHTML !== originalContent) {
-            alert('Phần bản quyền đã bị thay đổi hoặc xóa! Trang sẽ ngừng hoạt động.');
-            document.body.innerHTML = ''; // Xóa toàn bộ nội dung trang
-            throw new Error('Phần bản quyền bị chỉnh sửa.');
-        }
-    }, 1000);
-
-    // Ngăn xóa phần tử bằng MutationObserver
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (!document.body.contains(copyrightElement)) {
-                document.body.appendChild(copyrightElement);
-                alert('Không thể xóa phần bản quyền này! Trang sẽ ngừng hoạt động.');
-                document.body.innerHTML = ''; // Gây lỗi trang
-                throw new Error('Phần bản quyền bị xóa.');
+    (function() {
+        const _0x4e76 = [
+            '\u0044\u0065\u0073\u0069\u0067\u006e\u0020\u0062\u0079\u0020\u0048\u006f\u0061\u006e\u0067\u0020\u0056\u0061\u006e\u0020\u0042\u0061\u006f'
+        ];
+    
+        const _0x3f21 = function(_0x5c1d, _0x1c3f) {
+            return _0x4e76[_0x5c1d];
+        };
+    
+        // Tạo phần tử hiển thị bản quyền
+        const copyrightElement = document.createElement('div');
+        copyrightElement.classList.add('rainbow-border');
+        copyrightElement.style.position = 'fixed';
+        copyrightElement.style.bottom = '5px';
+        copyrightElement.style.left = '50%';
+        copyrightElement.style.transform = 'translateX(-50%)';
+        copyrightElement.style.color = 'white';
+        copyrightElement.style.fontSize = '14px';
+        copyrightElement.style.fontFamily = 'Arial, sans-serif';
+        copyrightElement.style.zIndex = '9999';
+        copyrightElement.innerHTML = _0x3f21(0);
+    
+        document.body.appendChild(copyrightElement);
+    
+        // Kiểm tra chỉnh sửa hoặc xóa phần tử
+        const originalContent = copyrightElement.outerHTML;
+    
+        // Kiểm tra nếu phần tử bị thay đổi hoặc xóa
+        setInterval(function() {
+            if (copyrightElement.outerHTML !== originalContent) {
+                // Ngay lập tức gây lỗi khi có sự thay đổi
+                alert('Phần bản quyền đã bị thay đổi hoặc xóa! Trang sẽ ngừng hoạt động.');
+                document.body.innerHTML = ''; // Xóa toàn bộ nội dung trang
+                throw new Error('Phần bản quyền bị chỉnh sửa.');
             }
+        }, 100); // Kiểm tra thường xuyên hơn (100ms) để phát hiện sự thay đổi nhanh chóng
+    
+        // Ngăn xóa phần tử bằng MutationObserver
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                // Kiểm tra nếu phần tử bị xóa
+                if (!document.body.contains(copyrightElement)) {
+                    document.body.appendChild(copyrightElement);
+                    alert('Không thể xóa phần bản quyền này! Trang sẽ ngừng hoạt động.');
+                    document.body.innerHTML = ''; // Gây lỗi trang
+                    throw new Error('Phần bản quyền bị xóa.');
+                }
+    
+                // Kiểm tra thay đổi nội dung phần tử
+                if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                    if (copyrightElement.innerHTML !== _0x3f21(0)) {
+                        alert('Phần bản quyền đã bị thay đổi! Trang sẽ ngừng hoạt động.');
+                        document.body.innerHTML = '';
+                        throw new Error('Phần bản quyền bị thay đổi.');
+                    }
+                }
+            });
         });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Tạo hàm bảo vệ mã nguồn
-    function protectCode() {
-        // Nếu đoạn mã này bị xóa, trang sẽ gặp lỗi
-        setTimeout(protectCode, 100);
-    }
-    protectCode();
-})();
+    
+        observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+    
+        // Tạo hàm bảo vệ mã nguồn, ngừng ngay khi có thay đổi
+        function protectCode() {
+            if (document.body.innerHTML.includes('Hoàng Văn Bảo')) {
+                setTimeout(protectCode, 100); // Tiếp tục kiểm tra
+            } else {
+                alert('Mã JavaScript bị thay đổi hoặc xóa. Trang sẽ ngừng hoạt động.');
+                document.body.innerHTML = ''; // Xóa nội dung trang
+                throw new Error('Mã JavaScript bị thay đổi.');
+            }
+        }
+        protectCode();
+    })();
 
 // Ngừng chuột phải
 document.addEventListener('contextmenu', function(e) {
