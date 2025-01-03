@@ -569,8 +569,31 @@ html {
   font-size: 2rem; /* Giữ nguyên cỡ chữ */
   font-weight: 700;
   letter-spacing: 2px; /* Giãn chữ */
-  animation: rainbowText 0.7s linear infinite; /* Hiệu ứng đổi màu chạy nhanh */
   display: inline-block;
+  
+  /* Tạo gradient màu sắc nổi bật và nhanh */
+  background: linear-gradient(to left, #FF0000, #FF7F00, #FFFF00, #00FF00, #00FFFF, #0000FF, #8A2BE2); /* Đảo ngược hướng gradient */
+  background-size: 500% 100%; /* Tăng kích thước gradient để có thể di chuyển mượt mà */
+  background-position: 100% 0; /* Bắt đầu từ bên phải để chạy từ trái sang phải */
+  color: transparent; /* Làm cho màu chữ mặc định ẩn đi, chỉ hiển thị gradient */
+
+  -webkit-background-clip: text; /* Dành cho các trình duyệt Webkit */
+  background-clip: text; /* Áp dụng cho các trình duyệt hỗ trợ */
+  
+  line-height: 1.2; /* Tăng chiều cao dòng để chữ không bị cắt bớt */
+  
+  /* Tạo hiệu ứng di chuyển màu sắc trong chữ */
+  animation: colorShift 2s linear infinite; /* Chạy nhanh hơn */
+}
+
+/* Định nghĩa keyframes cho hiệu ứng màu chạy trong chữ */
+@keyframes colorShift {
+  0% {
+    background-position: 100% 0; /* Bắt đầu từ bên phải */
+  }
+  100% {
+    background-position: 0 0; /* Di chuyển đến bên trái */
+  }
 }
 
 .veri__check {
