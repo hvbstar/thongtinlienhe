@@ -313,6 +313,16 @@ html {
   color: var(--icon-twitter);
 }
 
+/* Chế độ sáng - Chỉ áp dụng cho TikTok */
+.card__item .link__icon i.fab.fa-tiktok {
+  color: black !important; /* Màu đen cho TikTok */
+}
+
+/* Chế độ tối - Chỉ áp dụng cho TikTok */
+.app.dark .card__item .link__icon i.fab.fa-tiktok {
+  color: white !important; /* Màu trắng cho TikTok trong chế độ tối */
+}
+
 .toggle {
   position: absolute;
   display: flex;
