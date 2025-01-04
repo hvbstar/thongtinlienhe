@@ -623,10 +623,15 @@ html {
   100% { background-position: 100% 50%; }
 }
 
+/* Màu của dấu Tích */
 .veri__check {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 17px !important; /* Giảm kích thước chiều rộng */
+  height: 17px !important; /* Giảm kích thước chiều cao */
+  background-color: #07aafb !important; /* Màu nền xanh */
+  border-radius: 50% !important; /* Đảm bảo nền vẫn là hình tròn */
 }
 
 .veri__check i {
