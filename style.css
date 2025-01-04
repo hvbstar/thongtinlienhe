@@ -564,36 +564,63 @@ html {
   100% { color: red; }
 }
 
+/* Màu cho chữ Hoàng Văn Bảo */
 #animated-text {
-  font-family: 'Poppins', sans-serif; /* Giữ nguyên font */
-  font-size: 2rem; /* Giữ nguyên cỡ chữ */
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 2px; /* Giãn chữ */
+  letter-spacing: 1px; /* Điều chỉnh khoảng cách giữa các ký tự */
   display: inline-block;
+  position: relative;
   
-  /* Tạo gradient màu sắc nổi bật và nhanh */
-  background: linear-gradient(to left, #FF0000, #FF7F00, #FFFF00, #00FF00, #00FFFF, #0000FF, #8A2BE2); /* Đảo ngược hướng gradient */
-  background-size: 500% 100%; /* Tăng kích thước gradient để có thể di chuyển mượt mà */
-  background-position: 100% 0; /* Bắt đầu từ bên phải để chạy từ trái sang phải */
-  color: transparent; /* Làm cho màu chữ mặc định ẩn đi, chỉ hiển thị gradient */
-
-  -webkit-background-clip: text; /* Dành cho các trình duyệt Webkit */
-  background-clip: text; /* Áp dụng cho các trình duyệt hỗ trợ */
+  /* Loại bỏ text-transform để giữ nguyên kiểu chữ */
   
-  line-height: 1.5; /* Tăng chiều cao dòng để chữ không bị cắt bớt, đặc biệt là chữ "g" */
+  /* Gradient màu sắc tươi sáng hơn */
+  background: linear-gradient(to left, #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8a2be2, #ff00ff);
+  background-size: 500% 100%;
+  background-position: 100% 0;
+  color: transparent;
   
-  /* Tạo hiệu ứng di chuyển màu sắc trong chữ */
-  animation: colorShift 2s linear infinite; /* Chạy nhanh hơn */
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  line-height: 1.2;
+  animation: colorShift 1.5s linear infinite;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" on; /* Kích hoạt tính năng hỗ trợ chữ cái đặc biệt */
 }
 
-/* Định nghĩa keyframes cho hiệu ứng màu chạy trong chữ */
 @keyframes colorShift {
-  0% {
-    background-position: 100% 0; /* Bắt đầu từ bên phải */
-  }
-  100% {
-    background-position: 0 0; /* Di chuyển đến bên trái */
-  }
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Dấu gạch chân xuyên qua chữ */
+#animated-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Đưa gạch chân sát vào chữ */
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+
+  /* Tạo hiệu ứng gạch chân */
+  background: linear-gradient(90deg, #00ffff, #0088ff, #ff00ff);
+  background-size: 200% 100%;
+  animation: underlineGlow 2s linear infinite;
+
+  /* Hiệu ứng phát sáng */
+  box-shadow: 0px 0px 12px rgba(24, 119, 242, 1), 
+              0px 0px 18px rgba(24, 119, 242, 0.8),
+              0px 0px 24px rgba(24, 119, 242, 0.6);
+
+  z-index: -1; /* Đảm bảo nằm dưới chữ */
+}
+
+@keyframes underlineGlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .veri__check {
