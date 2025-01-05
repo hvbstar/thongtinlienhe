@@ -115,7 +115,7 @@ html {
   justify-content: center;
 }
 .card__title--img {
-  width: 100px;
+  width: 105px;
   height: 100px;
   border-radius: 50%;
   box-shadow: var(--outer-shadow);
@@ -1130,4 +1130,33 @@ a:active, button:active, input:active, img:active, .interactive:active {
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
+}
+
+/* Màu của Avatar */
+@keyframes flashing-border {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
+  }
+  25% {
+    box-shadow: 0 0 10px 5px rgba(76, 175, 80, 0.8), 0 0 15px 5px rgba(33, 150, 243, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 10px 5px rgba(233, 30, 99, 0.8), 0 0 15px 5px rgba(255, 193, 7, 0.6);
+  }
+  75% {
+    box-shadow: 0 0 10px 5px rgba(156, 39, 176, 0.8), 0 0 15px 5px rgba(0, 188, 212, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
+  }
+}
+
+.card__title--img img {
+  border-radius: 50%; /* Viền tròn cho ảnh */
+  border: 5px solid transparent; /* Viền trong suốt để không làm ảnh hưởng đến ảnh */
+  box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6); /* Viền sáng ban đầu */
+  transition: all 0.3s ease; /* Hiệu ứng chuyển đổi nhẹ nhàng */
+  width: 100%; /* Giữ kích thước ảnh gốc */
+  height: auto; /* Đảm bảo tỷ lệ ảnh không thay đổi */
+  animation: flashing-border 1.5s infinite; /* Hiệu ứng nhấp nháy liên tục */
 }
