@@ -274,3 +274,9 @@ document.addEventListener('copy', function(e) {
   document.body.addEventListener('touchstart', function(e) {
     e.preventDefault();
   });  
+
+// Hàm để hiển thị/ẩn menu khi nhấp vào icon CSKH
+function toggleContactMenu() {
+    const menu = document.querySelector(".contact-menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
