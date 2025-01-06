@@ -69,14 +69,14 @@ html {
   color: white;
 }
 
-/* Màu nền khi hover nút */
-#contact-widget.dark .contact-button:hover {
-  background-color: #666; /* Màu nền khi hover */
-}
-
 /* Sáng icon khi trong chế độ tối */
 #contact-widget.dark .contact-button img {
   filter: brightness(0) invert(1); /* Chuyển đổi icon sang sáng khi trong chế độ tối */
+}
+
+/* Thêm chữ trắng cho nút Chat Email trong chế độ tối */
+#contact-widget.dark #gmail-btn span {
+  color: white; /* Màu chữ trắng cho Chat Email */
 }
 
 .app {
@@ -1257,7 +1257,7 @@ a:active, button:active, input:active, img:active, .interactive:active {
   border-radius: 50%;
 }
 
-/* Đặt phần liên hệ admin ở dưới cùng góc phải */
+/* Phần Liên Hệ Admin */
 #contact-widget {
   position: fixed;
   bottom: 20px;
@@ -1279,6 +1279,7 @@ a:active, button:active, input:active, img:active, .interactive:active {
   padding: 10px;
   position: relative;
   animation: flashing-border 3s infinite;
+  cursor: pointer; /* Thêm con trỏ chuột cho icon */
 }
 
 /* Hiệu ứng nét đứt chạy liên tục xung quanh phần liên hệ admin */
@@ -1295,11 +1296,12 @@ a:active, button:active, input:active, img:active, .interactive:active {
   object-fit: cover;
 }
 
-/* Phần chữ liên hệ admin */
+/* Chữ "Liên hệ admin" không thay đổi */
 .contact-text {
   font-size: 14px;
   font-weight: bold;
   color: #333;
+  /* Không thay đổi gì ở phần này */
 }
 
 /* Phần menu liên hệ khi được mở */
@@ -1310,6 +1312,15 @@ a:active, button:active, input:active, img:active, .interactive:active {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 60px; /* Để menu không bị chồng lên icon */
+  right: 0;
+  z-index: 9998;
+}
+
+/* Hiển thị khi menu được mở */
+.contact-menu.show {
+  display: block;
 }
 
 /* Các nút liên hệ trong menu */
@@ -1321,6 +1332,7 @@ a:active, button:active, input:active, img:active, .interactive:active {
   padding: 6px;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  white-space: nowrap; /* Ngăn các phần tử con xuống dòng trong nút liên hệ */
 }
 
 .contact-button a {
