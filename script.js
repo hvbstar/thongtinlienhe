@@ -134,6 +134,18 @@ continueButton.addEventListener('click', function() {
             });
     }    
 
+// Hàm copy Gmail
+function copyEmail() {
+    const email = "hvb.dvfb@gmail.com"; // Địa chỉ Gmail cần sao chép
+    navigator.clipboard.writeText(email)
+        .then(() => {
+            showCustomAlert(`Bạn cần hỗ trợ? Gửi email cho tôi tại: ${email}`);
+        })
+        .catch(() => {
+            showCustomAlert('Sao chép Gmail thất bại, vui lòng thử lại!');
+        });
+}
+
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
     (function() {
         const _0x4e76 = [
