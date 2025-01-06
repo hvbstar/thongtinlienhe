@@ -39,6 +39,46 @@ html {
   --icon-twitter: #1877f2;
 }
 
+/* Phần liên hệ admin */
+#contact-widget.dark {
+  background-color: transparent; /* Không thêm nền tối cho phần ngoài */
+}
+
+/* Nền tối cho phần icon trong chế độ tối */
+#contact-widget.dark .contact-icon {
+  background-color: #333; /* Nền tối cho phần icon */
+}
+
+/* Chữ màu trắng trong chế độ tối */
+#contact-widget.dark .contact-text {
+  color: white;
+}
+
+/* Nền tối cho menu trong chế độ tối */
+#contact-widget.dark .contact-menu {
+  background-color: #444; /* Nền tối cho menu */
+}
+
+/* Nền tối cho các nút trong menu */
+#contact-widget.dark .contact-button {
+  background-color: #555; /* Nền tối cho nút trong menu */
+}
+
+/* Màu chữ nút trong menu */
+#contact-widget.dark .contact-button a {
+  color: white;
+}
+
+/* Màu nền khi hover nút */
+#contact-widget.dark .contact-button:hover {
+  background-color: #666; /* Màu nền khi hover */
+}
+
+/* Sáng icon khi trong chế độ tối */
+#contact-widget.dark .contact-button img {
+  filter: brightness(0) invert(1); /* Chuyển đổi icon sang sáng khi trong chế độ tối */
+}
+
 .app {
   width: 100%;
   height: 100vh;
@@ -1108,6 +1148,24 @@ a:active, button:active, input:active, img:active, .interactive:active {
   cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto !important;
 }
 
+/* Gán con trỏ chuột cho phần chữ và icon của Liên Hệ Admin */
+#contact-widget .contact-icon,
+#contact-widget .contact-text {
+    cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
+/* Gán con trỏ chuột khi hover vào toàn bộ phần tử Liên Hệ Admin */
+#contact-widget .contact-icon:hover,
+#contact-widget .contact-text:hover {
+    cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
+/* Gán con trỏ chuột khi click vào Liên Hệ Admin */
+#contact-widget .contact-icon:active,
+#contact-widget .contact-text:active {
+    cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
+}
+
 /* Đảm bảo con trỏ cho các phần tử kế thừa */
 * {
     cursor: inherit !important;
@@ -1158,4 +1216,134 @@ a:active, button:active, input:active, img:active, .interactive:active {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+}
+
+/* Đặt phần liên hệ admin ở dưới cùng góc phải */
+#contact-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Phần icon liên hệ */
+.contact-icon {
+  width: 120px;
+  height: 50px;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  position: relative;
+  animation: flashing-border 3s infinite;
+}
+
+/* Hiệu ứng nét đứt chạy liên tục xung quanh phần liên hệ admin */
+.contact-icon {
+  border: 3px dashed rgba(255, 87, 34, 0.8); /* Viền nét đứt */
+  animation: border-dash 1s linear infinite; /* Tăng tốc độ cho hiệu ứng chạy nhanh liên tục */
+}
+
+/* Các icon trong phần liên hệ */
+.contact-icon img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Phần chữ liên hệ admin */
+.contact-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Phần menu liên hệ khi được mở */
+.contact-menu {
+  display: none;
+  margin-top: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Các nút liên hệ trong menu */
+.contact-button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background-color: #f8f8f8;
+  padding: 6px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.contact-button a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.contact-button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.contact-button img {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.contact-button img:hover {
+  transform: scale(1.1);
+}
+
+.contact-button span {
+  font-size: 13px;
+}
+
+/* Hiệu ứng nét đứt chạy */
+@keyframes flashing-border {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
+  }
+  25% {
+    box-shadow: 0 0 10px 5px rgba(76, 175, 80, 0.8), 0 0 15px 5px rgba(33, 150, 243, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 10px 5px rgba(233, 30, 99, 0.8), 0 0 15px 5px rgba(255, 193, 7, 0.6);
+  }
+  75% {
+    box-shadow: 0 0 10px 5px rgba(156, 39, 176, 0.8), 0 0 15px 5px rgba(0, 188, 212, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
+  }
+}
+
+/* Hiệu ứng nét đứt chạy liên tục xung quanh phần liên hệ admin */
+@keyframes border-dash {
+  0% {
+    border-color: rgba(255, 87, 34, 0.8);
+  }
+  25% {
+    border-color: rgba(76, 175, 80, 0.8);
+  }
+  50% {
+    border-color: rgba(233, 30, 99, 0.8);
+  }
+  75% {
+    border-color: rgba(156, 39, 176, 0.8);
+  }
+  100% {
+    border-color: rgba(255, 87, 34, 0.8);
+  }
 }
