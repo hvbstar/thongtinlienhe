@@ -693,6 +693,32 @@ html {
   font-size: 1.5em;
 }
 
+/* Phần liên hệ admin */
+#contact-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Phần icon liên hệ */
+.contact-icon {
+  width: 120px;
+  height: 50px;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  position: relative;
+  animation: flashing-border 3s infinite;
+  cursor: pointer;
+  white-space: nowrap; /* Ngăn không cho chữ xuống dòng */
+}
+
 /* Media query cho điện thoại */
 @media (max-width: 768px) {
   /* Điều chỉnh kích thước phần liên hệ admin trên điện thoại */
@@ -723,6 +749,32 @@ html {
   /* Điều chỉnh các phần tử khác */
   .veri__check i {
     transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
+  }
+}
+
+/* Đảm bảo không có white-space: nowrap cho máy tính */
+@media (min-width: 769px) {
+  .contact-text {
+    white-space: normal; /* Đảm bảo không có white-space: nowrap trên máy tính */
+  }
+}
+
+/* Hiệu ứng nét đứt chạy */
+@keyframes flashing-border {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
+  }
+  25% {
+    box-shadow: 0 0 10px 5px rgba(76, 175, 80, 0.8), 0 0 15px 5px rgba(33, 150, 243, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 10px 5px rgba(233, 30, 99, 0.8), 0 0 15px 5px rgba(255, 193, 7, 0.6);
+  }
+  75% {
+    box-shadow: 0 0 10px 5px rgba(156, 39, 176, 0.8), 0 0 15px 5px rgba(0, 188, 212, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
   }
 }
 
