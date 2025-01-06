@@ -134,7 +134,7 @@ continueButton.addEventListener('click', function() {
             });
     }    
 
-// Hàm copy Gmail
+// Hàm copy Email
 function copyEmail() {
     const email = "hvb.dvfb@gmail.com"; // Địa chỉ Gmail cần sao chép
     navigator.clipboard.writeText(email)
