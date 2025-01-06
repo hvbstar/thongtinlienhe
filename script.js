@@ -1,15 +1,28 @@
 const toggle = document.querySelector(".toggle__theme");
 const card = document.querySelector(".app");
+const contactWidget = document.querySelector("#contact-widget");  // Chọn phần tử đúng
+const contactIcon = document.querySelector(".contact-icon");
+
 toggle.addEventListener("click", () => {
     let theme = toggle.querySelector(".fas");
+    console.log("Toggling theme...");
+
+    // Thêm hoặc xóa lớp 'dark' chỉ vào #contact-widget
+    contactWidget.classList.toggle('dark');
+
     if (theme.classList.contains("fa-moon")) {
+        console.log("Switching to dark mode...");
         theme.classList.remove("fa-moon");
         theme.classList.add("fa-sun");
         card.classList.add("dark");
+        // Chỉ áp dụng dark cho contactWidget và các phần tử bên trong
+        contactWidget.classList.add("dark");
     } else {
+        console.log("Switching to light mode...");
         theme.classList.remove("fa-sun");
         theme.classList.add("fa-moon");
         card.classList.remove("dark");
+        contactWidget.classList.remove("dark");
     }
 });
 
