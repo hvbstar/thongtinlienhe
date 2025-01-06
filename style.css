@@ -706,21 +706,17 @@ html {
     height: 45px;
   }
 
-  /* Ẩn phần chữ "Liên Hệ Admin" trên điện thoại */
+  /* Ẩn chữ "Liên Hệ Admin" và thay thế bằng "Hỗ Trợ" */
   .contact-text {
-    display: inline-block;
+    display: none; /* Ẩn phần chữ "Liên Hệ Admin" */
   }
 
-  /* Thay đổi chữ "Liên Hệ Admin" thành "Hỗ Trợ" trên điện thoại */
-  #contact-widget .contact-text:after {
+  /* Hiển thị chữ "Hỗ Trợ" khi trên điện thoại */
+  .contact-icon:after {
     content: "Hỗ Trợ"; /* Thêm chữ "Hỗ Trợ" khi trên điện thoại */
-    display: block;
+    display: inline-block; /* Đảm bảo chữ "Hỗ Trợ" không bị xuống dòng */
     font-size: 12px;
-  }
-
-  /* Điều chỉnh các phần tử khác */
-  .veri__check i {
-    transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
+    color: white; /* Thêm màu chữ nếu cần */
   }
 }
 
