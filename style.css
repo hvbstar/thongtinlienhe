@@ -115,15 +115,17 @@ html {
   justify-content: center;
 }
 .card__title--img {
-  width: 105px;
+  width: 100px;
   height: 100px;
   border-radius: 50%;
   box-shadow: var(--outer-shadow);
   border: 5px solid var(--bg-main);
   transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  -webkit-transition: all 0.3s linear;
-  -o-transition: all 0.3s linear;
+  animation: flashing-border 1.5s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ngăn bóng sáng tràn ra ngoài */
 }
 
 .app.dark .card__title--img {
@@ -1135,28 +1137,25 @@ a:active, button:active, input:active, img:active, .interactive:active {
 /* Màu của Avatar */
 @keyframes flashing-border {
   0% {
-    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.9), 0 0 15px 5px rgba(255, 235, 59, 0.7);
   }
   25% {
-    box-shadow: 0 0 10px 5px rgba(76, 175, 80, 0.8), 0 0 15px 5px rgba(33, 150, 243, 0.6);
+    box-shadow: 0 0 10px 5px rgba(76, 175, 80, 0.9), 0 0 15px 5px rgba(33, 150, 243, 0.7);
   }
   50% {
-    box-shadow: 0 0 10px 5px rgba(233, 30, 99, 0.8), 0 0 15px 5px rgba(255, 193, 7, 0.6);
+    box-shadow: 0 0 10px 5px rgba(233, 30, 99, 0.9), 0 0 15px 5px rgba(255, 193, 7, 0.7);
   }
   75% {
-    box-shadow: 0 0 10px 5px rgba(156, 39, 176, 0.8), 0 0 15px 5px rgba(0, 188, 212, 0.6);
+    box-shadow: 0 0 10px 5px rgba(156, 39, 176, 0.9), 0 0 15px 5px rgba(0, 188, 212, 0.7);
   }
   100% {
-    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6);
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.9), 0 0 15px 5px rgba(255, 235, 59, 0.7);
   }
 }
 
 .card__title--img img {
-  border-radius: 50%; /* Viền tròn cho ảnh */
-  border: 5px solid transparent; /* Viền trong suốt để không làm ảnh hưởng đến ảnh */
-  box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.8), 0 0 15px 5px rgba(255, 235, 59, 0.6); /* Viền sáng ban đầu */
-  transition: all 0.3s ease; /* Hiệu ứng chuyển đổi nhẹ nhàng */
-  width: 100%; /* Giữ kích thước ảnh gốc */
-  height: auto; /* Đảm bảo tỷ lệ ảnh không thay đổi */
-  animation: flashing-border 1.5s infinite; /* Hiệu ứng nhấp nháy liên tục */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
