@@ -708,6 +708,9 @@ html {
 
   .contact-text {
     font-size: 12px;
+    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Thêm dấu ba chấm nếu nội dung bị cắt */
   }
 
   /* Điều chỉnh các phần tử khác */
