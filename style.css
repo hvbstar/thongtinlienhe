@@ -708,9 +708,19 @@ html {
 
   .contact-text {
     font-size: 12px;
-    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Thêm dấu ba chấm nếu nội dung bị cắt */
+    /* Thay đổi chữ "Liên Hệ Admin" thành "Hỗ Trợ" trên điện thoại */
+    content: "Hỗ Trợ"; /* CSS content không áp dụng cho span, thay thế bằng phương pháp khác dưới */
+  }
+
+  /* Thay đổi chữ Liên Hệ Admin thành Hỗ Trợ trên điện thoại */
+  #contact-widget .contact-text {
+    display: none; /* Ẩn phần chữ cũ */
+  }
+
+  #contact-widget .contact-text:after {
+    content: "Hỗ Trợ"; /* Thêm chữ "Hỗ Trợ" khi trên điện thoại */
+    display: block;
+    font-size: 12px;
   }
 
   /* Điều chỉnh các phần tử khác */
