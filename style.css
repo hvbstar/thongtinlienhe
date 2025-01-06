@@ -706,15 +706,30 @@ html {
     height: 45px;
   }
 
-  /* Ẩn chữ "Liên Hệ Admin" và chỉ hiển thị "Hỗ Trợ" trên điện thoại */
-  .contact-text.desktop {
-    display: none; /* Ẩn phần chữ "Liên Hệ Admin" trên điện thoại */
+  /* Ẩn chữ "Liên Hệ Admin" trên điện thoại */
+  .contact-text {
+    display: none;
   }
 
-  .contact-text.mobile {
-    display: inline; /* Hiển thị chữ "Hỗ Trợ" trên điện thoại */
+  /* Hiển thị chữ "Hỗ Trợ" trên điện thoại */
+  .contact-text:after {
+    content: "Hỗ Trợ"; /* Hiển thị chữ "Hỗ Trợ" */
+    display: inline;
     font-size: 12px;
     color: white;
+    white-space: nowrap; /* Ngăn không cho chữ "Hỗ Trợ" xuống dòng */
+  }
+
+  /* Điều chỉnh các phần tử khác */
+  .veri__check i {
+    transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
+  }
+}
+
+/* Đảm bảo không có white-space: nowrap cho máy tính */
+@media (min-width: 769px) {
+  .contact-text {
+    white-space: normal; /* Đảm bảo không có white-space: nowrap trên máy tính */
   }
 }
 
