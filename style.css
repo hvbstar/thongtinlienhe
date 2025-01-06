@@ -706,17 +706,15 @@ html {
     height: 45px;
   }
 
-  /* Ẩn chữ "Liên Hệ Admin" và thay thế bằng "Hỗ Trợ" */
-  .contact-text {
-    display: none; /* Ẩn phần chữ "Liên Hệ Admin" */
+  /* Ẩn chữ "Liên Hệ Admin" và chỉ hiển thị "Hỗ Trợ" trên điện thoại */
+  .contact-text.desktop {
+    display: none; /* Ẩn phần chữ "Liên Hệ Admin" trên điện thoại */
   }
 
-  /* Hiển thị chữ "Hỗ Trợ" khi trên điện thoại */
-  .contact-icon:after {
-    content: "Hỗ Trợ"; /* Thêm chữ "Hỗ Trợ" khi trên điện thoại */
-    display: inline-block; /* Đảm bảo chữ "Hỗ Trợ" không bị xuống dòng */
+  .contact-text.mobile {
+    display: inline; /* Hiển thị chữ "Hỗ Trợ" trên điện thoại */
     font-size: 12px;
-    color: white; /* Thêm màu chữ nếu cần */
+    color: white;
   }
 }
 
@@ -1293,6 +1291,16 @@ a:active, button:active, input:active, img:active, .interactive:active {
   font-weight: bold;
   color: #333;
   /* Không thay đổi gì ở phần này */
+}
+
+/* Hiển thị chữ "Liên Hệ Admin" chỉ trên desktop */
+.contact-text.desktop {
+  display: inline;
+}
+
+/* Ẩn chữ "Liên Hệ Admin" trên điện thoại */
+.contact-text.mobile {
+  display: none;
 }
 
 /* Phần menu liên hệ khi được mở */
