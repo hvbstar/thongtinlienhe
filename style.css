@@ -695,6 +695,22 @@ html {
 
 /* Media query cho điện thoại */
 @media (max-width: 768px) {
+  /* Điều chỉnh kích thước phần liên hệ admin trên điện thoại */
+  #contact-widget {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .contact-icon {
+    width: 100px;
+    height: 45px;
+  }
+
+  .contact-text {
+    font-size: 12px;
+  }
+
+  /* Điều chỉnh các phần tử khác */
   .veri__check i {
     transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
   }
