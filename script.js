@@ -191,7 +191,7 @@ function copyEmail() {
         copyrightElement.style.color = 'white';
         copyrightElement.style.fontSize = '14px';
         copyrightElement.style.fontFamily = 'Arial, sans-serif';
-        copyrightElement.style.zIndex = '9999';
+        copyrightElement.style.zIndex = '9997';
         copyrightElement.innerHTML = _0x3f21(0);
     
         document.body.appendChild(copyrightElement);
