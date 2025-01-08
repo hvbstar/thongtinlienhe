@@ -746,7 +746,6 @@ html {
     border-radius: 25px;
     background: rgba(0, 0, 0, 0.5); /* Nền mờ */
     box-sizing: border-box; /* Đảm bảo không bị tràn */
-    overflow: hidden; /* Ẩn phần tràn ra ngoài */
   }
 
   .contact-icon img {
@@ -758,11 +757,11 @@ html {
   .contact-text {
     font-size: 12px; /* Giảm kích thước chữ */
     color: white;
-    white-space: nowrap; /* Giữ chữ trên một dòng */
-    display: inline-block;
-    text-overflow: ellipsis; /* Cắt bớt chữ khi quá dài */
-    overflow: hidden; /* Ẩn phần chữ tràn */
+    white-space: normal; /* Cho phép xuống dòng nếu cần */
+    display: block; /* Hiển thị chữ dưới dạng block */
+    text-overflow: unset; /* Tắt chế độ cắt chữ */
     line-height: 1.2; /* Điều chỉnh khoảng cách giữa 2 dòng */
+    word-wrap: break-word; /* Cho phép chữ xuống dòng nếu không đủ không gian */
   }
 }
 
