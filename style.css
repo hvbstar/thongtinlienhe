@@ -724,40 +724,44 @@ html {
   #contact-widget {
     bottom: 10px;
     right: 10px;
-    /* Điều chỉnh vị trí và thêm margin để đảm bảo không bị tràn */
     margin-right: 10px;
     margin-bottom: 10px;
     display: flex;
+    flex-direction: column; /* Chuyển thành dạng cột để chữ không bị lệch */
     align-items: center;
     justify-content: center;
-    flex-direction: row; /* Đảm bảo cả icon và chữ đều ngang */
-    padding: 5px 10px;
+    padding: 10px;
   }
 
   .contact-icon {
-    display: flex; /* Dùng flexbox để căn giữa icon và chữ */
+    display: flex;
+    flex-direction: column; /* Chữ và icon nằm theo chiều dọc */
     align-items: center;
     justify-content: center;
-    width: 120px; /* Tăng chiều rộng để chữ không bị xuống dòng */
-    height: 50px; /* Điều chỉnh chiều cao */
-    padding: 5px 10px;
-    border-radius: 25px; /* Làm tròn góc */
-    background: rgba(0, 0, 0, 0.5); /* Nền mờ */
-    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
+    width: 120px; /* Đảm bảo kích thước không quá rộng */
+    height: 70px; /* Tăng chiều cao để chữ có không gian */
+    padding: 10px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    white-space: nowrap; /* Ngăn không cho chữ xuống dòng */
   }
 
   .contact-icon img {
-    width: 30px; /* Giảm kích thước ảnh để có đủ không gian */
+    width: 30px;
     height: 30px;
-    margin-right: 5px; /* Tạo khoảng cách giữa ảnh và chữ */
+    margin-bottom: 5px; /* Tạo khoảng cách giữa icon và chữ */
   }
 
   .contact-text {
-    font-size: 12px; /* Giảm kích thước chữ */
+    font-size: 12px; /* Giảm kích thước chữ nhỏ hơn một chút so với trên máy tính */
     color: white;
-    white-space: nowrap; /* Giữ chữ trên một dòng */
-    display: inline-block; /* Đảm bảo hiển thị đúng */
     text-align: center; /* Căn giữa chữ */
+    line-height: 14px; /* Tạo khoảng cách giữa các dòng chữ */
+    white-space: normal; /* Đảm bảo chữ không bị chặt xuống một dòng */
+  }
+
+  .contact-text span {
+    display: block; /* Tách hai phần chữ "Liên Hệ" và "Admin" */
   }
 }
 
