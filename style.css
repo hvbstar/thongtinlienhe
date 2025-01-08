@@ -730,25 +730,27 @@ html {
     flex-direction: row; /* Đảm bảo các phần tử nằm ngang */
     align-items: center;
     justify-content: center;
-    width: auto; /* Cho phép chiều rộng tự động */
-    padding: 10px;
+    width: auto;
+    padding: 5px 10px; /* Thêm khoảng cách để tránh tràn */
   }
 
   .contact-icon {
     display: flex;
-    flex-direction: row; /* Đảm bảo icon và chữ nằm ngang */
+    flex-direction: row;
     align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
-    justify-content: flex-start; /* Đảm bảo icon và chữ không bị lệch */
-    width: 120px; /* Điều chỉnh chiều rộng để không bị tràn */
+    justify-content: flex-start;
+    width: 100%; /* Đảm bảo không bị tràn */
+    max-width: 150px; /* Giới hạn chiều rộng tối đa */
     height: auto;
     padding: 5px 10px;
     border-radius: 25px;
     background: rgba(0, 0, 0, 0.5); /* Nền mờ */
-    box-sizing: border-box; /* Đảm bảo không bị tràn khung */
+    box-sizing: border-box; /* Đảm bảo không bị tràn */
+    overflow: hidden; /* Ẩn phần tràn ra ngoài */
   }
 
   .contact-icon img {
-    width: 30px; /* Giảm kích thước icon */
+    width: 30px;
     height: 30px;
     margin-right: 5px; /* Khoảng cách giữa icon và chữ */
   }
@@ -757,7 +759,10 @@ html {
     font-size: 12px; /* Giảm kích thước chữ */
     color: white;
     white-space: nowrap; /* Giữ chữ trên một dòng */
-    display: inline-block; /* Đảm bảo chữ không bị xuống dòng */
+    display: inline-block;
+    text-overflow: ellipsis; /* Cắt bớt chữ khi quá dài */
+    overflow: hidden; /* Ẩn phần chữ tràn */
+    line-height: 1.2; /* Điều chỉnh khoảng cách giữa 2 dòng */
   }
 }
 
