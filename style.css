@@ -756,15 +756,13 @@ html {
     font-size: 12px; /* Giảm kích thước chữ */
     color: white;
     text-align: center;
-    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
     display: block; /* Đảm bảo "Liên Hệ" và "Admin" tách biệt */
   }
 
   .contact-text span {
-    display: block; /* Cho phép "Admin" xuống dòng */
+    display: block; /* Đảm bảo "Admin" xuống dòng */
     font-size: 12px;
     color: white;
-    white-space: normal; /* Cho phép xuống dòng */
     margin-top: 2px; /* Đảm bảo khoảng cách giữa "Liên Hệ" và "Admin" */
   }
 }
