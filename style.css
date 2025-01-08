@@ -731,6 +731,7 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: row; /* Đảm bảo cả icon và chữ đều ngang */
+    padding: 5px 10px;
   }
 
   .contact-icon {
@@ -738,7 +739,7 @@ html {
     align-items: center;
     justify-content: center;
     width: 120px; /* Tăng chiều rộng để chữ không bị xuống dòng */
-    height: 45px;
+    height: 50px; /* Điều chỉnh chiều cao */
     padding: 5px 10px;
     border-radius: 25px; /* Làm tròn góc */
     background: rgba(0, 0, 0, 0.5); /* Nền mờ */
@@ -756,13 +757,13 @@ html {
     color: white;
     white-space: nowrap; /* Giữ chữ trên một dòng */
     display: inline-block; /* Đảm bảo hiển thị đúng */
+    text-align: center; /* Căn giữa chữ */
   }
 }
 
-  /* Điều chỉnh các phần tử khác */
-  .veri__check i {
-    transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
-  }
+.veri__check i {
+  transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
+}
 
 /* Hiệu ứng nét đứt chạy */
 @keyframes flashing-border {
