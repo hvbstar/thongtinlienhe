@@ -727,44 +727,84 @@ html {
     margin-right: 10px;
     margin-bottom: 10px;
     display: flex;
-    flex-direction: row; /* Đảm bảo các phần tử nằm ngang */
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: auto;
-    padding: 5px 10px;
   }
 
   .contact-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto; /* Điều chỉnh chiều rộng icon và chữ */
+    width: auto;
     height: auto;
     padding: 5px 10px;
     border-radius: 25px;
-    background: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    background: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
   }
 
   .contact-icon img {
     width: 30px;
     height: 30px;
-    margin-right: 5px; /* Khoảng cách giữa icon và chữ */
+    margin-right: 5px;
   }
 
   .contact-text {
-    font-size: 12px; /* Giảm kích thước chữ */
+    font-size: 12px;
     color: white;
+    white-space: nowrap;
+    display: block;
     text-align: center;
-    display: block; /* Đảm bảo "Liên Hệ" và "Admin" tách biệt */
   }
 
   .contact-text span {
-    display: block; /* Đảm bảo "Admin" xuống dòng */
+    display: block;
     font-size: 12px;
     color: white;
-    margin-top: 2px; /* Đảm bảo khoảng cách giữa "Liên Hệ" và "Admin" */
+    margin-top: 2px;
   }
+}
+
+/* Chế độ tối - không bị ảnh hưởng bởi media query */
+#contact-widget.dark {
+  background-color: transparent; /* Không thêm nền tối cho phần ngoài */
+}
+
+/* Nền tối cho phần icon trong chế độ tối */
+#contact-widget.dark .contact-icon {
+  background-color: #333; /* Nền tối cho phần icon */
+}
+
+/* Chữ màu trắng trong chế độ tối */
+#contact-widget.dark .contact-text {
+  color: white;
+}
+
+/* Nền tối cho menu trong chế độ tối */
+#contact-widget.dark .contact-menu {
+  background-color: #444; /* Nền tối cho menu */
+}
+
+/* Nền tối cho các nút trong menu */
+#contact-widget.dark .contact-button {
+  background-color: #555; /* Nền tối cho nút trong menu */
+}
+
+/* Màu chữ nút trong menu */
+#contact-widget.dark .contact-button a {
+  color: white;
+}
+
+/* Sáng icon khi trong chế độ tối */
+#contact-widget.dark .contact-button img {
+  filter: brightness(0) invert(1); /* Chuyển đổi icon sang sáng khi trong chế độ tối */
+}
+
+/* Thêm chữ trắng cho nút Chat Email trong chế độ tối */
+#contact-widget.dark #gmail-btn span {
+  color: white; /* Màu chữ trắng cho Chat Email */
 }
 
 /* Điều chỉnh các phần tử khác */
