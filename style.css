@@ -731,21 +731,19 @@ html {
     align-items: center;
     justify-content: center;
     width: auto;
-    padding: 5px 10px; /* Thêm khoảng cách để tránh tràn */
+    padding: 5px 10px;
   }
 
   .contact-icon {
     display: flex;
-    flex-direction: row;
     align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
-    justify-content: flex-start;
-    width: 100%; /* Đảm bảo không bị tràn */
-    max-width: 150px; /* Giới hạn chiều rộng tối đa */
+    justify-content: center;
+    width: 120px; /* Đảm bảo chiều rộng cho cả icon và chữ */
     height: auto;
     padding: 5px 10px;
     border-radius: 25px;
     background: rgba(0, 0, 0, 0.5); /* Nền mờ */
-    box-sizing: border-box; /* Đảm bảo không bị tràn */
+    box-sizing: border-box;
   }
 
   .contact-icon img {
@@ -757,11 +755,9 @@ html {
   .contact-text {
     font-size: 12px; /* Giảm kích thước chữ */
     color: white;
-    white-space: normal; /* Cho phép xuống dòng nếu cần */
-    display: block; /* Hiển thị chữ dưới dạng block */
-    text-overflow: unset; /* Tắt chế độ cắt chữ */
-    line-height: 1.2; /* Điều chỉnh khoảng cách giữa 2 dòng */
-    word-wrap: break-word; /* Cho phép chữ xuống dòng nếu không đủ không gian */
+    white-space: normal; /* Cho phép chữ xuống dòng */
+    display: block; /* Đảm bảo chữ hiển thị mỗi từ trên một dòng */
+    text-align: center; /* Căn giữa chữ */
   }
 }
 
