@@ -1,28 +1,53 @@
-const toggle = document.querySelector(".toggle__theme");
-const card = document.querySelector(".app");
-const contactWidget = document.querySelector("#contact-widget");  // Chọn phần tử đúng
-const contactIcon = document.querySelector(".contact-icon");
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".toggle__theme");
+    const card = document.querySelector(".app");
+    const contactWidget = document.querySelector("#contact-widget");
+    const contactIcon = document.querySelector(".contact-icon");
+    const contactMenu = document.querySelector(".contact-menu");
 
-toggle.addEventListener("click", () => {
-    let theme = toggle.querySelector(".fas");
-    console.log("Toggling theme...");
+    // Kiểm tra nếu các phần tử cần thiết tồn tại
+    if (!contactWidget || !contactIcon || !contactMenu) {
+        console.error("Không tìm thấy phần tử cần thiết!");
+        return;
+    }
 
-    // Thêm hoặc xóa lớp 'dark' chỉ vào #contact-widget
-    contactWidget.classList.toggle('dark');
+    // Toggle menu khi click vào icon
+    contactIcon.addEventListener("click", function (event) {
+        event.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+        contactMenu.classList.toggle("show");
+    });
 
-    if (theme.classList.contains("fa-moon")) {
-        console.log("Switching to dark mode...");
-        theme.classList.remove("fa-moon");
-        theme.classList.add("fa-sun");
-        card.classList.add("dark");
-        // Chỉ áp dụng dark cho contactWidget và các phần tử bên trong
-        contactWidget.classList.add("dark");
-    } else {
-        console.log("Switching to light mode...");
-        theme.classList.remove("fa-sun");
-        theme.classList.add("fa-moon");
-        card.classList.remove("dark");
-        contactWidget.classList.remove("dark");
+    // Ẩn menu khi click ra ngoài
+    document.addEventListener("click", function (event) {
+        if (!contactMenu.contains(event.target) && !contactIcon.contains(event.target)) {
+            contactMenu.classList.remove("show");
+        }
+    });
+
+    // Chuyển đổi theme
+    if (toggle) {
+        toggle.addEventListener("click", (event) => {
+            event.stopPropagation(); // Ngăn chặn sự kiện click ảnh hưởng đến menu
+
+            let theme = toggle.querySelector(".fas");
+            console.log("Toggling theme...");
+
+            contactWidget.classList.toggle("dark");
+
+            if (theme.classList.contains("fa-moon")) {
+                console.log("Switching to dark mode...");
+                theme.classList.remove("fa-moon");
+                theme.classList.add("fa-sun");
+                card.classList.add("dark");
+                contactWidget.classList.add("dark");
+            } else {
+                console.log("Switching to light mode...");
+                theme.classList.remove("fa-sun");
+                theme.classList.add("fa-moon");
+                card.classList.remove("dark");
+                contactWidget.classList.remove("dark");
+            }
+        });
     }
 });
 
