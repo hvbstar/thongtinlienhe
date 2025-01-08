@@ -727,46 +727,41 @@ html {
     margin-right: 10px;
     margin-bottom: 10px;
     display: flex;
-    flex-direction: column; /* Đảm bảo các phần tử theo chiều dọc */
+    flex-direction: row; /* Đảm bảo các phần tử nằm ngang */
     align-items: center;
     justify-content: center;
+    width: auto; /* Cho phép chiều rộng tự động */
     padding: 10px;
-    width: 120px; /* Đảm bảo kích thước không quá rộng */
   }
 
   .contact-icon {
     display: flex;
-    flex-direction: column; /* Đảm bảo icon và chữ nằm theo chiều dọc */
-    align-items: center; /* Căn giữa icon và chữ */
-    justify-content: center;
-    width: 100%; /* Đảm bảo chiều rộng đầy đủ */
-    height: auto; /* Điều chỉnh chiều cao tự động cho phù hợp */
+    flex-direction: row; /* Đảm bảo icon và chữ nằm ngang */
+    align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
+    justify-content: flex-start; /* Đảm bảo icon và chữ không bị lệch */
+    width: 120px; /* Điều chỉnh chiều rộng để không bị tràn */
+    height: auto;
     padding: 5px 10px;
     border-radius: 25px;
-    background: rgba(0, 0, 0, 0.5);
-    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.5); /* Nền mờ */
     box-sizing: border-box; /* Đảm bảo không bị tràn khung */
   }
 
   .contact-icon img {
-    width: 30px;
+    width: 30px; /* Giảm kích thước icon */
     height: 30px;
-    margin-bottom: 5px; /* Khoảng cách giữa icon và chữ */
+    margin-right: 5px; /* Khoảng cách giữa icon và chữ */
   }
 
   .contact-text {
-    font-size: 12px; /* Kích thước chữ nhỏ hơn trên điện thoại */
+    font-size: 12px; /* Giảm kích thước chữ */
     color: white;
-    text-align: center; /* Căn giữa chữ */
-    line-height: 14px; /* Khoảng cách giữa các dòng chữ */
-    white-space: normal; /* Đảm bảo chữ có thể xuống dòng */
-  }
-
-  .contact-text span {
-    display: block; /* Chia "Liên Hệ" và "Admin" thành hai dòng */
+    white-space: nowrap; /* Giữ chữ trên một dòng */
+    display: inline-block; /* Đảm bảo chữ không bị xuống dòng */
   }
 }
 
+/* Điều chỉnh các phần tử khác */
 .veri__check i {
   transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
 }
