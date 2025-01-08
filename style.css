@@ -751,19 +751,20 @@ html {
     margin-right: 5px;
   }
 
-  .contact-text {
-    font-size: 12px;
-    color: white;
-    white-space: nowrap;
-    display: block;
-    text-align: center;
+.contact-text {
+  font-size: 12px;
+  color: white;
+  white-space: nowrap;
+  display: block;
+  text-align: center;
+  margin-bottom: -2px; /* Thêm margin-bottom để đẩy "Liên Hệ" xuống */
   }
 
-  .contact-text span {
-    display: block;
-    font-size: 12px;
-    color: white;
-    margin-top: 0px;
+.contact-text span {
+  display: block;
+  font-size: 12px;
+  color: white;
+  margin-top: -2px; /* Điều chỉnh margin-top để đẩy "Admin" lên */
   }
 }
 
