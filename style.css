@@ -757,7 +757,7 @@ html {
     white-space: nowrap;
     display: block;
     text-align: center;
-    margin-bottom: -px; /* Đẩy "Liên Hệ" xuống */
+    margin-bottom: -2px; /* Đẩy "Liên Hệ" xuống */
     line-height: 1.2; /* Điều chỉnh khoảng cách dòng để các chữ gần nhau hơn */
   }
 
