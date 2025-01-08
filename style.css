@@ -751,14 +751,13 @@ html {
     font-size: 12px;
     color: white;
     white-space: nowrap;
-    display: inline-block;
+    display: block; /* Hiển thị dưới dạng block để giúp cả 2 phần tử đứng trên 2 dòng riêng biệt */
     text-align: center;
   }
 
   .contact-text .admin-text {
-    display: block;  /* Chữ Admin xuống dòng riêng */
-    font-size: 12px; /* Cả "Liên Hệ" và "Admin" cùng kích thước */
-    color: white; /* Đảm bảo màu chữ giống nhau */
+    font-size: 12px; /* Cả "Liên Hệ" và "Admin" sẽ có cùng kích thước */
+    color: white; /* Màu chữ trắng cho cả hai */
     margin-top: 2px; /* Khoảng cách giữa Liên Hệ và Admin */
   }
 }
@@ -798,7 +797,7 @@ html {
 
 /* Điều chỉnh các phần tử khác */
 .veri__check i {
-  transform: translateY(0); /* Điều chỉnh xuống 1 chút trên điện thoại */
+  transform: translateY(0); /* Điều chỉnh xuống một chút trên điện thoại */
 }
 
 /* Hiệu ứng nét đứt chạy */
