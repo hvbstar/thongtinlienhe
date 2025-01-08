@@ -724,6 +724,13 @@ html {
   #contact-widget {
     bottom: 10px;
     right: 10px;
+    /* Điều chỉnh vị trí và thêm margin để đảm bảo không bị tràn */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; /* Đảm bảo cả icon và chữ đều ngang */
   }
 
   .contact-icon {
@@ -735,6 +742,7 @@ html {
     padding: 5px 10px;
     border-radius: 25px; /* Làm tròn góc */
     background: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
   }
 
   .contact-icon img {
