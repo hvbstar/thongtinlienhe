@@ -760,11 +760,12 @@ html {
     display: inline; /* Giữ chữ "Liên Hệ" và "Admin" trên cùng một dòng */
   }
 
-  /* Tạo phần mới cho "Admin" nằm ở dòng dưới */
+  /* Sử dụng flexbox để hiển thị hai dòng */
   .contact-text span {
-    display: block; /* Tạo dòng mới cho chữ "Admin" */
+    display: inline-block; /* Giữ "Admin" trên dòng sau */
     font-size: 12px;
     color: white;
+    white-space: normal; /* Cho phép xuống dòng */
   }
 }
 
