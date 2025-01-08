@@ -736,9 +736,9 @@ html {
 
   .contact-icon {
     display: flex;
-    align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
+    align-items: center;
     justify-content: center;
-    width: 120px; /* Đảm bảo chiều rộng cho cả icon và chữ */
+    width: auto; /* Điều chỉnh chiều rộng icon và chữ */
     height: auto;
     padding: 5px 10px;
     border-radius: 25px;
@@ -755,17 +755,17 @@ html {
   .contact-text {
     font-size: 12px; /* Giảm kích thước chữ */
     color: white;
-    text-align: center; /* Căn giữa chữ */
-    white-space: nowrap; /* Không cho chữ xuống dòng */
-    display: inline; /* Giữ chữ "Liên Hệ" và "Admin" trên cùng một dòng */
+    text-align: center;
+    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
+    display: block; /* Đảm bảo "Liên Hệ" và "Admin" tách biệt */
   }
 
-  /* Sử dụng flexbox để hiển thị hai dòng */
   .contact-text span {
-    display: inline-block; /* Giữ "Admin" trên dòng sau */
+    display: block; /* Cho phép "Admin" xuống dòng */
     font-size: 12px;
     color: white;
     white-space: normal; /* Cho phép xuống dòng */
+    margin-top: 2px; /* Đảm bảo khoảng cách giữa "Liên Hệ" và "Admin" */
   }
 }
 
