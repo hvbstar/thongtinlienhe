@@ -747,17 +747,19 @@ html {
     margin-right: 5px;
   }
 
-  .contact-text, .contact-text .admin-text {
+  .contact-text {
     font-size: 12px;
     color: white;
     white-space: nowrap;
-    display: block;
+    display: inline-block;
     text-align: center;
   }
 
   .contact-text .admin-text {
-    font-size: 12px; /* Giữ chữ Admin nhỏ hơn nếu cần */
-    margin-top: 2px;
+    display: block;  /* Chữ Admin xuống dòng riêng */
+    font-size: 12px; /* Cả "Liên Hệ" và "Admin" cùng kích thước */
+    color: white; /* Đảm bảo màu chữ giống nhau */
+    margin-top: 2px; /* Khoảng cách giữa Liên Hệ và Admin */
   }
 }
 
@@ -767,19 +769,19 @@ html {
 }
 
 #contact-widget.dark .contact-icon {
-  background-color: #333;
+  background-color: #333; /* Nền tối cho phần icon */
 }
 
 #contact-widget.dark .contact-text {
-  color: white;
+  color: white; /* Chữ màu trắng */
 }
 
 #contact-widget.dark .contact-menu {
-  background-color: #444;
+  background-color: #444; /* Nền tối cho menu */
 }
 
 #contact-widget.dark .contact-button {
-  background-color: #555;
+  background-color: #555; /* Nền tối cho nút trong menu */
 }
 
 #contact-widget.dark .contact-button a {
@@ -787,11 +789,11 @@ html {
 }
 
 #contact-widget.dark .contact-button img {
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1); /* Chuyển đổi icon sáng trong chế độ tối */
 }
 
 #contact-widget.dark #gmail-btn span {
-  color: white;
+  color: white; /* Chữ trắng cho nút Chat Email */
 }
 
 /* Điều chỉnh các phần tử khác */
