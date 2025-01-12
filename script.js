@@ -131,13 +131,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // Sau khi giọng Google phát xong, dừng giọng và phát nhạc
             googleVoice.onended = function() {
                 console.log("Giọng Google đã dừng, phát nhạc...");
-                googleVoice.pause();
-                googleVoice.currentTime = 0;
+
+                // Phát nhạc nền sau khi giọng Google kết thúc
                 music.play().then(() => {
                     console.log("Nhạc nền đã phát.");
                 }).catch((error) => {
                     console.error("Không thể phát nhạc:", error);
-                    alert("Vui lòng nhấn OK một lần nữa để phát nhạc.");
                 });
             };
         }).catch((error) => {
