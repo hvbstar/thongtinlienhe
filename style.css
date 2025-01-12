@@ -1367,12 +1367,6 @@ a:active, button:active, input:active, img:active, .interactive:active {
   cursor: pointer; /* Thêm con trỏ chuột cho icon */
 }
 
-/* Hiệu ứng nét đứt chạy liên tục xung quanh phần liên hệ admin */
-.contact-icon {
-  border: 3px dashed rgba(255, 87, 34, 0.8); /* Viền nét đứt */
-  animation: border-dash 1s linear infinite; /* Tăng tốc độ cho hiệu ứng chạy nhanh liên tục */
-}
-
 /* Các icon trong phần liên hệ */
 .contact-icon img {
   width: 35px;
@@ -1387,16 +1381,6 @@ a:active, button:active, input:active, img:active, .interactive:active {
   font-weight: bold;
   color: #333;
   /* Không thay đổi gì ở phần này */
-}
-
-/* Hiển thị chữ "Liên Hệ Admin" chỉ trên desktop */
-.contact-text.desktop {
-  display: inline;
-}
-
-/* Ẩn chữ "Liên Hệ Admin" trên điện thoại */
-.contact-text.mobile {
-  display: none;
 }
 
 /* Phần menu liên hệ khi được mở */
