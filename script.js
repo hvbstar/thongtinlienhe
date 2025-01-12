@@ -145,6 +145,11 @@ document.addEventListener('DOMContentLoaded', function() {
         welcomeMessage.style.display = 'none';
         overlay.style.display = 'none';
     });
+
+    // Đảm bảo rằng Safari nhận diện đúng sự kiện nhấn và không bị block âm thanh
+    continueButton.addEventListener('touchstart', function() {
+        console.log('Tương tác với Safari bắt đầu...');
+    });
 });
 
     // Hàm copy số tài khoản
