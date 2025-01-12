@@ -118,8 +118,15 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-    // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
+    // Thêm sự kiện nhấn vào "OK" để phát nhạc
     continueButton.addEventListener("click", function() {
+        // Phát nhạc nền khi người dùng nhấn "OK"
+        music.play().then(() => {
+            console.log("Nhạc nền đã phát.");
+        }).catch((error) => {
+            console.error("Không thể phát nhạc nền:", error);
+        });
+
         // Dừng nhạc nếu đang phát trước khi phát giọng Google
         music.pause();
         music.currentTime = 0;
@@ -128,13 +135,11 @@ document.addEventListener("DOMContentLoaded", function() {
         googleVoice.play().then(() => {
             console.log("Giọng Google đang phát...");
 
-            // Sau khi giọng Google phát xong, dừng giọng và phát nhạc
+            // Sau khi giọng Google phát xong, dừng giọng và phát nhạc nền lại
             googleVoice.onended = function() {
-                console.log("Giọng Google đã dừng, phát nhạc...");
+                console.log("Giọng Google đã dừng, phát nhạc nền...");
                 googleVoice.pause();
                 googleVoice.currentTime = 0;
-
-                // Đảm bảo nhạc nền phát tiếp tục mà không có alert
                 music.play().then(() => {
                     console.log("Nhạc nền đã phát.");
                 }).catch((error) => {
@@ -144,6 +149,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }).catch((error) => {
             console.error("Không thể phát giọng Google:", error);
         });
+    });
+
+    // Thêm sự kiện phát nhạc nền khi người dùng vào trang lần đầu tiên
+    // Một số trình duyệt yêu cầu phải có sự kiện người dùng tương tác (như nhấn vào trang)
+    music.play().catch((error) => {
+        console.log("Lỗi khi cố gắng phát nhạc nền ngay lập tức:", error);
     });
 });
 
