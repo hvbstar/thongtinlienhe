@@ -106,36 +106,45 @@ window.addEventListener('load', function() {
     }
 });
 
-// Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
-continueButton.addEventListener('click', function() {
-    // Phát giọng Google nếu tồn tại
-    if (googleVoice) {
-        googleVoice.play().then(() => {
-            console.log("Giọng Google đã phát thành công.");
-        }).catch((error) => {
-            console.error("Không thể phát giọng Google:", error);
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    // Lấy phần tử âm thanh và nút "OK"
+    let googleVoice = document.getElementById('google-voice');
+    let music = document.getElementById('welcome-audio');
+    let continueButton = document.getElementById('continue-button');
+    let welcomeMessage = document.getElementById('welcome-message');
+    let overlay = document.getElementById('overlay'); // Nếu bạn có lớp phủ
 
-        // Sau khi giọng Google phát xong, phát nhạc nền
-        googleVoice.onended = function() {
-            console.log("Giọng Google đã dừng, phát nhạc...");
-            googleVoice.pause();
-            googleVoice.currentTime = 0;
-
-            // Phát nhạc nền
-            if (audio) {
-                audio.play().then(() => {
-                    console.log("Âm thanh đã phát thành công.");
-                }).catch((error) => {
-                    console.error("Không thể phát nhạc:", error);
-                });
-            }
-        };
+    // Kiểm tra xem các phần tử có tồn tại không
+    if (!googleVoice || !music || !continueButton || !welcomeMessage || !overlay) {
+        console.error('Lỗi: Không tìm thấy một trong các phần tử cần thiết!');
+        return;
     }
 
-    // Ẩn bảng lời chào và lớp phủ
-    welcomeMessage.style.display = 'none';
-    overlay.style.display = 'none';
+    // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
+    continueButton.addEventListener('click', function() {
+        // Phát giọng Google trước
+        googleVoice.play().then(() => {
+            console.log('Giọng Google đang phát...');
+        }).catch((error) => {
+            console.error('Không thể phát giọng Google:', error);
+        });
+
+        // Sau khi giọng Google kết thúc, phát nhạc nền
+        googleVoice.onended = function() {
+            console.log('Giọng Google đã kết thúc, phát nhạc nền...');
+            googleVoice.pause();
+            googleVoice.currentTime = 0;
+            music.play().then(() => {
+                console.log('Nhạc nền đang phát...');
+            }).catch((error) => {
+                console.error('Không thể phát nhạc nền:', error);
+            });
+        };
+
+        // Ẩn bảng lời chào và lớp phủ
+        welcomeMessage.style.display = 'none';
+        overlay.style.display = 'none';
+    });
 });
 
     // Hàm copy số tài khoản
