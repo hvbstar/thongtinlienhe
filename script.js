@@ -106,6 +106,46 @@ window.addEventListener('load', function() {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Lấy phần tử âm thanh của giọng Google và nhạc nền
+    let googleVoice = document.getElementById("google-voice");
+    let music = document.getElementById("welcome-audio");
+    let continueButton = document.getElementById("continue-button");
+
+    // Kiểm tra xem các phần tử có tồn tại không
+    if (!googleVoice || !music || !continueButton) {
+        console.error("Lỗi: Không tìm thấy một trong các phần tử audio hoặc nút!");
+        return;
+    }
+
+    // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
+    continueButton.addEventListener("click", function() {
+        // Dừng nhạc nếu đang phát trước khi phát giọng Google
+        music.pause();
+        music.currentTime = 0;
+
+        // Phát giọng Google
+        googleVoice.play().then(() => {
+            console.log("Giọng Google đang phát...");
+
+            // Sau khi giọng Google phát xong, dừng giọng và phát nhạc
+            googleVoice.onended = function() {
+                console.log("Giọng Google đã dừng, phát nhạc...");
+                googleVoice.pause();
+                googleVoice.currentTime = 0;
+                music.play().then(() => {
+                    console.log("Nhạc nền đã phát.");
+                }).catch((error) => {
+                    console.error("Không thể phát nhạc:", error);
+                    alert("Vui lòng nhấn OK một lần nữa để phát nhạc.");
+                });
+            };
+        }).catch((error) => {
+            console.error("Không thể phát giọng Google:", error);
+        });
+    });
+});
+
 // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
 continueButton.addEventListener('click', function() {
     // Phát nhạc nếu tồn tại
