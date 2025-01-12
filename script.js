@@ -106,68 +106,31 @@ window.addEventListener('load', function() {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Lấy phần tử âm thanh của giọng Google và nhạc nền
-    let googleVoice = document.getElementById("google-voice");
-    let music = document.getElementById("welcome-audio");
-    let continueButton = document.getElementById("continue-button");
-
-    // Kiểm tra xem các phần tử có tồn tại không
-    if (!googleVoice || !music || !continueButton) {
-        console.error("Lỗi: Không tìm thấy một trong các phần tử audio hoặc nút!");
-        return;
-    }
-
-    // Thêm sự kiện nhấn vào "OK" để phát nhạc
-    continueButton.addEventListener("click", function() {
-        // Phát nhạc nền khi người dùng nhấn "OK"
-        music.play().then(() => {
-            console.log("Nhạc nền đã phát.");
-        }).catch((error) => {
-            console.error("Không thể phát nhạc nền:", error);
-        });
-
-        // Dừng nhạc nếu đang phát trước khi phát giọng Google
-        music.pause();
-        music.currentTime = 0;
-
-        // Phát giọng Google
+// Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
+continueButton.addEventListener('click', function() {
+    // Phát giọng Google nếu tồn tại
+    if (googleVoice) {
         googleVoice.play().then(() => {
-            console.log("Giọng Google đang phát...");
-
-            // Sau khi giọng Google phát xong, dừng giọng và phát nhạc nền lại
-            googleVoice.onended = function() {
-                console.log("Giọng Google đã dừng, phát nhạc nền...");
-                googleVoice.pause();
-                googleVoice.currentTime = 0;
-                music.play().then(() => {
-                    console.log("Nhạc nền đã phát.");
-                }).catch((error) => {
-                    console.error("Không thể phát nhạc:", error);
-                });
-            };
+            console.log("Giọng Google đã phát thành công.");
         }).catch((error) => {
             console.error("Không thể phát giọng Google:", error);
         });
-    });
 
-    // Thêm sự kiện phát nhạc nền khi người dùng vào trang lần đầu tiên
-    // Một số trình duyệt yêu cầu phải có sự kiện người dùng tương tác (như nhấn vào trang)
-    music.play().catch((error) => {
-        console.log("Lỗi khi cố gắng phát nhạc nền ngay lập tức:", error);
-    });
-});
+        // Sau khi giọng Google phát xong, phát nhạc nền
+        googleVoice.onended = function() {
+            console.log("Giọng Google đã dừng, phát nhạc...");
+            googleVoice.pause();
+            googleVoice.currentTime = 0;
 
-// Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
-continueButton.addEventListener('click', function() {
-    // Phát nhạc nếu tồn tại
-    if (audio) {
-        audio.play().then(() => {
-            console.log("Âm thanh đã phát thành công.");
-        }).catch((error) => {
-            console.error("Không thể phát âm thanh:", error);
-            alert("Vui lòng nhấn OK một lần nữa để phát âm thanh.");
-        });
+            // Phát nhạc nền
+            if (audio) {
+                audio.play().then(() => {
+                    console.log("Âm thanh đã phát thành công.");
+                }).catch((error) => {
+                    console.error("Không thể phát nhạc:", error);
+                });
+            }
+        };
     }
 
     // Ẩn bảng lời chào và lớp phủ
