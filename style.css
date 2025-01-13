@@ -306,16 +306,26 @@ html {
   cursor: pointer;
 }
 
-/* Điều chỉnh lên cho 4 ngân hàng */
-#mbbank, #vietinbank, #vietcombank, #momo {
-  margin-top: -10px;  /* Thử với giá trị khác nếu cần */
+/* Căn chỉnh cho các phần tử trong col-lg-3 */
+.col-lg-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 25%;
+  max-width: 25%;
+  white-space: nowrap; /* Ngăn ngừa xuống dòng cho các phần tử trong cột */
 }
 
-/* Chỉ chặn tương tác với hình ảnh trên điện thoại */
 @media (max-width: 768px) { /* Màn hình nhỏ hơn 768px, tức là thiết bị di động */
   #mbbank img, #vietinbank img, #vietcombank img, #momo img {
     pointer-events: none; /* Tắt tương tác chỉ trên điện thoại */
-    
+  }
+
+  /* Cập nhật #vietinbank để ngăn ngừa xuống dòng */
+  #vietinbank {
+    display: inline-flex; /* Đảm bảo phần tử giữ nguyên trên một dòng */
+    white-space: nowrap;   /* Ngăn ngừa xuống dòng */
+    justify-content: center; /* Căn giữa phần tử trong cột */
   }
 }
 
