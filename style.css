@@ -1030,30 +1030,32 @@ html, body {
 }
 
 .custom-alert-content {
-  background: rgba(0, 128, 0, 0.8); /* Màu xanh lá trong suốt */
+  background: rgba(0, 0, 0, 0.8); /* Màu nền đen trong suốt */
   border-radius: 15px;
   padding: 20px 25px;
   text-align: center;
   width: 300px;
-  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Bóng mờ màu đen */
   animation: popUp 0.1s ease-in-out;
   position: relative;
   backdrop-filter: blur(10px); /* Blur trong khung */
+  border: 3px solid #000000; /* Viền khung màu đen */
 }
 
 .custom-alert-content p {
   margin: 0 0 15px;
   font-size: 16px;
   font-weight: bold;
-  color: white;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Hiệu ứng chữ phát sáng */
+  color: white; /* Màu chữ trắng */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Viền chữ màu trắng */
   animation: textGlow 1.5s infinite alternate;
 }
 
+/* Nút đóng */
 .custom-alert-content button {
-  background-color: #ffffff;
-  color: #4caf50;
-  border: none;
+  background-color: black; /* Nút đóng màu đen */
+  color: white; /* Chữ màu trắng */
+  border: 2px solid #000000; /* Viền nút màu đen */
   padding: 8px 15px;
   border-radius: 5px;
   font-size: 14px;
@@ -1062,9 +1064,10 @@ html, body {
 }
 
 .custom-alert-content button:hover {
-  background-color: #4caf50;
-  color: white;
-  box-shadow: 0 4px 15px rgba(0, 255, 0, 0.5);
+  background-color: #000000; /* Nút chuyển sang màu đen khi hover */
+  color: #ffb6c1; /* Chữ màu hồng nhạt khi hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Bóng mờ màu đen khi hover */
+  border-color: #ffb6c1; /* Viền hồng nhạt khi hover */
 }
 
 /* Hiệu ứng bật lên */
@@ -1082,10 +1085,10 @@ html, body {
 /* Hiệu ứng chữ phát sáng */
 @keyframes textGlow {
   from {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 255, 0, 0.7);
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.7);
   }
   to {
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 30px rgba(0, 255, 0, 1);
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 1);
   }
 }
 
