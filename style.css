@@ -316,6 +316,10 @@ html {
   #mbbank img, #vietinbank img, #vietcombank img, #momo img {
     pointer-events: none; /* Tắt tương tác chỉ trên điện thoại */
   }
+
+  #vietinbank {
+    white-space: nowrap;  /* Ngăn ngừa xuống dòng */
+  }
 }
 
 .app.dark .card__item {
