@@ -319,6 +319,12 @@ html {
 
   #vietinbank {
     white-space: nowrap;  /* Ngăn ngừa xuống dòng */
+    display: inline-block; /* Đảm bảo phần tử không xuống dòng */
+  }
+
+  /* Đảm bảo số tài khoản không xuống dòng */
+  #vietinbank span {
+    white-space: nowrap;
   }
 }
 
