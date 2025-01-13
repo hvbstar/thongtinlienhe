@@ -315,16 +315,7 @@ html {
 @media (max-width: 768px) { /* Màn hình nhỏ hơn 768px, tức là thiết bị di động */
   #mbbank img, #vietinbank img, #vietcombank img, #momo img {
     pointer-events: none; /* Tắt tương tác chỉ trên điện thoại */
-  }
-
-  #vietinbank {
-    white-space: nowrap;  /* Ngăn ngừa xuống dòng */
-    display: inline-block; /* Đảm bảo phần tử không xuống dòng */
-  }
-
-  /* Đảm bảo số tài khoản không xuống dòng */
-  #vietinbank span {
-    white-space: nowrap;
+    
   }
 }
 
