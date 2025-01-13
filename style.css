@@ -886,8 +886,13 @@ html, body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* Nền mờ tối */
   z-index: 9998; /* Đặt lớp phủ dưới bảng lời chào */
-  display: none; /* Ẩn lớp phủ khi không cần thiết */
+  display: none; /* Ẩn lớp phủ mặc định */
   /* pointer-events: none; /* Không cho phép tương tác khi ẩn lớp phủ */
+}
+
+/* Hiển thị lớp phủ khi thêm lớp 'visible' */
+.overlay.visible {
+  display: block; /* Hiển thị lớp phủ */
 }
 
 /* Bảng lời chào */
