@@ -90,6 +90,14 @@ const overlay = document.getElementById('overlay');
 const welcomeMessage = document.getElementById('welcome-message');
 const audio = document.getElementById('welcome-audio');
 
+// Khi DOM được tải xong, hiển thị lớp phủ ngay lập tức
+document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.querySelector('.overlay');
+    if (overlay) {
+        overlay.classList.add('visible'); // Thêm lớp để hiển thị lớp phủ ngay lập tức
+    }
+});
+
 // Khi trang load, hiển thị lớp phủ và bảng lời chào
 window.addEventListener('load', function() {
     overlay.style.display = 'block';
