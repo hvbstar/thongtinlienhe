@@ -1059,9 +1059,9 @@ html, body {
 
 /* Nút đóng */
 .custom-alert-content button {
-  background-color: black; /* Nút đóng màu đen */
-  color: white; /* Chữ màu trắng */
-  border: 2px solid #000000; /* Viền nút màu đen */
+  background-color: rgb(252, 252, 252); /* Nút đóng màu đen */
+  color: rgb(4, 4, 4); /* Chữ màu trắng */
+  border: 2px solid #f50348; /* Viền nút màu đen */
   padding: 8px 15px;
   border-radius: 5px;
   font-size: 14px;
@@ -1071,9 +1071,9 @@ html, body {
 
 .custom-alert-content button:hover {
   background-color: #000000; /* Nút chuyển sang màu đen khi hover */
-  color: #ffb6c1; /* Chữ màu hồng nhạt khi hover */
+  color: #ffffff; /* Chữ màu hồng nhạt khi hover */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Bóng mờ màu đen khi hover */
-  border-color: #ffb6c1; /* Viền hồng nhạt khi hover */
+  border-color: #f702b5; /* Viền hồng nhạt khi hover */
 }
 
 /* Hiệu ứng bật lên */
