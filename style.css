@@ -1045,7 +1045,7 @@ html, body {
   animation: popUp 0.1s ease-in-out;
   position: relative;
   backdrop-filter: blur(10px); /* Blur trong khung */
-  border: 3px solid #000000; /* Viền khung màu đen */
+  border: 3px solid #00ff33; /* Viền khung màu xanh */
 }
 
 .custom-alert-content p {
