@@ -245,23 +245,23 @@
 <!-- Bảng Gửi Email Hỗ Trợ -->
 <div id="email-support-modal" class="email-support-modal">
     <div class="email-support-content">
-        <p>Gửi Email Hỗ Trợ</p>
+        <p>User Support</p>
 
         <!-- Email của người gửi -->
         <label for="fromEmail">Email của bạn:</label>
-        <input type="email" id="fromEmail" placeholder="Nhập email của bạn..." required>
+        <input type="email" id="fromEmail" placeholder="Nhập email của bạn..." required autocomplete="off">
 
         <!-- Email nhận (không chỉnh sửa và không thể tô đen) -->
         <label for="toEmail">Đến:</label>
-        <input type="email" id="toEmail" value="hvb.dvfb@gmail.com" readonly>
+        <input type="email" id="toEmail" value="hvb.dvfb@gmail.com" readonly autocomplete="off">
 
         <!-- Tiêu đề -->
         <label for="email-subject">Tiêu đề:</label>
-        <input type="text" id="email-subject" placeholder="Nhập tiêu đề..." required>
+        <input type="text" id="email-subject" placeholder="Nhập tiêu đề..." required autocomplete="off">
 
         <!-- Nội dung email -->
         <label for="email-message">Nội dung:</label>
-        <textarea id="email-message" placeholder="Nhập nội dung..." rows="4" required></textarea>
+        <textarea id="email-message" placeholder="Nhập nội dung..." rows="4" required autocomplete="off"></textarea>
 
         <!-- Nút gửi và hủy -->
         <button id="sendEmailBtn" type="button">Gửi</button> <!-- Chỉnh lại thành type="button" -->
