@@ -1108,6 +1108,113 @@ html, body {
   }
 }
 
+/* Bảng Gửi Email - Đổi class để tránh ảnh hưởng */
+.email-support-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+  backdrop-filter: none;
+}
+
+/* Nội dung bảng gửi email */
+.email-support-content {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  padding: 20px 25px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 8px 20px rgba(0, 255, 51, 1);
+  animation: popUp 0.1s ease-in-out;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 3px solid #00ff33;
+}
+
+.email-support-content p {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: textGlow 1.5s infinite alternate;
+}
+
+/* Input & Textarea */
+.email-support-content input,
+.email-support-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #00ff33;
+  border-radius: 5px;
+  background: #000;
+  color: white;
+}
+
+/* Không cho chỉnh sửa ô "Đến" */
+.email-support-content input[readonly] {
+  background: #333;
+  cursor: not-allowed;
+}
+
+/* Nút gửi và hủy */
+.email-support-content button {
+  background-color: rgb(252, 252, 252);
+  color: rgb(4, 4, 4);
+  border: 2px solid #f50348;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+.email-support-content button:hover {
+  background-color: #000;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border-color: #f702b5;
+}
+
+/* Hiệu ứng bật lên */
+@keyframes popUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Hiệu ứng chữ phát sáng */
+@keyframes textGlow {
+  from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.7); }
+  to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 1); }
+}
+
+#email-support-modal {
+display: none; /* Mặc định ẩn bảng */
+}
+
+.email-support-content textarea {
+resize: none; /* Không cho kéo giãn */
+}
+
+/* Ngăn không cho tô đen và chỉnh sửa ô "Đến" */
+#toEmail {
+  pointer-events: none; /* Ngăn không cho tương tác với ô này */
+  background: #333; /* Thêm màu nền để rõ ràng hơn */
+  cursor: not-allowed; /* Chỉnh con trỏ khi di chuột vào */
+}
+
+/* Đảm bảo ô này vẫn là read-only */
+#toEmail[readonly] {
+  background: #333; /* Màu nền cho ô */
+}
+
 /* Snow */
 @-webkit-keyframes snowflakes-fall {
   0% {
