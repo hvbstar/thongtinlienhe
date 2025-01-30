@@ -349,6 +349,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let emailModal = document.getElementById("email-support-modal");
         emailModal.style.display = "flex";
         setTimeout(() => { emailModal.style.opacity = "1"; }, 10);
+
+        // Xóa dữ liệu đã nhập trước khi mở modal
+        document.getElementById("fromEmail").value = "";  // Xóa email người gửi
+        document.getElementById("email-subject").value = "";  // Xóa tiêu đề
+        document.getElementById("email-message").value = "";  // Xóa nội dung
     });
 
     // Gán sự kiện cho nút gửi email
@@ -377,21 +382,26 @@ function sendEmail() {
         return;
     }
 
-// Gửi email qua EmailJS
-emailjs.send("service_4ph1p6g", "template_fvv4mpt", {
-    from_name: fromEmail,   // Tên người gửi
-    to_name: "Bảo",         // Tên người nhận, có thể thay đổi theo yêu cầu
-    subject: subject,       // Tiêu đề tin nhắn
-    message: message,       // Nội dung tin nhắn
-    from_email: fromEmail,  // Email người gửi
-}, "rsh39BTboQMTgey0m")
-.then((response) => {
-    console.log('EmailJS Response:', response);
-    alert("Email đã được gửi thành công!");
-    closeEmailModal();
-})
-.catch((error) => {
-    console.error('EmailJS Error:', error);
-    alert("Gửi email thất bại, vui lòng thử lại!");
-});
+    // Gửi email qua EmailJS
+    emailjs.send("service_4ph1p6g", "template_fvv4mpt", {
+        from_name: fromEmail,   // Tên người gửi
+        to_name: "Bảo",         // Tên người nhận, có thể thay đổi theo yêu cầu
+        subject: subject,       // Tiêu đề tin nhắn
+        message: message,       // Nội dung tin nhắn
+        from_email: fromEmail,  // Email người gửi
+    }, "rsh39BTboQMTgey0m")
+    .then((response) => {
+        console.log('EmailJS Response:', response);
+        alert("Email đã được gửi thành công!");
+        closeEmailModal();
+
+        // Xóa dữ liệu đã nhập sau khi gửi thành công
+        document.getElementById("fromEmail").value = "";  // Xóa email người gửi
+        document.getElementById("email-subject").value = "";  // Xóa tiêu đề
+        document.getElementById("email-message").value = "";  // Xóa nội dung
+    })
+    .catch((error) => {
+        console.error('EmailJS Error:', error);
+        alert("Gửi email thất bại, vui lòng thử lại!");
+    });
 }
