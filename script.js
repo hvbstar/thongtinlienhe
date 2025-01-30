@@ -372,13 +372,21 @@ function closeEmailModal() {
 // Gửi email bằng EmailJS
 function sendEmail() {
     // Lấy thông tin từ form
-    const fromEmail = document.getElementById("fromEmail").value;
+    const fromEmail = document.getElementById("fromEmail").value.trim();
     const toEmail = document.getElementById("toEmail").value;
-    const subject = document.getElementById("email-subject").value;
-    const message = document.getElementById("email-message").value;
+    const subject = document.getElementById("email-subject").value.trim();
+    const message = document.getElementById("email-message").value.trim();
 
+    // Kiểm tra nếu chưa nhập đủ thông tin
     if (!fromEmail || !subject || !message) {
         alert("Vui lòng điền đầy đủ thông tin!");
+        return;
+    }
+
+    // Kiểm tra email có đúng định dạng @gmail.com không
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!emailRegex.test(fromEmail)) {
+        alert("Email của bạn phải có định dạng @gmail.com !!!");
         return;
     }
 
