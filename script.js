@@ -196,18 +196,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }    
 
-// Hàm copy Email
-function copyEmail() {
-    const email = "hvb.dvfb@gmail.com"; // Địa chỉ Gmail cần sao chép
-    navigator.clipboard.writeText(email)
-        .then(() => {
-            showCustomAlert(`Bạn cần hỗ trợ? Gửi email cho tôi tại: ${email}`);
-        })
-        .catch(() => {
-            showCustomAlert('Sao chép Gmail thất bại, vui lòng thử lại!');
-        });
-}
-
     // Mã hóa và hiển thị phần bản quyền "Design by Hoang Van Bao."
     (function() {
         const _0x4e76 = [
@@ -353,4 +341,57 @@ document.addEventListener('copy', function(e) {
 function toggleContactMenu() {
     const menu = document.querySelector(".contact-menu");
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+// Email hỗ trợ
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("gmail-btn").addEventListener("click", function () {
+        let emailModal = document.getElementById("email-support-modal");
+        emailModal.style.display = "flex";
+        setTimeout(() => { emailModal.style.opacity = "1"; }, 10);
+    });
+
+    // Gán sự kiện cho nút gửi email
+    document.getElementById("sendEmailBtn").addEventListener("click", function() {
+        sendEmail(); // Gọi hàm gửi email
+    });
+});
+
+// Đóng bảng gửi email
+function closeEmailModal() {
+    let emailModal = document.getElementById("email-support-modal");
+    emailModal.style.opacity = "0";
+    setTimeout(() => { emailModal.style.display = "none"; }, 300);
+}
+
+// Gửi email bằng EmailJS
+function sendEmail() {
+    // Lấy thông tin từ form
+    const fromEmail = document.getElementById("fromEmail").value;
+    const toEmail = document.getElementById("toEmail").value;
+    const subject = document.getElementById("email-subject").value;
+    const message = document.getElementById("email-message").value;
+
+    if (!fromEmail || !subject || !message) {
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return;
+    }
+
+// Gửi email qua EmailJS
+emailjs.send("service_4ph1p6g", "template_fvv4mpt", {
+    from_name: fromEmail,   // Tên người gửi
+    to_name: "Bảo",         // Tên người nhận, có thể thay đổi theo yêu cầu
+    subject: subject,       // Tiêu đề tin nhắn
+    message: message,       // Nội dung tin nhắn
+    from_email: fromEmail,  // Email người gửi
+}, "rsh39BTboQMTgey0m")
+.then((response) => {
+    console.log('EmailJS Response:', response);
+    alert("Email đã được gửi thành công!");
+    closeEmailModal();
+})
+.catch((error) => {
+    console.error('EmailJS Error:', error);
+    alert("Gửi email thất bại, vui lòng thử lại!");
+});
 }
