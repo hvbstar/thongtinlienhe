@@ -135,7 +135,7 @@ html {
 
 .card {
   position: fixed;
-  max-width: 350px;
+  max-width: 370px;
   height: 380px;
   display: flex;
   margin: auto;
