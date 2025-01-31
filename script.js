@@ -114,6 +114,41 @@ window.addEventListener('load', function() {
     }
 });
 
+// Thêm mã tối ưu hóa video và FPS sau mã ban đầu
+document.addEventListener("DOMContentLoaded", function() {
+    const videoBackground = document.querySelector('.video-background');
+    if (videoBackground) {
+        // Làm nét video (bỏ blur nếu có)
+        videoBackground.style.filter = 'blur(0px)';
+
+        // Đảm bảo video bắt đầu phát ngay khi có thể
+        videoBackground.style.display = 'none'; // Ẩn video khi chưa sẵn sàng
+
+        videoBackground.oncanplaythrough = function() {
+            videoBackground.style.display = 'block'; // Hiển thị video khi có thể phát
+            videoBackground.play(); // Bắt đầu phát video ngay khi có thể
+        };
+
+        // Giới hạn FPS cho các thiết bị yếu (có thể điều chỉnh tùy theo yêu cầu)
+        const MAX_FPS = 30; // Giới hạn FPS để tránh quá tải
+        let lastFrameTime = 0;
+        
+        function optimizeFrame(timestamp) {
+            // Tính toán thời gian trôi qua giữa các khung hình
+            if (timestamp - lastFrameTime >= (1000 / MAX_FPS)) {
+                if (videoBackground.readyState >= 3) {
+                    // Chỉ phát video khi đã sẵn sàng
+                    requestAnimationFrame(optimizeFrame);
+                }
+                lastFrameTime = timestamp;
+            } else {
+                requestAnimationFrame(optimizeFrame);
+            }
+        }
+        optimizeFrame(0);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Lấy phần tử âm thanh và nút "OK"
     let googleVoice = document.getElementById('google-voice');
