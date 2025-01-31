@@ -1,0 +1,15 @@
+{
+  "name": "Hoàng Văn Bảo",
+  "short_name": "HVB",
+  "start_url": "/thongtinlienhe/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1877f2",
+  "icons": [
+    {
+      "src": "./favicon_io/hvbdz-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}
