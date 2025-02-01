@@ -155,6 +155,7 @@ html {
   -webkit-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
 }
+
 .app.dark .card::after {
   transform: scale(1.01);
   border-radius: 7px;
