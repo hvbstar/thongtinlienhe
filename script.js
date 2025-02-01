@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // © HOÀNG VĂN BẢO ✅
 (function() {
     setTimeout(function() {
-        console.log("%c* STOP COPY SOURCE !", "color: red; font-size: 42px; font-weight: bold; text-shadow: 2px 2px 5px black;");
+        console.log("%c⚠️ STOP COPY SOURCE !", "color: red; font-size: 42px; font-weight: bold; text-shadow: 2px 2px 5px black;");
         console.log("%c⇝ © HOÀNG VĂN BẢO ✅", "color: black; font-size: 38px; font-weight: bold;");
         console.log("%c⇝ Trộm SOURCE Là Hành Vi Không Tốt, Cần Source Inbox Facebook Để xin, Please !!! ", "color: black; font-size: 30px;");
         console.log("%c⇝ Facebook Của Tôi: https://www.facebook.com/HVB.Profile", "color: blue; font-size: 22px; text-decoration: underline;");
