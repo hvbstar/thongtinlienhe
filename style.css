@@ -1448,6 +1448,11 @@ a:hover, button:hover, input:hover, select:hover, textarea:hover, img:hover, .in
     cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
 }
 
+/* Đảm bảo dấu tích vẫn hiển thị con trỏ pointer mặc định */
+.veri__check {
+  cursor: url('https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png'), pointer !important;
+}
+
 /* Con trỏ tùy chỉnh khi click vào các sự kiện */
 a:active, button:active, input:active, img:active, .interactive:active {
     cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), pointer !important;
