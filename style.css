@@ -701,6 +701,48 @@ html {
   height: 17px !important; /* Giảm kích thước chiều cao */
   background-color: #07aafb !important; /* Màu nền xanh */
   border-radius: 50% !important; /* Đảm bảo nền vẫn là hình tròn */
+  position: relative; /* Để định vị tooltip */
+  cursor: pointer;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: 280px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 150%; /* Hiển thị phía trên */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  white-space: normal;
+  max-width: 300px;
+  z-index: 10;
+}
+
+/* Mũi tên nhỏ chỉ vào dấu tích */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Đặt phía dưới tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Hiển thị tooltip khi hover */
+.veri__check:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .veri__check i {
