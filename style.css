@@ -691,7 +691,6 @@ html {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
-
 /* Màu của dấu Tích */
 .veri__check {
   display: flex !important;
@@ -704,7 +703,6 @@ html {
   position: relative; /* Để định vị tooltip */
   cursor: pointer;
 }
-
 .tooltip {
   visibility: hidden;
   width: 280px;
