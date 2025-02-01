@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let continueButton = document.getElementById('continue-button');
     let welcomeMessage = document.getElementById('welcome-message');
     let overlay = document.getElementById('overlay'); // Nếu bạn có lớp phủ
-
     // Kiểm tra xem các phần tử có tồn tại không
     if (!googleVoice || !music || !continueButton || !welcomeMessage || !overlay) {
         console.error('Lỗi: Không tìm thấy một trong các phần tử cần thiết!');
