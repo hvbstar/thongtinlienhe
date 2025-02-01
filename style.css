@@ -1054,6 +1054,7 @@ html, body {
   color: white; /* Màu chữ trắng */
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Viền chữ màu trắng */
   animation: textGlow 1.5s infinite alternate;
+  display: inline-block;
 }
 
 /* Nút đóng */
