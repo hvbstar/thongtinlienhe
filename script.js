@@ -356,21 +356,42 @@ document.addEventListener('keydown', function(e) {
     }, 1000);
 })();
 
-// Ngăn ngừa sao chép (copy)
+// Ngăn ngừa sao chép (copy) trên toàn trang
 document.addEventListener('copy', function(e) {
-    e.preventDefault();
+    e.preventDefault();  // Ngừng thao tác sao chép
     alert("Sao chép không được phép trên trang web này!");
-  });
-  
-  // Ngừng chọn văn bản (select)
-  document.addEventListener('selectstart', function(e) {
+});
+
+// Ngừng chọn văn bản (select) trên toàn trang, ngoại trừ trong bảng email hỗ trợ
+document.addEventListener('selectstart', function(e) {
+    const emailSupportModal = document.getElementById("email-support-modal");
+
+    // Nếu không ở trong bảng email hỗ trợ, ngừng chọn văn bản
+    if (!emailSupportModal.contains(document.activeElement)) {
+        e.preventDefault();
+    }
+});
+
+// Ngừng các thao tác chạm (touch) trên thiết bị di động
+document.body.addEventListener('touchstart', function(e) {
     e.preventDefault();
-  });
-  
-  // Ngừng các thao tác chạm (touch) trên thiết bị di động
-  document.body.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-  });  
+}); 
+
+// Chặn Ctrl + C ở tất cả nơi trên trang
+document.addEventListener('keydown', function(e) {
+    const emailSupportModal = document.getElementById("email-support-modal");
+
+    // Chặn Ctrl + C trên toàn trang
+    if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault();  // Ngừng sao chép
+        alert("Sao chép không được phép trên trang này!");
+    }
+
+    // Chỉ cho phép chọn tất cả (Ctrl + A) trong bảng email hỗ trợ
+    if (e.ctrlKey && e.key === 'a' && emailSupportModal.contains(document.activeElement)) {
+        return;  // Cho phép bôi đen tất cả khi nhấn Ctrl + A trong bảng email hỗ trợ
+    }
+});
 
 // Hàm để hiển thị/ẩn menu khi nhấp vào icon CSKH
 function toggleContactMenu() {
@@ -448,3 +469,85 @@ function sendEmail() {
         alert("Gửi email thất bại, vui lòng thử lại!");
     });
 }
+
+// Bộ đếm từ
+document.addEventListener("DOMContentLoaded", function () {
+    const emailLabel = document.querySelector("label[for='email-message']");
+    const charCount = document.createElement("span");
+    charCount.id = "charCount";
+    charCount.textContent = "0/200";
+    charCount.style.color = "white"; // Màu mặc định
+    charCount.style.marginLeft = "5px"; // Khoảng cách giữa chữ "Nội dung:" và bộ đếm
+    charCount.style.fontWeight = "bold"; // In đậm cho dễ thấy
+    emailLabel.appendChild(charCount); // Chèn vào ngay sau chữ "Nội dung:"
+
+    const emailMessage = document.getElementById("email-message");
+    const sendEmailBtn = document.getElementById("sendEmailBtn");
+    const cancelBtn = document.querySelector("button[type='button'][onclick='closeEmailModal()']"); // Nút hủy
+    const maxChars = 200;
+
+    // Kiểm tra nếu email đã gửi thành công trước đó
+    if (localStorage.getItem("emailSent") === "true") {
+        emailMessage.value = ""; // Xóa nội dung email
+        charCount.textContent = "0/200"; // Reset bộ đếm
+        charCount.style.color = "white"; // Đặt lại màu bình thường
+        localStorage.removeItem("emailSent"); // Xóa trạng thái gửi thành công
+    }
+
+    // Kiểm tra số ký tự khi nhập
+    emailMessage.addEventListener("input", function () {
+        let currentLength = emailMessage.value.length;
+        charCount.textContent = `${currentLength}/200`;
+
+        // Đổi màu khi gần hoặc vượt quá 200 ký tự
+        if (currentLength >= 190 && currentLength < maxChars) {
+            charCount.style.color = "yellow"; // Cảnh báo khi gần giới hạn
+            sendEmailBtn.disabled = false;
+        } else if (currentLength === maxChars) {
+            charCount.style.color = "red"; // Đạt 200 ký tự
+            sendEmailBtn.disabled = false; // Vẫn cho phép gửi
+        } else if (currentLength > maxChars) {
+            charCount.style.color = "red"; // Quá giới hạn
+            sendEmailBtn.disabled = true; // Chặn gửi
+        } else {
+            charCount.style.color = "white"; // Bình thường
+            sendEmailBtn.disabled = false;
+        }
+    });
+
+    // Xử lý khi người dùng ấn nút Hủy
+    cancelBtn.addEventListener("click", function () {
+        emailMessage.value = ""; // Xóa nội dung
+        charCount.textContent = "0/200"; // Reset bộ đếm
+        charCount.style.color = "white"; // Đặt lại màu bình thường
+    });
+
+    // Loại bỏ thông báo alert khi nhấn nút Gửi
+    sendEmailBtn.addEventListener("click", function () {
+        let currentLength = emailMessage.value.length;
+        if (currentLength > maxChars) {
+            sendEmailBtn.disabled = true; // Chặn gửi
+        }
+
+        // Xử lý logic gửi email ở đây mà không cần alert
+        // Sau khi gửi thành công, lưu trạng thái gửi
+        localStorage.setItem("emailSent", "true");
+
+        // Xử lý gửi email thành công (không cần alert nữa)
+    });
+
+    // Reset bộ đếm khi quay lại bảng email hỗ trợ
+    window.addEventListener("focus", function () {
+        let currentLength = emailMessage.value.length;
+        charCount.textContent = `${currentLength}/200`; // Giữ nguyên bộ đếm
+    });
+});
+
+    // Loại bỏ phần Check Spelling
+document.addEventListener("DOMContentLoaded", function() {
+    const inputs = document.querySelectorAll("input, textarea");
+    
+    inputs.forEach(input => {
+        input.setAttribute("spellcheck", "false");
+    });
+});
