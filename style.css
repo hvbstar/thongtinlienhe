@@ -1143,6 +1143,7 @@ html, body {
   color: white;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   animation: textGlow 1.5s infinite alternate;
+  margin-bottom: 10px; /* Điều chỉnh khoảng cách giữa Support Ticket và các trường bên dưới */
 }
 
 /* Input & Textarea */
@@ -1213,6 +1214,42 @@ resize: none; /* Không cho kéo giãn */
 /* Đảm bảo ô này vẫn là read-only */
 #toEmail[readonly] {
   background: #333; /* Màu nền cho ô */
+}
+
+/* Làm chữ tiêu đề và nhãn trắng, to hơn */
+.email-support-content label {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Bộ đếm từ */
+#word-counter, #charCount {
+  font-weight: bold;
+  color: white;
+  font-size: 12px; /* Cùng kích thước cho cả bộ đếm */
+  margin-left: 5px;
+  position: relative;
+  top: -1px; /* Điều chỉnh nhẹ vị trí bộ đếm từ cho gần dấu ":" */
+}
+
+/* Khi gần 200 từ hoặc hơn, bộ đếm chuyển đỏ */
+#word-counter.warning, #charCount.warning {
+  color: red;
+}
+
+/* Khi nhập gần hoặc quá số ký tự, viền ô nhập chuyển đỏ */
+.email-support-content textarea.warning {
+  border-color: red;
+  color: red;
+}
+
+/* Nút gửi bị vô hiệu hóa */
+.email-support-content button:disabled {
+  background: gray;
+  cursor: not-allowed;
+  border-color: gray;
+  opacity: 0.5;
 }
 
 /* Snow */
