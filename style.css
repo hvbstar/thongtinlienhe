@@ -1818,7 +1818,7 @@ a:active, button:active, input:active, img:active, .interactive:active {
   opacity: 1;
   border-radius: 50%;
   animation: ripple 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite, 
-             colorChange 2s linear infinite,  /* Tăng thời gian để tránh nhấp nháy */
+             colorChange 1.5s ease-in-out infinite, 
              glowEffect 1.5s linear infinite;
   filter: brightness(1.5) contrast(1.5); /* Tăng độ sáng và độ tương phản */
 }
@@ -1845,14 +1845,14 @@ a:active, button:active, input:active, img:active, .interactive:active {
   }
 }
 
-/* Hiệu ứng đổi màu mượt hơn */
+/* Hiệu ứng đổi màu mượt */
 @keyframes colorChange {
   0%   { border-color: #ff0000; box-shadow: 0 0 30px #ff0000; } /* Đỏ */
   25%  { border-color: #ff9900; box-shadow: 0 0 35px #ff9900; } /* Cam */
   50%  { border-color: #00ff00; box-shadow: 0 0 40px #00ff00; } /* Xanh lá */
   65%  { border-color: #00ffff; box-shadow: 0 0 45px #00ffff; } /* Cyan */
-  80%  { border-color: #0099ff; box-shadow: 0 0 50px #0099ff; } /* Xanh dương dịu hơn */
-  100% { border-color: #0099ff; box-shadow: 0 0 55px #0099ff; } /* Giữ màu xanh dương ổn định */
+  80%  { border-color: #007bff; box-shadow: 0 0 50px #007bff; } /* Xanh dương sáng (thay cho tím) */
+  100% { border-color: #007bff; box-shadow: 0 0 55px #007bff; } /* Xanh dương sáng hơn */
 }
 
 /* Hiệu ứng phát sáng dịu hơn */
@@ -1868,7 +1868,7 @@ a:active, button:active, input:active, img:active, .interactive:active {
   border-radius: 50%;
   opacity: 1;
   animation: ripple 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite, 
-             colorChange 2s ease-in-out infinite,  /* Làm chậm hơn để tránh giật */
+             colorChange 1.5s ease-in-out infinite, 
              glowEffect 1.5s linear infinite;
   filter: brightness(1.5) contrast(1.5);
 }
