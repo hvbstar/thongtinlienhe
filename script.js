@@ -547,3 +547,16 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("%c⇝ Facebook Của Tôi: https://www.facebook.com/HVB.Profile", "color: blue; font-size: 22px; text-decoration: underline;");
     }, 1000); // Chạy sau 1 giây khi trang load
 })();
+
+    // Phần xử lý Loading
+document.addEventListener("DOMContentLoaded", function () {
+    const loadingOverlay = document.querySelector(".loading-overlay");
+    const loaderCover = document.querySelector(".LoaderCover");
+    const content = document.getElementById("content");
+
+    setTimeout(() => {
+        if (loadingOverlay) loadingOverlay.classList.add("fade-out"); // Ẩn hiệu ứng loading chính
+        if (loaderCover) loaderCover.classList.add("hidden"); // Ẩn lớp phủ nếu có
+        if (content) content.style.display = "block"; // Hiển thị nội dung trang
+    }, 2000); // Chờ 2s, hợp lý hơn
+});
