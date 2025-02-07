@@ -132,28 +132,37 @@ html {
   color: var(--bg-main);
 }
 
+@keyframes flashing-border {
+    0% { border: 3px solid white; }
+    50% { border: 3px solid black; }
+    100% { border: 3px solid white; }
+}
+
 .card {
-  position: fixed;
-  max-width: 370px;
-  height: 380px;
-  display: flex;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 250px 12px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  background: var(--white-color);
-  border-radius: 7px;
-  background: var(--bg-main);
-  box-shadow: var(--outer-shadow);
-  transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  -webkit-transition: all 0.3s linear;
-  -o-transition: all 0.3s linear;
+    position: fixed;
+    max-width: 370px;
+    height: 380px;
+    display: flex;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 250px 12px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white-color);
+    border-radius: 7px;
+    background: var(--bg-main);
+    box-shadow: var(--outer-shadow);
+    transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+
+    /* Áp dụng hiệu ứng viền nhấp nháy */
+    animation: flashing-border 1s infinite alternate;
 }
 
 .app.dark .card::after {
