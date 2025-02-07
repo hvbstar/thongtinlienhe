@@ -1766,3 +1766,135 @@ a:active, button:active, input:active, img:active, .interactive:active {
     border-color: rgba(255, 87, 34, 0.8);
   }
 }
+
+/* ======= Hiệu ứng loading ======= */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+  transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+/* Ảnh nền che toàn bộ màn hình */
+.loading-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Chứa hiệu ứng loading và văn bản */
+.loading-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Đảm bảo căn giữa hoàn toàn */
+}
+
+/* Hiệu ứng sóng ripple */
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 120px;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 10px solid white; /* Viền dày hơn */
+  opacity: 1;
+  border-radius: 50%;
+  animation: ripple 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite, 
+             colorChange 1.5s linear infinite, 
+             glowEffect 1.5s linear infinite;
+  filter: brightness(1.5) contrast(1.5); /* Tăng độ sáng và độ tương phản */
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.6s;
+}
+
+/* Hiệu ứng sóng lan ra */
+@keyframes ripple {
+  0% {
+    top: 50px;
+    left: 50px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    opacity: 0;
+  }
+}
+
+/* Hiệu ứng đổi màu với màu cực sáng */
+@keyframes colorChange {
+  0%   { border-color: #ff0000; box-shadow: 0 0 30px #ff0000; } /* Đỏ rực */
+  25%  { border-color: #ff9900; box-shadow: 0 0 35px #ff9900; } /* Cam sáng */
+  50%  { border-color: #00ff00; box-shadow: 0 0 40px #00ff00; } /* Xanh lá neon */
+  75%  { border-color: #00ffff; box-shadow: 0 0 45px #00ffff; } /* Cyan sáng */
+  100% { border-color: #ff00ff; box-shadow: 0 0 50px #ff00ff; } /* Tím rực */
+}
+
+/* Hiệu ứng phát sáng cực mạnh */
+@keyframes glowEffect {
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 255, 255, 1); }
+  50% { box-shadow: 0 0 60px rgba(255, 255, 255, 1); } /* Giữa chu kỳ sáng mạnh hơn */
+}
+
+
+/* Văn bản loading - Căn giữa theo hiệu ứng */
+.loading-text {
+  font-size: 3.2rem; /* Tăng nhẹ kích thước để tránh bị mất phần mép */
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  background-image: linear-gradient(45deg, #ff0000, #ff9900, #00ff00, #00ffff, #ff00ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding: 15px 5px; /* Thêm padding trên dưới */
+  line-height: 1.3; /* Tăng line-height để không bị cắt */
+  animation: colorShift 2s infinite linear, glowEffect 1.5s infinite alternate;
+  filter: brightness(1.5) contrast(1.5);
+  position: relative;
+}
+
+/* Hiệu ứng đổi màu gradient */
+@keyframes colorShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hiệu ứng phát sáng */
+@keyframes glowEffect {
+  0% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 0, 0, 0.8); }
+  50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 35px rgba(0, 255, 255, 1); }
+  100% { text-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 0 45px rgba(255, 0, 255, 1); }
+}
+
+/* Hiệu ứng biến mất */
+.loading-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
