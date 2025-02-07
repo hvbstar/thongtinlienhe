@@ -114,7 +114,7 @@ window.addEventListener('load', function() {
     }
 });
 
-    // Giọng chị Google
+    // Nhạc nền
 document.addEventListener('DOMContentLoaded', function() {
     // Lấy phần tử âm thanh và nút "OK"
     let googleVoice = document.getElementById('google-voice');
@@ -122,15 +122,30 @@ document.addEventListener('DOMContentLoaded', function() {
     let continueButton = document.getElementById('continue-button');
     let welcomeMessage = document.getElementById('welcome-message');
     let overlay = document.getElementById('overlay'); // Nếu bạn có lớp phủ
-    
+    let notification = document.getElementById('notification'); // Thêm phần thông báo
+
     // Kiểm tra xem các phần tử có tồn tại không
-    if (!googleVoice || !music || !continueButton || !welcomeMessage || !overlay) {
+    if (!googleVoice || !music || !continueButton || !welcomeMessage || !overlay || !notification) {
         console.error('Lỗi: Không tìm thấy một trong các phần tử cần thiết!');
         return;
     }
 
+    // Hàm hiển thị thông báo
+    function showNotification(text) {
+        notification.textContent = text;
+        notification.style.display = 'block';
+
+        // Ẩn thông báo sau 3 giây
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    }
+
     // Khi nhấn vào nút "Nhấn OK Để Tiếp Tục"
     continueButton.addEventListener('click', function() {
+        // Hiển thị thông báo "Đang phát: Giọng Google"
+        showNotification('🎤 Đang phát: Giọng Google');
+
         // Phát giọng Google trước
         googleVoice.play().then(() => {
             console.log('Giọng Google đang phát...');
@@ -143,6 +158,11 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Giọng Google đã kết thúc, phát nhạc nền...');
             googleVoice.pause();
             googleVoice.currentTime = 0;
+
+            // Hiển thị thông báo "Đang phát nhạc: Tên bài hát"
+            showNotification('🎵 Đang phát nhạc: "Biết Đau Nhưng Vẫn Yêu (Remix)"');
+
+            // Phát nhạc nền
             music.play().then(() => {
                 console.log('Nhạc nền đang phát...');
             }).catch((error) => {
