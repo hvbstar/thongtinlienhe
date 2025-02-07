@@ -969,6 +969,31 @@ html, body {
   margin-top: 10px;
 }
 
+/* Thông báo phát nhạc */
+#notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 37, 193, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  display: none;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+/* Hiệu ứng mờ dần */
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* Nút "Nhấn Ok Để Tiếp Tục" */
 #continue-button {
   padding: 10px 20px;
