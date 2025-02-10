@@ -1917,3 +1917,32 @@ a:active, button:active, input:active, img:active, .interactive:active {
   opacity: 0;
   visibility: hidden;
 }
+
+/* Phần hiển thị FPS */
+@font-face {
+  font-family: 'Super Mario 256';
+  src: url('SuperMario256.ttf') format('truetype'); /* Thay đường dẫn nếu cần */
+}
+
+.fps-counter {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 26px;
+  font-weight: bold;
+  color: red;
+  text-shadow: 
+    0 0 10px rgba(255, 0, 0, 0.8), 
+    0 0 20px rgba(255, 0, 0, 0.6), 
+    0 0 30px rgba(255, 0, 0, 0.4); /* Hiệu ứng phát sáng */
+  z-index: 9997;
+  padding: 4px 8px;
+  min-width: 100px;
+  text-align: center;
+  background: none;
+}
+
+.fps-value {
+  color: #ff0000;
+  font-family: 'Super Mario 256', sans-serif;
+}
