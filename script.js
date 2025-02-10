@@ -548,15 +548,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 1000); // Chạy sau 1 giây khi trang load
 })();
 
-    // Phần xử lý Loading
+// Phần xử lý Loading
 document.addEventListener("DOMContentLoaded", function () {
     const loadingOverlay = document.querySelector(".loading-overlay");
     const loaderCover = document.querySelector(".LoaderCover");
     const content = document.getElementById("content");
 
     setTimeout(() => {
-        if (loadingOverlay) loadingOverlay.classList.add("fade-out"); // Ẩn hiệu ứng loading chính
-        if (loaderCover) loaderCover.classList.add("hidden"); // Ẩn lớp phủ nếu có
-        if (content) content.style.display = "block"; // Hiển thị nội dung trang
-    }, 2000); // Chờ 2s, hợp lý hơn
+        requestAnimationFrame(() => {
+            if (loadingOverlay) loadingOverlay.classList.add("fade-out"); // Ẩn hiệu ứng loading
+            if (loaderCover) loaderCover.classList.add("hidden"); // Ẩn lớp phủ nếu có
+            if (content) content.style.display = "block"; // Hiển thị nội dung trang
+        });
+    }, 1500); // Giảm xuống 1.5s để tăng tốc load mà vẫn đẹp
 });
