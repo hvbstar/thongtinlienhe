@@ -562,3 +562,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, 1500); // Giảm xuống 1.5s để tăng tốc load mà vẫn đẹp
 });
+
+// Phần hiển thị FPS
+function updateFPS() {
+    let fpsElement = document.querySelector("#fpsCounter .fps-value"); // Lấy phần tử hiển thị FPS
+    let lastFrameTime = performance.now();
+    let frameCount = 0;
+
+    function refreshFPS() {
+        let now = performance.now();
+        frameCount++;
+
+        if (now - lastFrameTime >= 1000) { // Cập nhật mỗi giây
+            let fps = Math.round(frameCount / ((now - lastFrameTime) / 1000)); // Chỉ lấy số nguyên
+            fpsElement.textContent = `${fps} FPS`;
+            lastFrameTime = now;
+            frameCount = 0;
+        }
+
+        requestAnimationFrame(refreshFPS);
+    }
+
+    refreshFPS();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    updateFPS();
+});
