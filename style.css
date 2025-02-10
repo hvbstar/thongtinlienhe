@@ -1792,6 +1792,12 @@ a:active, button:active, input:active, img:active, .interactive:active {
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  
+  /* Chặn lưu ảnh */
+  pointer-events: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none; /* Chặn chọn ảnh trên Safari */
 }
 
 /* Chứa hiệu ứng loading và văn bản */
