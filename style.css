@@ -1933,9 +1933,8 @@ a:active, button:active, input:active, img:active, .interactive:active {
   font-weight: bold;
   color: red;
   text-shadow: 
-    0 0 10px rgba(255, 0, 0, 0.8), 
-    0 0 20px rgba(255, 0, 0, 0.6), 
-    0 0 30px rgba(255, 0, 0, 0.4);
+    0 0 3px rgba(255, 255, 255, 0.5),  /* Viền sáng trắng nhẹ */
+    0 0 6px rgba(255, 255, 255, 0.3);  /* Hiệu ứng phát sáng giảm */
   z-index: 9997;
   padding: 4px 8px;
   min-width: 100px;
