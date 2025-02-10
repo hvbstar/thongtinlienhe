@@ -1921,7 +1921,8 @@ a:active, button:active, input:active, img:active, .interactive:active {
 /* Phần hiển thị FPS */
 @font-face {
   font-family: 'Super Mario 256';
-  src: url('SuperMario256.ttf') format('truetype'); /* Thay đường dẫn nếu cần */
+  src: url('https://raw.githubusercontent.com/hvbstar/thongtinlienhe/main/favicon_io/SuperMario256.ttf') format('truetype');
+  font-display: swap;
 }
 
 .fps-counter {
@@ -1934,7 +1935,7 @@ a:active, button:active, input:active, img:active, .interactive:active {
   text-shadow: 
     0 0 10px rgba(255, 0, 0, 0.8), 
     0 0 20px rgba(255, 0, 0, 0.6), 
-    0 0 30px rgba(255, 0, 0, 0.4); /* Hiệu ứng phát sáng */
+    0 0 30px rgba(255, 0, 0, 0.4);
   z-index: 9997;
   padding: 4px 8px;
   min-width: 100px;
