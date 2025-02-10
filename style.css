@@ -1847,12 +1847,12 @@ a:active, button:active, input:active, img:active, .interactive:active {
 
 /* Hiệu ứng đổi màu mượt */
 @keyframes colorChange {
-  0%   { border-color: #ff0000; box-shadow: 0 0 30px #ff0000; } /* Đỏ */
-  25%  { border-color: #ff9900; box-shadow: 0 0 35px #ff9900; } /* Cam */
-  50%  { border-color: #00ff00; box-shadow: 0 0 40px #00ff00; } /* Xanh lá */
-  65%  { border-color: #00ffff; box-shadow: 0 0 45px #00ffff; } /* Cyan */
-  80%  { border-color: #007bff; box-shadow: 0 0 50px #007bff; } /* Xanh dương sáng (thay cho tím) */
-  100% { border-color: #007bff; box-shadow: 0 0 55px #007bff; } /* Xanh dương sáng hơn */
+  0%   { border-color: #ff0000; filter: drop-shadow(0 0 15px #ff0000); }
+  25%  { border-color: #ff9900; filter: drop-shadow(0 0 18px #ff9900); }
+  50%  { border-color: #00ff00; filter: drop-shadow(0 0 20px #00ff00); }
+  65%  { border-color: #00ffff; filter: drop-shadow(0 0 22px #00ffff); }
+  80%  { border-color: #007bff; filter: drop-shadow(0 0 25px rgba(0, 123, 255, 0.8)); }
+  100% { border-color: #007bff; filter: drop-shadow(0 0 30px rgba(0, 123, 255, 0.6)); }
 }
 
 /* Hiệu ứng phát sáng dịu hơn */
