@@ -1953,4 +1953,36 @@ a:active, button:active, input:active, img:active, .interactive:active {
   font-family: 'Super Mario 256', sans-serif;
 }
 
+/* Phần hiển thị chuỗi */
+@font-face {
+  font-family: 'Super Mario 256';
+  src: url('https://raw.githubusercontent.com/hvbstar/thongtinlienhe/main/favicon_io/SuperMario256.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Bộ đếm lượt truy cập */
+.visit-counter {
+  position: fixed;
+  top: 50px;  /* Đặt phần bộ đếm dưới FPS */
+  left: 10px;  /* Giữ vị trí ngang bên trái */
+  font-size: 26px;  /* Giống kích thước font của FPS */
+  font-family: 'Super Mario 256', sans-serif;  /* Đảm bảo font đúng */
+  font-weight: bold;
+  color: red;  /* Màu đỏ giống FPS */
+  text-shadow: 
+    0 0 3px rgba(255, 255, 255, 0.5),  /* Viền sáng trắng nhẹ */
+    0 0 6px rgba(255, 255, 255, 0.3);  /* Hiệu ứng phát sáng giảm */
+  z-index: 9997;
+  display: flex;
+  align-items: center;
+}
+
+.visit-counter .flame-icon {
+  font-size: 26px;  /* Giữ kích thước icon đồng bộ với font chữ */
+  margin-right: 5px;  /* Khoảng cách giữa icon và số */
+}
+
+.visit-counter span {
+  color: red;  /* Màu đỏ cho số lượt truy cập */
+}
                                                     /* Design By Hoàng Văn Bảo */
