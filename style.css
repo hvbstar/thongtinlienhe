@@ -1983,6 +1983,7 @@ a:active, button:active, input:active, img:active, .interactive:active {
 }
 
 .visit-counter span {
+  font-family: 'Super Mario 256', sans-serif;  /* Đảm bảo font đúng */
   color: red;  /* Màu đỏ cho số lượt truy cập */
 }
                                                     /* Design By Hoàng Văn Bảo */
