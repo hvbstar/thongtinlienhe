@@ -597,10 +597,13 @@ let visitCount = localStorage.getItem('visitCount');
 // Nếu chưa, gán giá trị ban đầu là 0
 if (!visitCount) {
     visitCount = 0;
+} else {
+    // Nếu đã có, chuyển giá trị về số nguyên (chắc chắn rằng nó là số)
+    visitCount = parseInt(visitCount);
 }
 
 // Tăng số lượt truy cập lên 1
-visitCount = parseInt(visitCount) + 1;
+visitCount++;
 
 // Lưu lại số lượt truy cập vào localStorage
 localStorage.setItem('visitCount', visitCount);
