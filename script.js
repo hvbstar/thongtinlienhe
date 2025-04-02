@@ -607,5 +607,4 @@ localStorage.setItem('visitCount', visitCount);
 
 // Hiển thị số lượt truy cập trên trang
 document.getElementById('access-count').textContent = visitCount;
-
                                                         // Design By Hoàng Văn Bảo
