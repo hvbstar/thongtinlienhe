@@ -590,4 +590,22 @@ document.addEventListener("DOMContentLoaded", function () {
     updateFPS();
 });
 
+// Phần chuỗi truy cập Web
+// Kiểm tra xem đã có lượt truy cập từ người dùng này chưa
+let visitCount = localStorage.getItem('visitCount');
+
+// Nếu chưa, gán giá trị ban đầu là 0
+if (!visitCount) {
+    visitCount = 0;
+}
+
+// Tăng số lượt truy cập lên 1
+visitCount = parseInt(visitCount) + 1;
+
+// Lưu lại số lượt truy cập vào localStorage
+localStorage.setItem('visitCount', visitCount);
+
+// Hiển thị số lượt truy cập trên trang
+document.getElementById('access-count').textContent = visitCount;
+
                                                         // Design By Hoàng Văn Bảo
