@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // Tạo hàm bảo vệ mã nguồn, ngừng ngay khi có thay đổi
         function protectCode() {
-            if (document.body.innerHTML.includes('Hoàng Văn Bảo')) {
+            if (document.body.innerHTML.includes('')) {
                 setTimeout(protectCode, 100); // Tiếp tục kiểm tra
             } else {
                 alert('Mã JavaScript bị thay đổi hoặc xóa. Trang sẽ ngừng hoạt động.');
