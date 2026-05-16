@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
         copyrightElement.style.fontSize = '14px';
         copyrightElement.style.fontFamily = 'Arial, sans-serif';
         copyrightElement.style.zIndex = '9997';
-        copyrightElement.innerHTML = _0x3f21(0);
+        copyrightElement.innerHTML = _0x3f21(0) + ' | Hoàng Văn Bảo';
     
         document.body.appendChild(copyrightElement);
     
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
                 // Kiểm tra thay đổi nội dung phần tử
                 if (mutation.type === 'childList' || mutation.type === 'attributes') {
-                    if (copyrightElement.innerHTML !== _0x3f21(0)) {
+                    if (copyrightElement.innerHTML !== _0x3f21(0) + ' | Hoàng Văn Bảo') {
                         alert('Phần bản quyền đã bị thay đổi! Trang sẽ ngừng hoạt động.');
                         document.body.innerHTML = '';
                         throw new Error('Phần bản quyền bị thay đổi.');
